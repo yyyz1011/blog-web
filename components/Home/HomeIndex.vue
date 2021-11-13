@@ -13,7 +13,7 @@
       muted
       loop
       :src="backgroundUrl"
-      @canplaythrough="$refs.video.play()"
+      @canplaythrough="handlePlay"
     ></video>
   </div>
 </template>
@@ -27,6 +27,11 @@ export default {
     return {
       backgroundUrl,
     };
+  },
+  methods: {
+    handlePlay() {
+      this.$refs.video.play();
+    },
   },
 };
 </script>
@@ -70,9 +75,23 @@ export default {
 }
 .text {
   @include text-title();
-  color: $text-white;
   cursor: default;
   user-select: none;
+
+  background-image: linear-gradient(
+    75deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 1) 33.33%,
+    rgba(255, 255, 255, 0) 66.67%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  background-size: 300% 100%;
+  background-position-x: 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: flowText 2s forwards ease-in-out;
+
   &:nth-child(2) {
     text-indent: 60px;
   }
@@ -93,5 +112,14 @@ export default {
   -webkit-transform: translateX(-50%) translateY(-50%);
   transform: translateX(-50%) translateY(-50%);
   background-size: cover;
+}
+
+@keyframes flowText {
+  from {
+    background-position-x: 100%;
+  }
+  to {
+    background-position-x: 0%;
+  }
 }
 </style>
