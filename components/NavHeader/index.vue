@@ -105,5 +105,30 @@ export default {
       bottom: 13px;
     }
   }
+  .is-nav-active {
+    .index,
+    .label {
+      animation: animate 5s linear infinite;
+    }
+    .label {
+      font-weight: bold;
+    }
+  }
+}
+
+@keyframes animate {
+  0%,
+  100% {
+    text-shadow: -1.5px -1.5px 0 #0ff, 1.5px 1.5px 0 #f00;
+  }
+  25% {
+    text-shadow: 1.5px 1.5px 0 #0ff, -1.5px -1.5px 0 #f00;
+  }
+  50% {
+    text-shadow: 1.5px -1.5px 0 #0ff, 1.5px -1.5px 0 #f00;
+  }
+  75% {
+    text-shadow: -1.5px 1.5px 0 #0ff, -1.5px 1.5px 0 #f00;
+  }
 }
 </style>
