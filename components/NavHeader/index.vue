@@ -1,20 +1,14 @@
 <template>
-  <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal">
-    <el-menu-item index="1">处理中心</el-menu-item>
-    <el-menu-item index="2">处理中心</el-menu-item>
-    <el-menu-item index="3">处理中心</el-menu-item>
-    <el-menu-item index="4">处理中心</el-menu-item>
-  </el-menu>
+  <div class="nav-header">
+    <div class="content">
+      <img class="logo" src="~/static/img/logo.png" />
+    </div>
+  </div>
 </template>
 
 <script>
 export default {
   name: "NavHeader",
-  data() {
-    return {
-      activeIndex: 1,
-    };
-  },
 };
 </script>
 
@@ -24,6 +18,20 @@ export default {
   top: 0;
   z-index: 10;
   height: $nav-header;
-  background: $background-white-color;
+  background: $background-black-color;
+  border-bottom: 5px solid #36b1c7;
+  border-image: -webkit-linear-gradient(to right, #d17d95, #75d0e0) 30 30;
+  border-image: linear-gradient(to right, #d17d95, #75d0e0) 30 30;
+}
+.content {
+  display: flex;
+  margin: 0 auto;
+  align-items: center;
+  height: 100%;
+  width: 80%;
+  min-width: 1200px;
+}
+.logo {
+  height: 50%;
 }
 </style>
