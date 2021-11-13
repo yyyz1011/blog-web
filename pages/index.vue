@@ -2,6 +2,7 @@
   <div>
     <NavHeader></NavHeader>
     <HomeIndex></HomeIndex>
+    <div class="test"></div>
   </div>
 </template>
 
@@ -34,5 +35,8 @@ export default {
   position: relative;
   overflow-x: hidden;
   min-width: 1200px;
+}
+.test{
+  height: 2000px;
 }
 </style>

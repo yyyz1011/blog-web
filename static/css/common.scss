@@ -9,26 +9,7 @@
  
  html {
     line-height: 1.15; /* 1 */
-    -webkit-text-size-adjust: 100%; /* 2 */
-  }
-  
-/* 设置滚动条的样式 */
-::-webkit-scrollbar {
-  width: 6px;
-  background-color: rgb(0, 0, 0);
-}
-
-/* 滚动槽 */
-::-webkit-scrollbar-track {
-  border-radius: 4px;
-}
-
-/* 滚动条滑块 */
-::-webkit-scrollbar-thumb {
-  border-radius: 4px;
-  background: rgb(239, 246, 255);
-}
-   
+  } 
   /* Sections
      ========================================================================== */
    
