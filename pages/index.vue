@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!-- <NavHeader></NavHeader> -->
+    <NavHeader></NavHeader>
     <HomeIndex></HomeIndex>
   </div>
 </template>

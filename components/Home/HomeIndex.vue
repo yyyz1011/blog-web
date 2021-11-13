@@ -1,40 +1,48 @@
 <template>
-  <IndexPanel :background-url="backgroundUrl">
+  <div class="home">
     <div class="content">
       <div class="text">你得熬过万丈孤独</div>
       <div class="text">藏下星辰大海</div>
       <div class="text">才会有诗和远方</div>
     </div>
-    <div class="update-time">更新时间：{{ updateTime }}</div>
-  </IndexPanel>
+    <video
+      class="video"
+      ref="video"
+      :controls="false"
+      autoplay
+      muted
+      loop
+      :src="backgroundUrl"
+      @canplaythrough="$refs.video.play()"
+    ></video>
+  </div>
 </template>
 
 <script>
-import IndexPanel from "~/components/Home/IndexPanel";
-import backgroundUrl from "~/static/img/Home/home.jpg";
-import * as dayjs from "dayjs";
+import backgroundUrl from "~/static/video/Home/home.mp4";
 
 export default {
   name: "HomeIndex",
-  components: {
-    IndexPanel,
-  },
   data() {
     return {
       backgroundUrl,
     };
   },
-  computed: {
-    updateTime() {
-      return dayjs().format("YYYY-MM-DD");
-    },
-  },
 };
 </script>
 
 <style lang="scss" scoped>
+.home {
+  width: 80vw;
+  height: 600px;
+  overflow: hidden;
+  margin: 0 auto;
+  border-radius: 16px;
+  box-shadow: 0 4px 8px $background-black-color;
+}
 .content {
   position: absolute;
+  z-index: 1;
   top: 50%;
   transform: translateY(-50%);
   left: 10%;
@@ -65,24 +73,25 @@ export default {
   color: $text-white;
   cursor: default;
   user-select: none;
+  &:nth-child(2) {
+    text-indent: 60px;
+  }
+  &:nth-child(3) {
+    text-indent: 120px;
+  }
 }
-.text:nth-child(2) {
-  text-indent: 60px;
-}
-.text:nth-child(3) {
-  text-indent: 120px;
-}
-.update-time {
+.video {
   position: absolute;
-  bottom: $common-spacing;
-  left: 0;
-  right: 0;
-  text-align: center;
-  color: $text-white;
-  font-size: 14px;
-  letter-spacing: 5px;
-  font-weight: lighter;
-  user-select: none;
-  cursor: default;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: fill; /*这里是关键*/
+  width: auto;
+  height: auto;
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  background-size: cover;
 }
 </style>
