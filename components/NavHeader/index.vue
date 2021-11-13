@@ -35,6 +35,7 @@ export default {
     },
     handleNavChange(name) {
       this.currentName = name;
+      console.log("TODO path change", name);
     },
   },
 };
