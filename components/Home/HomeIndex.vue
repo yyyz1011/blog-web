@@ -36,7 +36,7 @@ export default {
   width: 80vw;
   height: 600px;
   overflow: hidden;
-  margin: 0 auto;
+  margin: 24px auto 0;
   border-radius: 16px;
   box-shadow: 0 4px 8px $background-black-color;
 }

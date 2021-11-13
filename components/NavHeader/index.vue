@@ -1,7 +1,7 @@
 <template>
   <div class="nav-header">
     <div class="content">
-      <img class="logo" src="~/static/img/logo.png" />
+      <img class="logo" src="~/static/img/logo.png" @click="handleClickLogo" />
     </div>
   </div>
 </template>
@@ -9,6 +9,11 @@
 <script>
 export default {
   name: "NavHeader",
+  methods: {
+    handleClickLogo() {
+      console.log("TODO logo click");
+    },
+  },
 };
 </script>
 
@@ -33,5 +38,7 @@ export default {
 }
 .logo {
   height: 50%;
+  cursor: pointer;
+  user-select: none;
 }
 </style>
