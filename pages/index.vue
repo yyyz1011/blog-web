@@ -1,19 +1,17 @@
 <template>
   <div>
-    <NavHeader></NavHeader>
     <HomeIndex></HomeIndex>
     <div class="test"></div>
   </div>
 </template>
 
 <script>
-import NavHeader from "~/components/NavHeader";
 import HomeIndex from "~/components/Home/HomeIndex";
 
 export default {
   name: "index",
+  layout:'BaseLayout',
   components: {
-    NavHeader,
     HomeIndex,
   },
   data() {
@@ -36,7 +34,7 @@ export default {
   overflow-x: hidden;
   min-width: 1200px;
 }
-.test{
+.test {
   height: 2000px;
 }
 </style>
