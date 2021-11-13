@@ -1,0 +1,18 @@
+// height
+$nav-header : 40px;
+
+// text color
+$text-white : #ffffff;
+
+// background color
+$background-white-color : #ffffff;
+
+// position
+$common-spacing : 24px;
+
+@mixin text-title {
+    font-size: 45px;
+    line-height: 60px;
+    letter-spacing: 15px;
+    font-weight: bold;
+}
