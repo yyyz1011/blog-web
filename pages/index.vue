@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="home">
     <HomeIndex></HomeIndex>
     <div class="test"></div>
   </div>
@@ -22,6 +22,7 @@ export default {
   position: relative;
   overflow-x: hidden;
   min-width: 1200px;
+  background: $background-primary;
 }
 .test {
   height: 2000px;
