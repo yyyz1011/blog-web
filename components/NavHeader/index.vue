@@ -6,11 +6,12 @@
         <div
           class="nav-item"
           :class="{ 'is-nav-active': currentName === item.name }"
-          v-for="item in NavHeader"
+          v-for="(item, index) in NavHeader"
           :key="item.key"
           @click="handleNavChange(item.name)"
         >
-          {{ item.label }}
+          <div class="index">{{ index + 1 }}</div>
+          <div class="label">{{ item.label }}</div>
         </div>
       </div>
     </div>
@@ -53,6 +54,7 @@ export default {
 .content {
   display: flex;
   margin: 0 auto;
+  justify-content: space-between;
   align-items: center;
   height: 100%;
   width: 80%;
@@ -72,14 +74,35 @@ export default {
   margin-left: 20px;
   height: 100%;
   .nav-item {
-    height: 100%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 0 16px;
+    padding: 10px 16px 0;
     margin: 0 16px;
     cursor: pointer;
     user-select: none;
+    .index {
+      position: relative;
+      font-size: 40px;
+      &::after {
+        content: "";
+        bottom: -25px;
+        left: 13px;
+        position: absolute;
+        width: 30px;
+        height: 60px;
+        border-left: 1px solid $background-white-color;
+        transform: rotate(55deg);
+        background: $background-black-color;
+      }
+    }
+    .label {
+      position: relative;
+      z-index: 1;
+      left: 25px;
+      bottom: 13px;
+    }
   }
 }
 </style>
