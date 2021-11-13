@@ -10,20 +10,9 @@ import HomeIndex from "~/components/Home/HomeIndex";
 
 export default {
   name: "index",
-  layout:'BaseLayout',
+  layout: "BaseLayout",
   components: {
     HomeIndex,
-  },
-  data() {
-    return {
-      options: {
-        afterLoad: this.afterLoad,
-        scrollOverflow: true,
-        scrollBar: false,
-        menu: "#menu",
-        navigation: true,
-      },
-    };
   },
 };
 </script>
