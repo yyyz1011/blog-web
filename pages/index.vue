@@ -38,7 +38,6 @@ export default {
     },
     threeInitFbx() {
       console.log(FBXLoader)
-      console.log(1)
 
       // const fbxLoader = new FBXLoader()
       // fbxLoader.load('../static/fgx-model/ZZ01.fbx', (fbx) => {
