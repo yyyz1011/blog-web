@@ -1,16 +1,5 @@
 import *  as React from 'react'
 import { render } from 'react-dom'
+import App from '@/app'
 
-interface Iprops {
-  children: string
-}
-
-function App(props: Iprops) {
-  return (
-    <>
-      <h1>{props.children}</h1>
-    </>
-  )
-}
-
-render(<App>hello TypeScript1112123123!</App>, document.getElementById('app'))
+render(<App />, document.getElementById('app'))

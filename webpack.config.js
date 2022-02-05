@@ -25,7 +25,7 @@ module.exports = {
         use: ['style-loader', 'css-loader']
       },
       {
-        test: /\.tsx$/,
+        test: /\.(tsx|ts)$/,
         use: [
           {
             loader: 'babel-loader',
