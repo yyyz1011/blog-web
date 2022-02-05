@@ -11,14 +11,14 @@ const HomeRouter: RouterType = {
   key: 'home',
   path: '',
   component: lazy(() => import('@/views/home')),
-  title: '首页'
+  title: 'home'
 }
 
 const AboutRouter: RouterType = {
   key: 'about',
   path: '/about',
   component: lazy(() => import('@/views/about')),
-  title: '关于'
+  title: 'about'
 }
 
 const Routers: RouterType[] = ([
