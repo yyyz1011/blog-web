@@ -18,7 +18,16 @@ module.exports = {
     rules: [
       {
         test: /\.(png|jpg|jpeg|gif|webp)$/,
-        type: 'assets'
+        type: 'asset',
+        parser: {
+          dataUrlCondition: {
+            maxSize: 25 * 1024 // 25kb
+          }
+        },
+        generator: {
+          filename: 'img/[name].[hash:6][ext]',
+          publicPath: './'
+        }
       },
       {
         test: /\.(less|css)$/,
