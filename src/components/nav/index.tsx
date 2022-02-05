@@ -19,11 +19,11 @@ const Nav: React.FC = () => {
     if (language === language_cn) {
       // @ts-ignore
       setLanguage(language_en)
-      i18n.changeLanguage(language_en)
+      i18n.changeLanguage(language_en).then()
     } else {
       // @ts-ignore
       setLanguage(language_cn)
-      i18n.changeLanguage(language_cn)
+      i18n.changeLanguage(language_cn).then()
     }
   }
 
@@ -32,7 +32,7 @@ const Nav: React.FC = () => {
       <div className='nav-link'>
         {
           Routers.map((item: RouterType) => (
-            <Button key={'nav' + item.key} theme='borderless' type='tertiary'>
+            <Button className='nav-link--item' key={'nav' + item.key} theme='borderless' type='tertiary'>
               <Link to={item.path}>{t('nav.' + item.title)}</Link>
             </Button>
           ))

@@ -1,5 +1,5 @@
 import React, { Suspense } from 'react'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { HashRouter, Navigate, Route, Routes } from 'react-router-dom'
 import type { RouterType } from '@/routers'
 import { Routers } from '@/routers'
 import Nav from '@/components/nav'
@@ -11,13 +11,14 @@ const { Header, Content } = Layout
 const App: React.FC = () => {
   return (
     <>
-      <BrowserRouter>
+      <HashRouter>
         <Header className='layout-header'>
           <Nav />
         </Header>
         <Content>
           <Suspense fallback={(<div />)}>
             <Routes>
+              <Route path='*' element={<Navigate to='/' />} />
               {
                 Routers.map((item: RouterType) => (
                   <Route key={item.key} path={item.path} element={< item.component />} />))
@@ -25,7 +26,7 @@ const App: React.FC = () => {
             </Routes>
           </Suspense>
         </Content>
-      </BrowserRouter>
+      </HashRouter>
     </>
   )
 }
