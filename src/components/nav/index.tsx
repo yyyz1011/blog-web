@@ -1,26 +1,46 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import type { RouterType } from '@/routers'
 import { Routers } from '@/routers'
 import { useTranslation } from 'react-i18next'
+import { Button, Tooltip } from '@douyinfe/semi-ui'
+import { IconLanguage } from '@douyinfe/semi-icons'
+import './index.less'
+
+const language_cn: string = 'cn'
+const language_en: string = 'en'
 
 const Nav: React.FC = () => {
-
+  // @ts-ignore
+  const [language, setLanguage] = useState<'en' | 'cn'>(language_cn)
   const { t, i18n } = useTranslation()
 
-  const changeLanguage = (language: string) => {
-    i18n.changeLanguage(language)
+  const changeLanguage = () => {
+    if (language === language_cn) {
+      // @ts-ignore
+      setLanguage(language_en)
+      i18n.changeLanguage(language_en)
+    } else {
+      // @ts-ignore
+      setLanguage(language_cn)
+      i18n.changeLanguage(language_cn)
+    }
   }
 
   return (
     <>
-      {
-        Routers.map((item: RouterType) => (<Link key={'nav' + item.key} to={item.path}>{t('nav.' + item.title)}</Link>))
-      }
-      <select onChange={(e) => changeLanguage(e.target.value)} defaultValue={localStorage.language}>
-        <option value='cn'>{t('nav.language_cn')}</option>
-        <option value='en'>{t('nav.language_en')}</option>
-      </select>
+      <div className='nav-link'>
+        {
+          Routers.map((item: RouterType) => (
+            <Button key={'nav' + item.key} theme='borderless' type='tertiary'>
+              <Link to={item.path}>{t('nav.' + item.title)}</Link>
+            </Button>
+          ))
+        }
+      </div>
+      <Tooltip content={t('nav.change_language')}>
+        <IconLanguage size='large' onClick={changeLanguage} />
+      </Tooltip>
     </>
   )
 }
