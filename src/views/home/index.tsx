@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import * as THREE from 'three'
 import './index.less'
 import { FBXLoader } from '@/utils/threejs/FBXLoader'
+import { throttle } from 'lodash-es'
 
 const Home: React.FC = () => {
 
@@ -65,13 +66,13 @@ const Home: React.FC = () => {
     })
   }
 
-  window.onresize = () => {
+  window.onresize = throttle(() => {
     if (!camera || !renderer || !scene) return
     camera.aspect = window.innerWidth / window.innerHeight
     camera.updateProjectionMatrix()
     renderer.setSize(window.innerWidth, window.innerHeight)
     renderer.render(scene, camera)
-  }
+  }, 60)
 
 
   useEffect(() => {
