@@ -24,7 +24,8 @@ const Home: React.FC = () => {
     const threeId = document.getElementById('three')
     if (!threeId) return
     threeId.appendChild(renderer.domElement)
-    camera.position.set(0, 33, 5)
+    camera.position.set(0, 35, 5)
+    camera.lookAt(0, 35, -20)
     renderer.render(scene, camera)
   }
 
