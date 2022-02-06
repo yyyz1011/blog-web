@@ -17,16 +17,35 @@ const Home: React.FC = () => {
 
   const initThree = () => {
     if (!renderer || !scene || !camera) return
+    renderer.shadowMap.enabled = true
+    renderer.shadowMap.type = THREE.PCFSoftShadowMap
     renderer.setSize(window.innerWidth, window.innerHeight)
     const threeId = document.getElementById('three')
     if (!threeId) return
     threeId.appendChild(renderer.domElement)
-
-    camera.position.z = 10
-    camera.position.y = 35
-    camera.position.x = 0
-
+    camera.position.set(0, 33, 5)
     renderer.render(scene, camera)
+  }
+
+  const initLight = () => {
+    if (!scene) return
+    const ambientLight = new THREE.AmbientLight(0xFFFFE0, 0.1)
+    scene.add(ambientLight)
+    const lightPosition = {
+      x: 35,
+      y: 65,
+      z: -60
+    }
+    const pointLightPink = new THREE.PointLight(0xFFB6C1, 0.4)
+    pointLightPink.position.set(lightPosition.x, lightPosition.y, lightPosition.z)
+    scene.add(pointLightPink)
+    const pointLightBlue = new THREE.PointLight(0x00CED1, 0.4)
+    pointLightBlue.position.set(-lightPosition.x, lightPosition.y, lightPosition.z)
+    scene.add(pointLightBlue)
+    const light = new THREE.PointLight(0xffffff, 0.2)
+    light.castShadow = true
+    light.position.set(lightPosition.x, lightPosition.y, lightPosition.z)
+    scene.add(light)
   }
 
   const initModel = () => {
@@ -39,11 +58,21 @@ const Home: React.FC = () => {
         }
       })
       object.rotateY(Math.PI)
-      scene?.add(object)
+      if (object)
+        scene?.add(object)
       if (scene && camera)
         renderer?.render(scene, camera)
     })
   }
+
+  window.onresize = () => {
+    if (!camera || !renderer || !scene) return
+    camera.aspect = window.innerWidth / window.innerHeight
+    camera.updateProjectionMatrix()
+    renderer.setSize(window.innerWidth, window.innerHeight)
+    renderer.render(scene, camera)
+  }
+
 
   useEffect(() => {
     if (!renderer || !scene || !camera) {
@@ -53,6 +82,7 @@ const Home: React.FC = () => {
 
   useEffect(() => {
     initThree()
+    initLight()
     initModel()
   })
 
