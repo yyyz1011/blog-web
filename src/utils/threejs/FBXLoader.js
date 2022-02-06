@@ -1172,7 +1172,6 @@ class FBXTreeParser {
 
       }
 
-      // TODO: could this be calculated linearly from FarAttenuationStart to FarAttenuationEnd?
       const decay = 1
 
       switch (type) {
@@ -1197,7 +1196,6 @@ class FBXTreeParser {
           let penumbra = 0
           if (lightAttribute.OuterAngle !== undefined) {
 
-            // TODO: this is not correct - FBX calculates outer and inner angle in degrees
             // with OuterAngle > InnerAngle && OuterAngle <= Math.PI
             // while three.js uses a penumbra between (0, 1) to attenuate the inner angle
             penumbra = MathUtils.degToRad(lightAttribute.OuterAngle.value)
@@ -2100,7 +2098,6 @@ class GeometryParser {
 
     }
 
-    // TODO: add morph normal support
     const morphGeoInfo = {
       vertexIndices: vertexIndices,
       vertexPositions: morphPositions
@@ -2380,7 +2377,6 @@ class AnimationParser {
 
     const rawCurves = fbxTree.Objects.AnimationCurve
 
-    // TODO: Many values are identical up to roundoff error, but won't be optimised
     // e.g. position times: [0, 0.4, 0. 8]
     // position values: [7.23538335023477e-7, 93.67518615722656, -0.9982695579528809, 7.23538335023477e-7, 93.67518615722656, -0.9982695579528809, 7.235384487103147e-7, 93.67520904541016, -0.9982695579528809]
     // clearly, this should be optimised to
@@ -3665,7 +3661,6 @@ class BinaryReader {
   // 1 << 32 will return 1 so using multiply operation instead here.
   // There's a possibility that this method returns wrong value if the value
   // is out of the range between Number.MAX_SAFE_INTEGER and Number.MIN_SAFE_INTEGER.
-  // TODO: safely handle 64-bit integer
   getInt64() {
 
     let low, high
