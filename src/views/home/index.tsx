@@ -17,20 +17,19 @@ const Home: React.FC = () => {
   }
 
   const initThree = () => {
-    if (!renderer || !scene || !camera) return
+    if (!camera || !renderer || !scene) return
     renderer.shadowMap.enabled = true
     renderer.shadowMap.type = THREE.PCFSoftShadowMap
     renderer.setSize(window.innerWidth, window.innerHeight)
     const threeId = document.getElementById('three')
     if (!threeId) return
     threeId.appendChild(renderer.domElement)
-    camera.position.set(0, 40, -5)
-    camera.lookAt(0, 35, -20)
+    camera.position.set(0, 35, 0)
     renderer.render(scene, camera)
   }
 
   const initLight = () => {
-    if (!scene) return
+    if (!camera || !renderer || !scene) return
     const ambientLight = new THREE.AmbientLight(0xFFFFE0, 0.2)
     scene.add(ambientLight)
     const lightPosition = {
@@ -60,11 +59,14 @@ const Home: React.FC = () => {
         }
       })
       object.rotateY(Math.PI)
-      if (object)
-        scene?.add(object)
-      if (scene && camera)
-        renderer?.render(scene, camera)
+      object && scene?.add(object)
     })
+  }
+
+  const animate = () => {
+    if (!camera || !renderer || !scene) return
+    requestAnimationFrame(animate)
+    renderer.render(scene, camera)
   }
 
   window.onresize = throttle(() => {
@@ -72,7 +74,6 @@ const Home: React.FC = () => {
     camera.aspect = window.innerWidth / window.innerHeight
     camera.updateProjectionMatrix()
     renderer.setSize(window.innerWidth, window.innerHeight)
-    renderer.render(scene, camera)
   }, 60)
 
   useEffect(() => {
@@ -85,6 +86,10 @@ const Home: React.FC = () => {
     initThree()
     initLight()
     initModel()
+  }, [renderer, scene, camera])
+
+  useEffect(() => {
+    animate()
   })
 
   return (
