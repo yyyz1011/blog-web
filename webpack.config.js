@@ -17,7 +17,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(png|jpg|jpeg|gif|webp)$/,
+        test: /\.(png|jpg|jpeg|gif|webp|fbx|mb)$/,
         type: 'asset',
         parser: {
           dataUrlCondition: {
@@ -25,7 +25,7 @@ module.exports = {
           }
         },
         generator: {
-          filename: 'img/[name].[hash:6][ext]',
+          filename: 'asset/[name].[hash:6][ext]',
           publicPath: './'
         }
       },
