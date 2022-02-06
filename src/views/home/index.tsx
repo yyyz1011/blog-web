@@ -29,11 +29,11 @@ const Home: React.FC = () => {
 
   const initLight = () => {
     if (!scene) return
-    const ambientLight = new THREE.AmbientLight(0xFFFFE0, 0.1)
+    const ambientLight = new THREE.AmbientLight(0xFFFFE0, 0.2)
     scene.add(ambientLight)
     const lightPosition = {
       x: 35,
-      y: 65,
+      y: 60,
       z: -60
     }
     const pointLightPink = new THREE.PointLight(0xFFB6C1, 0.4)
