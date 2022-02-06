@@ -24,7 +24,7 @@ const Home: React.FC = () => {
     const threeId = document.getElementById('three')
     if (!threeId) return
     threeId.appendChild(renderer.domElement)
-    camera.position.set(0, 35, 5)
+    camera.position.set(0, 40, -5)
     camera.lookAt(0, 35, -20)
     renderer.render(scene, camera)
   }
@@ -74,7 +74,6 @@ const Home: React.FC = () => {
     renderer.setSize(window.innerWidth, window.innerHeight)
     renderer.render(scene, camera)
   }, 60)
-
 
   useEffect(() => {
     if (!renderer || !scene || !camera) {
