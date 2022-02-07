@@ -4,16 +4,22 @@ import './index.less'
 import { FBXLoader } from '@/utils/threejs/FBXLoader'
 import { throttle } from 'lodash-es'
 
+type mouseType = THREE.Vector2 | null
+
 const Home: React.FC = () => {
 
   const [scene, setScene] = useState<THREE.Scene | null>(null)
   const [camera, setCamera] = useState<THREE.PerspectiveCamera | null>(null)
   const [renderer, setRenderer] = useState<THREE.WebGLRenderer | null>(null)
+  const [raycaster, setRaycaster] = useState<THREE.Raycaster | null>(null)
+  const [projectiveObj, setProjectiveObj] = useState<any>(null)
+  let mouse: mouseType = new THREE.Vector2
 
   const init = () => {
     setScene(new THREE.Scene())
     setCamera(new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000))
     setRenderer(new THREE.WebGLRenderer())
+    setRaycaster(new THREE.Raycaster())
   }
 
   const initThree = () => {
@@ -63,11 +69,43 @@ const Home: React.FC = () => {
     })
   }
 
+  /**
+   * 根据光投射器判断鼠标所在向量方向是否穿过物体
+   * @param {*} raycaster 光投射器
+   * @param {*} scene     场景
+   * @param {*} camera    相机
+   * @param {*} mouse     鼠标位置对应的二维向量
+   */
+  function renderRaycasterObj(raycaster: THREE.Raycaster, scene: THREE.Scene, camera: THREE.PerspectiveCamera, mouse: mouseType) {
+    if (!raycaster || !scene || !camera || !mouse) return
+    raycaster.setFromCamera(mouse, camera)
+    let intersects = raycaster.intersectObjects(scene.children)
+    if (intersects.length > 0) {
+      let currentProjectiveObjT = intersects[0].object
+      if (projectiveObj != currentProjectiveObjT) {
+        if ((currentProjectiveObjT instanceof THREE.AxesHelper) || (currentProjectiveObjT instanceof THREE.GridHelper)) {
+          return
+        }
+        setProjectiveObj(intersects[0].object)
+      }
+    } else {
+      setProjectiveObj(null)
+    }
+  }
+
   const animate = () => {
     if (!camera || !renderer || !scene) return
     requestAnimationFrame(animate)
     renderer.render(scene, camera)
   }
+
+  window.onmousemove = throttle((event) => {
+    if (!raycaster || !scene || !camera || !mouse) return
+    event.preventDefault()
+    mouse.x = (event.clientX / window.innerWidth) * 2 - 1
+    mouse.y = -(event.clientY / window.innerHeight) * 2 + 1
+    renderRaycasterObj(raycaster, scene, camera, mouse)
+  }, 60)
 
   window.onresize = throttle(() => {
     if (!camera || !renderer || !scene) return
@@ -91,6 +129,28 @@ const Home: React.FC = () => {
   useEffect(() => {
     animate()
   })
+
+  useEffect(() => {
+    // TODO 需要hover或者click发光效果
+    switch (projectiveObj?.name) {
+      case 'polySurface26':
+        console.log('台灯')
+        console.log(projectiveObj)
+        break
+      case 'pSphere1':
+        console.log('鼠标')
+        console.log(projectiveObj)
+        break
+      case 'polySurface12':
+        console.log('书本')
+        console.log(projectiveObj)
+        break
+      case 'polySurface9':
+        console.log('电脑')
+        console.log(projectiveObj)
+        break
+    }
+  }, [projectiveObj])
 
   return (
     <>
