@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import * as THREE from 'three'
 import './index.less'
 import { FBXLoader } from '@/utils/threejs/FBXLoader'
@@ -24,6 +24,7 @@ const Home: React.FC = () => {
   const [renderer, setRenderer] = useState<RendererType>(null)
   const [raycaster, setRaycaster] = useState<RaycasterType>(null)
   const [projectiveObj, setProjectiveObj] = useState<ProjectiveObjType>(null)
+  const threeRef = useRef(null)
   let mouse: MouseType = new THREE.Vector2
 
   const init = () => {
@@ -38,9 +39,8 @@ const Home: React.FC = () => {
     renderer.shadowMap.enabled = true
     renderer.shadowMap.type = THREE.PCFSoftShadowMap
     renderer.setSize(window.innerWidth, window.innerHeight)
-    const threeId = document.getElementById('three')
-    if (!threeId) return
-    threeId.appendChild(renderer.domElement)
+    if (!threeRef?.current) return
+    (threeRef.current as any).appendChild(renderer.domElement)
     camera.position.set(0, 35, 0)
     renderer.render(scene, camera)
   }
@@ -160,12 +160,16 @@ const Home: React.FC = () => {
         console.log('电脑')
         console.log(projectiveObj)
         break
+      case 'anjian1':
+        console.log('键盘')
+        console.log(projectiveObj)
+        break
     }
   }, [projectiveObj])
 
   return (
     <>
-      <div id='three' />
+      <div id='three' ref={threeRef} />
     </>
   )
 }
