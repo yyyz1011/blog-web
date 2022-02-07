@@ -131,9 +131,6 @@ const Home: React.FC = () => {
     if (!renderer || !scene || !camera) {
       init()
     }
-  }, [renderer, scene, camera])
-
-  useEffect(() => {
     initThree()
     initLight()
     initModel()
