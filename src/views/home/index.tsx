@@ -4,16 +4,27 @@ import './index.less'
 import { FBXLoader } from '@/utils/threejs/FBXLoader'
 import { throttle } from 'lodash-es'
 
-type mouseType = THREE.Vector2 | null
+type SceneType = THREE.Scene | null
+type CameraType = THREE.PerspectiveCamera | null
+type RendererType = THREE.WebGLRenderer | null
+type RaycasterType = THREE.Raycaster | null
+type ProjectiveObjType = THREE.Object3D | null
+type MouseType = THREE.Vector2 | null
+type RenderRaycasterObjReq = {
+  raycaster: RaycasterType;
+  scene: SceneType;
+  camera: CameraType;
+  mouse: MouseType;
+}
 
 const Home: React.FC = () => {
 
-  const [scene, setScene] = useState<THREE.Scene | null>(null)
-  const [camera, setCamera] = useState<THREE.PerspectiveCamera | null>(null)
-  const [renderer, setRenderer] = useState<THREE.WebGLRenderer | null>(null)
-  const [raycaster, setRaycaster] = useState<THREE.Raycaster | null>(null)
-  const [projectiveObj, setProjectiveObj] = useState<any>(null)
-  let mouse: mouseType = new THREE.Vector2
+  const [scene, setScene] = useState<SceneType>(null)
+  const [camera, setCamera] = useState<CameraType>(null)
+  const [renderer, setRenderer] = useState<RendererType>(null)
+  const [raycaster, setRaycaster] = useState<RaycasterType>(null)
+  const [projectiveObj, setProjectiveObj] = useState<ProjectiveObjType>(null)
+  let mouse: MouseType = new THREE.Vector2
 
   const init = () => {
     setScene(new THREE.Scene())
@@ -76,7 +87,7 @@ const Home: React.FC = () => {
    * @param {*} camera    相机
    * @param {*} mouse     鼠标位置对应的二维向量
    */
-  function renderRaycasterObj(raycaster: THREE.Raycaster, scene: THREE.Scene, camera: THREE.PerspectiveCamera, mouse: mouseType) {
+  function renderRaycasterObj({ raycaster, scene, camera, mouse }: RenderRaycasterObjReq) {
     if (!raycaster || !scene || !camera || !mouse) return
     raycaster.setFromCamera(mouse, camera)
     let intersects = raycaster.intersectObjects(scene.children)
@@ -104,7 +115,7 @@ const Home: React.FC = () => {
     event.preventDefault()
     mouse.x = (event.clientX / window.innerWidth) * 2 - 1
     mouse.y = -(event.clientY / window.innerHeight) * 2 + 1
-    renderRaycasterObj(raycaster, scene, camera, mouse)
+    renderRaycasterObj({ raycaster, scene, camera, mouse })
   }, 60)
 
   window.onresize = throttle(() => {
