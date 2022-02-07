@@ -30,19 +30,21 @@ const Home: React.FC = () => {
   const init = () => {
     setScene(new THREE.Scene())
     setCamera(new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000))
-    setRenderer(new THREE.WebGLRenderer())
+    setRenderer(new THREE.WebGLRenderer({
+      antialias: true
+    }))
     setRaycaster(new THREE.Raycaster())
   }
 
   const initThree = () => {
     if (!camera || !renderer || !scene) return
     renderer.shadowMap.enabled = true
+    renderer.setPixelRatio(window.devicePixelRatio)
     renderer.shadowMap.type = THREE.PCFSoftShadowMap
     renderer.setSize(window.innerWidth, window.innerHeight)
     if (!threeRef?.current) return
     (threeRef.current as any).appendChild(renderer.domElement)
     camera.position.set(0, 35, 0)
-    renderer.render(scene, camera)
   }
 
   const initLight = () => {
@@ -142,7 +144,6 @@ const Home: React.FC = () => {
   })
 
   useEffect(() => {
-    // TODO 需要hover或者click发光效果
     switch (projectiveObj?.name) {
       case 'polySurface26':
         console.log('台灯')
@@ -164,6 +165,7 @@ const Home: React.FC = () => {
         console.log('键盘')
         console.log(projectiveObj)
         break
+      default:
     }
   }, [projectiveObj])
 
