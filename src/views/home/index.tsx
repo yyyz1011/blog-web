@@ -169,7 +169,7 @@ const Home: React.FC = () => {
 
   return (
     <>
-      <div id='three' ref={threeRef} />
+      <div className='three' ref={threeRef} />
     </>
   )
 }
