@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import * as THREE from 'three'
 import './index.less'
-import { FBXLoader } from '@/utils/threejs/FBXLoader'
+import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader'
 import { throttle } from 'lodash-es'
 
 type SceneType = THREE.Scene | null
