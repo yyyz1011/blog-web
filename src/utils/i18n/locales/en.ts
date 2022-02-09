@@ -1,6 +1,10 @@
 export default {
   nav: {
     home: 'Home',
+    article: 'Article',
+    picture: 'Picture',
+    message: 'Message Board',
+    blog_link: 'Link',
     about: 'About',
     change_language: 'Switch Chinese/English'
   },

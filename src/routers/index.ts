@@ -14,6 +14,34 @@ const HomeRouter: RouterType = {
   title: 'home'
 }
 
+const ArticleRouter: RouterType = {
+  key: 'article',
+  path: '/article',
+  component: lazy(() => import('@/views/article')),
+  title: 'article'
+}
+
+const PictureRouter: RouterType = {
+  key: 'picture',
+  path: '/picture',
+  component: lazy(() => import('@/views/picture')),
+  title: 'picture'
+}
+
+const BlogLinkRouter: RouterType = {
+  key: 'blog-link',
+  path: '/blog-link',
+  component: lazy(() => import('@/views/blog-link')),
+  title: 'blog_link'
+}
+
+const MessageRouter: RouterType = {
+  key: 'message',
+  path: '/message',
+  component: lazy(() => import('@/views/message')),
+  title: 'message'
+}
+
 const AboutRouter: RouterType = {
   key: 'about',
   path: '/about',
@@ -23,6 +51,10 @@ const AboutRouter: RouterType = {
 
 const Routers: RouterType[] = ([
   HomeRouter,
+  ArticleRouter,
+  PictureRouter,
+  MessageRouter,
+  BlogLinkRouter,
   AboutRouter
 ])
 
