@@ -1,13 +1,13 @@
-import React, { Suspense } from 'react'
-import { HashRouter, Navigate, Route, Routes } from 'react-router-dom'
-import type { RouterType } from '@/routers'
-import { Routers } from '@/routers'
-import Nav from '@/components/nav'
-import { Layout } from '@douyinfe/semi-ui'
-import '@/assets/css/layout.less'
-import NoPage from '@/views/NoPage'
+import React, { Suspense } from 'react';
+import { HashRouter, Navigate, Route, Routes } from 'react-router-dom';
+import type { RouterType } from '@/routers';
+import { Routers } from '@/routers';
+import Nav from '@/components/nav';
+import { Layout } from '@douyinfe/semi-ui';
+import '@/assets/css/layout.less';
+import NoPage from '@/views/NoPage';
 
-const { Header, Content } = Layout
+const { Header, Content } = Layout;
 
 const App: React.FC = () => {
   return (
@@ -30,7 +30,7 @@ const App: React.FC = () => {
         </Content>
       </HashRouter>
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;

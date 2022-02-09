@@ -1,31 +1,31 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
-import type { RouterType } from '@/routers'
-import { Routers } from '@/routers'
-import { useTranslation } from 'react-i18next'
-import { Button, Tooltip } from '@douyinfe/semi-ui'
-import { IconLanguage } from '@douyinfe/semi-icons'
-import './index.less'
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import type { RouterType } from '@/routers';
+import { Routers } from '@/routers';
+import { useTranslation } from 'react-i18next';
+import { Button, Tooltip } from '@douyinfe/semi-ui';
+import { IconLanguage } from '@douyinfe/semi-icons';
+import './index.less';
 
-const language_cn: string = 'cn'
-const language_en: string = 'en'
+const language_cn: string = 'cn';
+const language_en: string = 'en';
 
 const Nav: React.FC = () => {
   // @ts-ignore
-  const [language, setLanguage] = useState<'en' | 'cn'>(language_cn)
-  const { t, i18n } = useTranslation()
+  const [language, setLanguage] = useState<'en' | 'cn'>(language_cn);
+  const { t, i18n } = useTranslation();
 
   const changeLanguage = () => {
     if (language === language_cn) {
       // @ts-ignore
-      setLanguage(language_en)
-      i18n.changeLanguage(language_en).then()
+      setLanguage(language_en);
+      i18n.changeLanguage(language_en).then();
     } else {
       // @ts-ignore
-      setLanguage(language_cn)
-      i18n.changeLanguage(language_cn).then()
+      setLanguage(language_cn);
+      i18n.changeLanguage(language_cn).then();
     }
-  }
+  };
 
   return (
     <>
@@ -42,7 +42,7 @@ const Nav: React.FC = () => {
         <IconLanguage size='large' onClick={changeLanguage} />
       </Tooltip>
     </>
-  )
-}
+  );
+};
 
-export default Nav
+export default Nav;
