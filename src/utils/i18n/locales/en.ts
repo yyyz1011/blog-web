@@ -16,7 +16,7 @@ export default {
       modal_update_title: 'Visitors Update',
       account_label: 'QQ Account',
       account_placeholder: 'Please enter your QQ account',
-      account_rules_require: 'The content cannot be empty;',
+      account_rules_require: 'The content cannot be empty',
       account_rules_num: 'Incorrect account format;',
       nickname_label: 'Nick Name',
       nickname_placeholder: 'Please enter your nick name',
