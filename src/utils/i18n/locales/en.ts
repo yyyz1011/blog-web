@@ -9,15 +9,23 @@ export default {
     change_language: 'Switch Chinese/English',
     visitor: 'Visitor',
     login: 'Login',
+    update: 'Update',
     exit: 'Exit',
-    login_modal_title: 'Visitors Login',
-    login_modal_label: 'QQ Account',
-    login_modal_placeholder: 'Please enter your QQ account',
-    login_modal_rules_require: 'The content cannot be empty;',
-    login_modal_rules_num: 'Incorrect account format;',
-    login_modal_error: 'Please enter the correct content~',
-    login_modal_ok: 'Login',
-    login_modal_cancel: 'Cancel'
+    login_modal: {
+      modal_login_title: 'Visitors Login',
+      modal_update_title: 'Visitors Update',
+      account_label: 'QQ Account',
+      account_placeholder: 'Please enter your QQ account',
+      account_rules_require: 'The content cannot be empty;',
+      account_rules_num: 'Incorrect account format;',
+      nickname_label: 'Nick Name',
+      nickname_placeholder: 'Please enter your nick name',
+      error_info: 'Please enter the correct content~',
+      ok_login_text: 'Login',
+      ok_update_text: 'Update',
+      cancel_text: 'Cancel',
+      nick_extra_text: 'If nickname is empty,choose QQ account to serve as nickname by default'
+    }
   },
   404: {
     no_page_text: 'Page not found ~ whether to return home page',

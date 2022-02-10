@@ -38,20 +38,21 @@ const Nav: React.FC = () => {
     if (!formApi) return;
     // @ts-ignore
     formApi.validate()
-      .then((values: { username: string }) => {
-        const { username } = values;
+      .then((values: { nickname: string, account: string }) => {
+        const { nickname, account } = values;
         store.userStore.dispatch({
           type: SET_USER_AVATAR,
           value: {
-            avatar: `https://q1.qlogo.cn/g?b=qq&nk=${username}&s=100`,
-            username: username
+            avatar: `https://q1.qlogo.cn/g?b=qq&nk=${account}&s=100`,
+            nickname: nickname || account,
+            account
           }
         });
         setUserStore(store.userStore.getState());
         setVisibleLogin(false);
       })
       .catch(() => {
-        Toast.error(t('nav.login_modal_error'));
+        Toast.error(t('nav.login_modal.error_info'));
       });
   };
 
@@ -60,7 +61,8 @@ const Nav: React.FC = () => {
       type: SET_USER_AVATAR,
       value: {
         avatar: null,
-        username: null
+        nickname: null,
+        account: null
       }
     });
     setUserStore(store.userStore.getState());
@@ -85,9 +87,12 @@ const Nav: React.FC = () => {
             position='bottom'
             render={
               <Dropdown.Menu>
-                {!userStore.avatar &&
-                <Dropdown.Item onClick={() => setVisibleLogin(true)}>{t('nav.login')}</Dropdown.Item>}
-                {userStore.avatar && <Dropdown.Item onClick={exitUserInfo}>{t('nav.exit')}</Dropdown.Item>}
+                <Dropdown.Item onClick={() => setVisibleLogin(true)}>
+                  {
+                    userStore.account ? t('nav.update') : t('nav.login')
+                  }
+                </Dropdown.Item>
+                {userStore.account && <Dropdown.Item onClick={exitUserInfo}>{t('nav.exit')}</Dropdown.Item>}
               </Dropdown.Menu>
             }
           >
@@ -102,33 +107,42 @@ const Nav: React.FC = () => {
       }
     />
     <Modal
-      title={t('nav.login_modal_title')}
+      title={userStore.account ? t('nav.login_modal.modal_update_title') : t('nav.login_modal.modal_login_title')}
       visible={visibleLogin}
+      getPopupContainer={() => document.body}
       onOk={getUserInfo}
       onCancel={() => setVisibleLogin(false)}
-      okText={t('nav.login_modal_ok')}
-      cancelText={t('nav.login_modal_cancel')}
+      okText={userStore.account ? t('nav.login_modal.ok_update_text') : t('nav.login_modal.ok_login_text')}
+      cancelText={t('nav.login_modal.cancel_text')}
     >
-      <Form getFormApi={formApi => {
-        // @ts-ignore
-        setFormApi(formApi);
-      }} style={{ width: 400 }}>
-        {({ formState, values, formApi }) => <>
-          <Form.Input
-            field='username'
-            label={t('nav.login_modal_label')}
-            style={{ width: '100%' }}
-            placeholder={t('nav.login_modal_placeholder') as React.ReactText}
-            trigger='blur'
-            rules={[
-              { required: true, message: t('nav.login_modal_rules_require') },
-              {
-                validator: (rule, value) => /^[1-9][0-9]{4,9}$/gim.test(value),
-                message: t('nav.login_modal_rules_num')
-              }
-            ]}
-          />
-        </>}
+      <Form
+        getFormApi={formApi => {
+          // @ts-ignore
+          setFormApi(formApi);
+        }}
+        initValues={{ account: userStore.account, nickname: userStore.nickname }}
+      >
+        <Form.Input
+          field='account'
+          label={t('nav.login_modal.account_label')}
+          style={{ width: '100%' }}
+          placeholder={t('nav.login_modal.account_placeholder') as React.ReactText}
+          trigger='blur'
+          rules={[
+            { required: true, message: t('nav.login_modal.account_rules_require') },
+            {
+              validator: (rule, value) => /^[1-9][0-9]{4,9}$/gim.test(value),
+              message: t('nav.login_modal.account_rules_num')
+            }
+          ]}
+        />
+        <Form.Input
+          field='nickname'
+          label={t('nav.login_modal.nickname_label')}
+          style={{ width: '100%' }}
+          placeholder={t('nav.login_modal.nickname_placeholder') as React.ReactText}
+          extraText={t('nav.login_modal.nick_extra_text')}
+        />
       </Form>
     </Modal>
   </>;

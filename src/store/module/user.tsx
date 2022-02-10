@@ -3,17 +3,20 @@ import { SET_USER_AVATAR } from '@/store/type/user';
 
 const initUser = {
   avatar: null,
-  username: null
+  account: null,
+  nickname: null
 };
 
 function user(state: any, payload: any) {
   if (payload.type === SET_USER_AVATAR) {
-    const { avatar, username } = payload.value;
+    const { avatar, nickname, account } = payload.value;
     return {
       ...state,
       avatar,
-      username
-    };
+      nickname,
+      account
+    }
+      ;
   }
   return state;
 }
