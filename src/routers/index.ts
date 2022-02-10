@@ -1,4 +1,4 @@
-import React, { lazy } from 'react'
+import React, { lazy } from 'react';
 
 type RouterType = {
   key: string,
@@ -9,7 +9,7 @@ type RouterType = {
 
 const HomeRouter: RouterType = {
   key: 'home',
-  path: '',
+  path: '/',
   component: lazy(() => import('@/views/home')),
   title: 'home'
 }
