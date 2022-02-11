@@ -27,6 +27,7 @@ const Nav: React.FC = () => {
   const [userStore, setUserStore] = useState(store.userStore.getState());
   const [formApi, setFormApi] = useState<BaseFormApi | null>(null);
   const [visibleLogin, setVisibleLogin] = useState<boolean>(false);
+  const [visibleExit, setVisibleExit] = useState<boolean>(false);
   const [localstorageUserInfo, setLocalstorageUserInfo] = useLocalStorageState(
     null,
     LOCALSTORAGE_AUTHOR_INFO
@@ -98,7 +99,7 @@ const Nav: React.FC = () => {
     });
     setUserStore(store.userStore.getState());
     setLocalstorageUserInfo(null);
-    setVisibleLogin(false);
+    setVisibleExit(false);
   };
 
   // @ts-ignore
@@ -128,7 +129,7 @@ const Nav: React.FC = () => {
                     {userStore.account ? t("nav.update") : t("nav.login")}
                   </Dropdown.Item>
                   {userStore.account && (
-                    <Dropdown.Item onClick={exitUserInfo}>
+                    <Dropdown.Item onClick={() => setVisibleExit(true)}>
                       {t("nav.exit")}
                     </Dropdown.Item>
                   )}
@@ -198,6 +199,17 @@ const Nav: React.FC = () => {
             extraText={t("nav.login_modal.nick_extra_text")}
           />
         </Form>
+      </Modal>
+      <Modal
+        title={t("nav.exit_modal.modal_title")}
+        visible={visibleExit}
+        getPopupContainer={() => document.body}
+        onOk={exitUserInfo}
+        onCancel={() => setVisibleExit(false)}
+        okText={t("nav.exit_modal.ok_exit_text")}
+        cancelText={t("nav.exit_modal.cancel_text")}
+      >
+        {t("nav.exit_modal.exit_text")}
       </Modal>
     </>
   );

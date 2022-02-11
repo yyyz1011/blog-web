@@ -25,6 +25,12 @@ export default {
       cancel_text: "取消",
       nick_extra_text: "假如昵称为空，默认选择QQ账号作为昵称",
     },
+    exit_modal: {
+      modal_title: "退出账号",
+      ok_exit_text: "退出",
+      cancel_text: "取消",
+      exit_text: "真的要退出么~",
+    },
   },
   404: {
     no_page_text: "页面找不到啦~是否返回首页",

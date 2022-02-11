@@ -27,6 +27,12 @@ export default {
       nick_extra_text:
         "If nickname is empty,choose QQ account to serve as nickname by default",
     },
+    exit_modal: {
+      modal_title: "Withdraw from the account",
+      ok_exit_text: "Exit",
+      cancel_text: "Cancel",
+      exit_text: "Really want to quit~",
+    },
   },
   404: {
     no_page_text: "Page not found ~ whether to return home page",
