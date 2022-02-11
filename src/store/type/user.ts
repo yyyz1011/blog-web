@@ -1,5 +1,3 @@
-const SET_USER_AVATAR: string = 'set_user_avatar';
+const SET_USER_AVATAR: string = "set_user_avatar";
 
-export {
-  SET_USER_AVATAR
-};
+export { SET_USER_AVATAR };

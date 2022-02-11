@@ -1,72 +1,77 @@
-import React, {lazy} from 'react';
-import {IconAlignLeft, IconArticle, IconHome, IconImage, IconMember, IconUnlink} from '@douyinfe/semi-icons'
+import React, { lazy } from "react";
+import {
+  IconAlignLeft,
+  IconArticle,
+  IconHome,
+  IconImage,
+  IconMember,
+  IconUnlink,
+} from "@douyinfe/semi-icons";
 
 type RouterType = {
-    key: string,
-    path: string,
-    component: React.LazyExoticComponent<any>,
-    title: string,
-    icon?: any
-}
+  key: string;
+  path: string;
+  component: React.LazyExoticComponent<any>;
+  title: string;
+  icon?: any;
+};
 
 const HomeRouter: RouterType = {
-    key: 'home',
-    path: '/',
-    component: lazy(() => import('@/views/home')),
-    title: 'home',
-    icon: IconHome
-}
+  key: "home",
+  path: "/",
+  component: lazy(() => import("@/views/home")),
+  title: "home",
+  icon: IconHome,
+};
 
 const ArticleRouter: RouterType = {
-    key: 'article',
-    path: '/article',
-    component: lazy(() => import('@/views/article')),
-    title: 'article',
-    icon: IconArticle
-}
+  key: "article",
+  path: "/article",
+  component: lazy(() => import("@/views/article")),
+  title: "article",
+  icon: IconArticle,
+};
 
 const PictureRouter: RouterType = {
-    key: 'picture',
-    path: '/picture',
-    component: lazy(() => import('@/views/picture')),
-    title: 'picture',
-    icon: IconImage
-}
+  key: "picture",
+  path: "/picture",
+  component: lazy(() => import("@/views/picture")),
+  title: "picture",
+  icon: IconImage,
+};
 
 const BlogLinkRouter: RouterType = {
-    key: 'blog-link',
-    path: '/blog-link',
-    component: lazy(() => import('@/views/blog-link')),
-    title: 'blog_link',
-    icon: IconUnlink
-}
+  key: "blog-link",
+  path: "/blog-link",
+  component: lazy(() => import("@/views/blog-link")),
+  title: "blog_link",
+  icon: IconUnlink,
+};
 
 const MessageRouter: RouterType = {
-    key: 'message',
-    path: '/message',
-    component: lazy(() => import('@/views/message')),
-    title: 'message',
-    icon: IconAlignLeft
-}
+  key: "message",
+  path: "/message",
+  component: lazy(() => import("@/views/message")),
+  title: "message",
+  icon: IconAlignLeft,
+};
 
 const AboutRouter: RouterType = {
-    key: 'about',
-    path: '/about',
-    component: lazy(() => import('@/views/about')),
-    title: 'about',
-    icon: IconMember
-}
+  key: "about",
+  path: "/about",
+  component: lazy(() => import("@/views/about")),
+  title: "about",
+  icon: IconMember,
+};
 
-const Routers: RouterType[] = ([
-    HomeRouter,
-    ArticleRouter,
-    PictureRouter,
-    MessageRouter,
-    BlogLinkRouter,
-    AboutRouter
-])
+const Routers: RouterType[] = [
+  HomeRouter,
+  ArticleRouter,
+  PictureRouter,
+  MessageRouter,
+  BlogLinkRouter,
+  AboutRouter,
+];
 
-export {
-    Routers
-}
-export type {RouterType}
+export { Routers };
+export type { RouterType };

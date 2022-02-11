@@ -1,5 +1,5 @@
-import userStore from '@/store/module/user';
+import userStore from "@/store/module/user";
 
 export default {
-  userStore
+  userStore,
 };

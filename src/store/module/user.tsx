@@ -1,10 +1,16 @@
-import { createStore } from 'redux';
-import { SET_USER_AVATAR } from '@/store/type/user';
+import { createStore } from "redux";
+import { SET_USER_AVATAR } from "@/store/type/user";
 
-const initUser = {
+type UserType = {
+  avatar: null | string;
+  account: null | string;
+  nickname: null | string;
+};
+
+const initUser: UserType = {
   avatar: null,
   account: null,
-  nickname: null
+  nickname: null,
 };
 
 function user(state: any, payload: any) {
@@ -14,9 +20,8 @@ function user(state: any, payload: any) {
       ...state,
       avatar,
       nickname,
-      account
-    }
-      ;
+      account,
+    };
   }
   return state;
 }
