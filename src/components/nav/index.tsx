@@ -107,6 +107,10 @@ const Nav: React.FC = () => {
     <>
       <SemiNav
         mode="horizontal"
+        header={{
+          logo: <img src={require("../../assets/img/leaf.svg")} />,
+          text: "leaf blog",
+        }}
         items={Routers.map((item) => ({
           itemKey: item.path,
           text: t("nav." + item.title),

@@ -17,7 +17,7 @@ const NoPage: React.FC = () => {
       <div className="no-page">
         <img
           className="no-page--img"
-          src={require("../../assets/img/page_no_found.png")}
+          src={require("../../assets/img/page_no_found.svg")}
           alt="page_no_found"
         />
         <h1 className="no-page--tip">{t("404.no_page_text")}</h1>

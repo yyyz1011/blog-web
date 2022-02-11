@@ -17,7 +17,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(png|jpg|jpeg|gif|webp|fbx|mb)$/,
+        test: /\.(png|jpg|jpeg|gif|webp|fbx|svg)$/,
         type: "asset",
         parser: {
           dataUrlCondition: {
