@@ -1,26 +1,24 @@
-import i18n from 'i18next'
-import { initReactI18next } from 'react-i18next'
+import i18n from "i18next";
+import { initReactI18next } from "react-i18next";
 
-import cn from '@/utils/i18n/locales/cn'
-import en from '@/utils/i18n/locales/en'
+import cn from "@/utils/i18n/locales/cn";
+import en from "@/utils/i18n/locales/en";
 
 const resources = {
   cn: {
-    translation: cn
+    translation: cn,
   },
   en: {
-    translation: en
-  }
-}
+    translation: en,
+  },
+};
 
-i18n
-  .use(initReactI18next)
-  .init({
-    resources,
-    fallbackLng: 'cn',
-    detection: {
-      caches: ['localStorage', 'sessionStorage', 'cookie']
-    }
-  })
+i18n.use(initReactI18next).init({
+  resources,
+  fallbackLng: "cn",
+  detection: {
+    caches: ["localStorage", "sessionStorage", "cookie"],
+  },
+});
 
-export default i18n
+export default i18n;

@@ -1,11 +1,11 @@
-import React from 'react'
+import React from "react";
 
 const BlogLink: React.FC = () => {
   return (
     <>
       <div>BlogLink</div>
     </>
-  )
-}
+  );
+};
 
-export default BlogLink
+export default BlogLink;

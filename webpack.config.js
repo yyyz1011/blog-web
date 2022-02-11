@@ -1,63 +1,63 @@
-const path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-  entry: './src/index.tsx',
+  entry: "./src/index.tsx",
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: '[name].js',
-    clean: true
+    path: path.resolve(__dirname, "dist"),
+    filename: "[name].js",
+    clean: true,
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.ts', '.tsx'],
+    extensions: [".js", ".jsx", ".ts", ".tsx"],
     alias: {
-      '@': path.resolve(__dirname, './src')
-    }
+      "@": path.resolve(__dirname, "./src"),
+    },
   },
   module: {
     rules: [
       {
-        test: /\.(png|jpg|jpeg|gif|webp|fbx|mb)$/,
-        type: 'asset',
+        test: /\.(png|jpg|jpeg|gif|webp|fbx|svg)$/,
+        type: "asset",
         parser: {
           dataUrlCondition: {
-            maxSize: 25 * 1024 // 25kb
-          }
+            maxSize: 25 * 1024, // 25kb
+          },
         },
         generator: {
-          filename: 'asset/[name].[hash:6][ext]',
-          publicPath: './'
-        }
+          filename: "asset/[name].[hash:6][ext]",
+          publicPath: "./",
+        },
       },
       {
         test: /\.(less|css)$/,
-        use: ['style-loader', 'css-loader', 'less-loader']
+        use: ["style-loader", "css-loader", "less-loader"],
       },
       {
         test: /\.(tsx|ts)$/,
         use: [
           {
-            loader: 'babel-loader',
+            loader: "babel-loader",
             options: {
-              presets: ['@babel/preset-react']
-            }
+              presets: ["@babel/preset-react"],
+            },
           },
-          'ts-loader'
+          "ts-loader",
         ],
-        exclude: /node-modules/
-      }
-    ]
+        exclude: /node-modules/,
+      },
+    ],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/template/template.html'
-    })
+      template: "./src/template/template.html",
+    }),
   ],
   devServer: {
-    static: path.join(__dirname, 'dist'),
+    static: path.join(__dirname, "dist"),
     compress: true,
     open: true,
     port: 8081,
-    hot: true
-  }
-}
+    hot: true,
+  },
+};
