@@ -3,7 +3,7 @@ import React from 'react'
 const Article: React.FC = () => {
   return (
     <>
-      <div>article</div>
+      <div>articl12e</div>
     </>
   )
 }
