@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 import {Routers} from '@/routers';
 import {useTranslation} from 'react-i18next';
@@ -8,29 +8,42 @@ import {BaseFormApi} from '@douyinfe/semi-foundation/form/interface';
 import './index.less';
 import store from '@/store';
 import {SET_USER_AVATAR} from '@/store/type/user';
+import useLocalStorageState from "@/utils/useLocalStorageState";
+import {LOCALSTORAGE_AUTHOR_INFO, LOCALSTORAGE_LANGUAGE} from '@/constant'
 
-type language_cn = 'cn';
-type language_en = 'en';
-type languageType = language_cn | language_en
 const language_cn = 'cn';
 const language_en = 'en';
 
 const Nav: React.FC = () => {
     const navigate = useNavigate();
-    const [language, setLanguage] = useState<languageType>(language_cn);
     const [userStore, setUserStore] = useState(store.userStore.getState());
     const [formApi, setFormApi] = useState<BaseFormApi | null>(null);
     const [visibleLogin, setVisibleLogin] = useState<boolean>(false);
+    const [localstorageUserInfo, setLocalstorageUserInfo] = useLocalStorageState(null, LOCALSTORAGE_AUTHOR_INFO)
+    const [localstorageLanguage, setLocalstorageLanguage] = useLocalStorageState(language_cn, LOCALSTORAGE_LANGUAGE)
     const {t, i18n} = useTranslation();
 
+    useEffect(() => {
+        if (localstorageUserInfo) {
+            store.userStore.dispatch({
+                type: SET_USER_AVATAR,
+                value: localstorageUserInfo
+            })
+            setUserStore(store.userStore.getState());
+        }
+        if (localstorageLanguage) {
+            i18n.changeLanguage(localstorageLanguage).then();
+        }
+    }, [])
+
     const changeLanguage = () => {
-        if (language === language_cn) {
+        if (localstorageLanguage === language_cn) {
             // @ts-ignore
-            setLanguage(language_en);
+            setLocalstorageLanguage(language_en)
             i18n.changeLanguage(language_en).then();
         } else {
             // @ts-ignore
-            setLanguage(language_cn);
+            setLocalstorageLanguage(language_cn)
             i18n.changeLanguage(language_cn).then();
         }
     };
@@ -41,15 +54,17 @@ const Nav: React.FC = () => {
             // @ts-ignore
             .then((values: { nickname: string, account: string }) => {
                 const {nickname, account} = values;
-                store.userStore.dispatch({
+                const userInfo = {
                     type: SET_USER_AVATAR,
                     value: {
                         avatar: `https://q1.qlogo.cn/g?b=qq&nk=${account}&s=100`,
                         nickname: nickname || account,
                         account
                     }
-                });
+                }
+                store.userStore.dispatch(userInfo);
                 setUserStore(store.userStore.getState());
+                setLocalstorageUserInfo(userInfo.value)
                 setVisibleLogin(false);
             })
             .catch(() => {
@@ -67,6 +82,7 @@ const Nav: React.FC = () => {
             }
         });
         setUserStore(store.userStore.getState());
+        setLocalstorageUserInfo(null)
         setVisibleLogin(false);
     };
 
