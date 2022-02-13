@@ -53,11 +53,9 @@ const Nav: React.FC = () => {
 
   const changeLanguage = () => {
     if (localstorageLanguage === language_cn) {
-      // @ts-ignore
       setLocalstorageLanguage(language_en);
       i18n.changeLanguage(language_en).then();
     } else {
-      // @ts-ignore
       setLocalstorageLanguage(language_cn);
       i18n.changeLanguage(language_cn).then();
     }
@@ -102,7 +100,6 @@ const Nav: React.FC = () => {
     setVisibleExit(false);
   };
 
-  // @ts-ignore
   return (
     <>
       <SemiNav
@@ -116,10 +113,7 @@ const Nav: React.FC = () => {
           text: t("nav." + item.title),
           icon: <item.icon />,
         }))}
-        onSelect={(key) => {
-          // @ts-ignore
-          navigate(key.itemKey);
-        }}
+        onSelect={(key) => navigate(key.itemKey as string)}
         footer={
           <div className="footer">
             <Tooltip content={t("nav.change_language")}>
@@ -165,10 +159,7 @@ const Nav: React.FC = () => {
         cancelText={t("nav.login_modal.cancel_text")}
       >
         <Form
-          getFormApi={(formApi: BaseFormApi) => {
-            // @ts-ignore
-            setFormApi(formApi);
-          }}
+          getFormApi={(formApi: BaseFormApi) => setFormApi(formApi)}
           initValues={{
             account: userStore.account,
             nickname: userStore.nickname,

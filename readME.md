@@ -1,6 +1,6 @@
 # TODO LIST
 
-### 2022.02.12
+### 2022.02.12 && 2022.02.13
 
 - https://juejin.cn/post/7012419511907254308?utm_source=gold_browser_extension
 - 清理 nav 组件中的 ts-ignore
