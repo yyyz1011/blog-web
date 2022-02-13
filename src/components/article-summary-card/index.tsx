@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Card, Avatar, Progress, List } from "@douyinfe/semi-ui";
 import "./index.less";
 import { useTranslation } from "react-i18next";
+import { getQQAvatar } from "@/network";
 
 const ArticleSummaryCard = () => {
   const [summaryInfo, setSummaryInfo] = useState([]);
@@ -34,7 +35,7 @@ const ArticleSummaryCard = () => {
       <div className="card-header">
         <Avatar
           className="card-header--avatar"
-          src="https://q1.qlogo.cn/g?b=qq&nk=1540032876&s=100"
+          src={getQQAvatar("1540032876")}
         ></Avatar>
         <div className="card-header--title">
           {t("article.summary_info.author_name")}
