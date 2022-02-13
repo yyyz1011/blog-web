@@ -3,6 +3,7 @@ import { Card, Tag } from "@douyinfe/semi-ui";
 import "./index.less";
 import { TagColor } from "@douyinfe/semi-ui/lib/es/tag";
 import dayjs from "dayjs";
+import { useTranslation } from "react-i18next";
 
 interface ArticleTag {
   type: string;
@@ -20,6 +21,7 @@ interface IProps {
 
 const ArticleCard: React.FC<IProps> = (props: IProps) => {
   const { title, desc, type, modify_time: modifyTime } = props.info;
+  const { t } = useTranslation();
   const updateTime = dayjs(Number(modifyTime)).format("YYYY-MM-DD HH:mm");
 
   const handleGoArticle = () => {
@@ -49,7 +51,9 @@ const ArticleCard: React.FC<IProps> = (props: IProps) => {
             </div>
           }
           headerExtraContent={
-            <div className="article-extra-title">更新时间:{updateTime}</div>
+            <div className="article-extra-title">
+              {t("article.modify_time")} : {updateTime}
+            </div>
           }
         >
           {desc}

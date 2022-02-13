@@ -34,6 +34,13 @@ export default {
       exit_text: "Really want to quit~",
     },
   },
+  article: {
+    summary_info: {
+      author_name: "Ye Zhou",
+      summary_text: "Categories",
+    },
+    modify_time: "Modify Time",
+  },
   404: {
     no_page_text: "Page not found ~ whether to return home page",
     operate_text: "Back",
