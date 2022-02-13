@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import ArticleCard from "@/components/article-card";
 import ArticleSummaryCard from "@/components/article-summary-card";
 import "./index.less";
-import { List } from "@douyinfe/semi-ui";
+import { List, BackTop } from "@douyinfe/semi-ui";
 
 interface ArticleTag {
   type: string;
@@ -62,6 +62,7 @@ const Article: React.FC = () => {
             ></List>
           </div>
         </div>
+        <BackTop className="article-back-top" />
       </div>
     </>
   );
