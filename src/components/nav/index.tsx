@@ -10,6 +10,7 @@ import {
   Nav as SemiNav,
   Toast,
   Tooltip,
+  Notification,
 } from "@douyinfe/semi-ui";
 import { IconLanguage } from "@douyinfe/semi-icons";
 import { BaseFormApi } from "@douyinfe/semi-foundation/form/interface";
@@ -81,6 +82,11 @@ const Nav: React.FC = () => {
         setUserStore(store.userStore.getState());
         setLocalstorageUserInfo(userInfo.value);
         setVisibleLogin(false);
+        Notification.open({
+          title: `${t("nav.login_modal.hi")}${userInfo.value.nickname}`,
+          content: t("nav.login_modal.notify_content"),
+          duration: 3,
+        });
       })
       .catch(() => {
         Toast.error(t("nav.login_modal.error_info"));

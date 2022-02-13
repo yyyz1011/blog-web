@@ -26,6 +26,8 @@ export default {
       cancel_text: "Cancel",
       nick_extra_text:
         "If nickname is empty,choose QQ account to serve as nickname by default",
+      hi: "hi,",
+      notify_content: "Welcome leaf blog",
     },
     exit_modal: {
       modal_title: "Withdraw from the account",
@@ -39,6 +41,12 @@ export default {
       author_name: "Ye Zhou",
       summary_text: "Categories",
     },
+    article_text:
+      "There are so many things we want to do, so we have to work hard, ndot just think about it",
+    filter: {
+      search_input_placeholder: "Please enter a title",
+    },
+    no_data: "No notes",
     modify_time: "Modify Time",
   },
   404: {

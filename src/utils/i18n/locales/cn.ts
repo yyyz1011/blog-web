@@ -25,6 +25,8 @@ export default {
       ok_update_text: "更新",
       cancel_text: "取消",
       nick_extra_text: "假如昵称为空，默认选择QQ账号作为昵称",
+      hi: "哈罗，",
+      notify_content: "欢迎来到 leaf blog",
     },
     exit_modal: {
       modal_title: "退出账号",
@@ -38,6 +40,11 @@ export default {
       author_name: "Ye Zhou",
       summary_text: "文章分类",
     },
+    article_text: "想去做的事情很多，所以我们得去努力，不只是想想而已",
+    filter: {
+      search_input_placeholder: "请输入标题",
+    },
+    no_data: "暂无笔记",
     modify_time: "更新时间",
   },
   404: {
