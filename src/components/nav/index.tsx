@@ -18,6 +18,7 @@ import store from "@/store";
 import { SET_USER_AVATAR } from "@/store/type/user";
 import useLocalStorageState from "@/utils/useLocalStorageState";
 import { LOCALSTORAGE_AUTHOR_INFO, LOCALSTORAGE_LANGUAGE } from "@/constant";
+import { getQQAvatar } from "@/network";
 
 const language_cn = "cn";
 const language_en = "en";
@@ -71,7 +72,7 @@ const Nav: React.FC = () => {
         const userInfo = {
           type: SET_USER_AVATAR,
           value: {
-            avatar: `https://q1.qlogo.cn/g?b=qq&nk=${account}&s=100`,
+            avatar: getQQAvatar(account),
             nickname: nickname || account,
             account,
           },

@@ -33,6 +33,13 @@ export default {
       exit_text: "真的要退出么~",
     },
   },
+  article: {
+    summary_info: {
+      author_name: "Ye Zhou",
+      summary_text: "文章分类",
+    },
+    modify_time: "更新时间",
+  },
   404: {
     no_page_text: "页面找不到啦~是否返回首页",
     operate_text: "返回",
