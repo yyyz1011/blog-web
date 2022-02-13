@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 import { getQQAvatar } from "@/network";
 
 const ArticleSummaryCard = () => {
+  const [loading, setLoading] = useState(true);
   const [summaryInfo, setSummaryInfo] = useState([]);
   const { t } = useTranslation();
 
@@ -22,10 +23,14 @@ const ArticleSummaryCard = () => {
       percent: Number(((item.num / allNum) * 100).toFixed()),
     }));
     setSummaryInfo(summaryInfo);
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
   }, []);
 
   return (
     <Card
+      loading={loading}
       className="article-summary-card"
       cover={
         <img src={require("@/assets/img/article_summary_cover.svg")}></img>
