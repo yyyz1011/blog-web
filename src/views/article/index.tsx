@@ -23,7 +23,7 @@ const Article: React.FC = () => {
   const handleLoadMore = () => {
     setLoading(true);
     const start_index = MOCK_articleList.length;
-    const MOCK_times = start_index + 5;
+    const MOCK_times = start_index + 15;
     let new_list = MOCK_articleList;
     for (let i = start_index; i < MOCK_times; i++) {
       new_list.push({
