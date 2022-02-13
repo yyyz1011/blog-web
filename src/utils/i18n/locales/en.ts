@@ -26,6 +26,8 @@ export default {
       cancel_text: "Cancel",
       nick_extra_text:
         "If nickname is empty,choose QQ account to serve as nickname by default",
+      hi: "hi,",
+      notify_content: "Welcome leaf blog",
     },
     exit_modal: {
       modal_title: "Withdraw from the account",

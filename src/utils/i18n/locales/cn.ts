@@ -25,6 +25,8 @@ export default {
       ok_update_text: "更新",
       cancel_text: "取消",
       nick_extra_text: "假如昵称为空，默认选择QQ账号作为昵称",
+      hi: "哈罗，",
+      notify_content: "欢迎来到 leaf blog",
     },
     exit_modal: {
       modal_title: "退出账号",
