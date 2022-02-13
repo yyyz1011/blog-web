@@ -12,7 +12,8 @@ export default {
     update: "修改",
     exit: "退出",
     login_modal: {
-      modal_title: "游客登录",
+      modal_login_title: "游客登录",
+      modal_update_title: "游客更新",
       account_label: "QQ账号",
       account_placeholder: "请输入你的QQ账号",
       account_rules_require: "QQ账号不能为空",
