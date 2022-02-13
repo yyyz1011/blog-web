@@ -17,10 +17,12 @@ interface IProps {
     type: Array<ArticleTag>;
     modify_time: string;
   };
+  loading?: boolean;
 }
 
 const ArticleCard: React.FC<IProps> = (props: IProps) => {
   const { title, desc, type, modify_time: modifyTime } = props.info;
+  const { loading = false } = props;
   const { t } = useTranslation();
   const updateTime = dayjs(Number(modifyTime)).format("YYYY-MM-DD HH:mm");
 
@@ -32,6 +34,7 @@ const ArticleCard: React.FC<IProps> = (props: IProps) => {
     <>
       <div className="article-card" onClick={handleGoArticle}>
         <Card
+          loading={loading}
           bordered
           headerLine={false}
           shadows="hover"

@@ -40,6 +40,10 @@ export default {
       author_name: "Ye Zhou",
       summary_text: "文章分类",
     },
+    filter: {
+      search_input_placeholder: "请输入标题",
+    },
+    no_data: "暂无笔记",
     modify_time: "更新时间",
   },
   404: {

@@ -41,6 +41,10 @@ export default {
       author_name: "Ye Zhou",
       summary_text: "Categories",
     },
+    filter: {
+      search_input_placeholder: "Please enter a title",
+    },
+    no_data: "No notes",
     modify_time: "Modify Time",
   },
   404: {
