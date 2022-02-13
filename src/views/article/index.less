@@ -17,6 +17,41 @@
   }
 }
 
+.article-plan-text {
+  padding: 16px;
+  margin-bottom: 16px;
+  .semi-card-body {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  &--img {
+    width: 200px;
+  }
+  &--content {
+    width: 400px;
+    text-indent: 2em;
+    font-size: 15px;
+    font-weight: lighter;
+    position: relative;
+    .article-quote-top{
+      position: absolute;
+      left: -30px;
+      top: -30px;
+      font-size: 30px;
+      opacity: 0.2;
+    }
+    .article-quote-bottom{
+      position: absolute;
+      right: -30px;
+      bottom: -30px;
+      font-size: 30px;
+      opacity: 0.2;
+      transform: rotate(180deg);
+    }
+  }
+}
+
 .filter {
   margin-bottom: 16px;
   .filter-input {

@@ -40,6 +40,7 @@ export default {
       author_name: "Ye Zhou",
       summary_text: "文章分类",
     },
+    article_text: "想去做的事情很多，所以我们得去努力，不只是想想而已",
     filter: {
       search_input_placeholder: "请输入标题",
     },

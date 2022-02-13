@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import ArticleCard from "@/components/article-card";
 import ArticleSummaryCard from "@/components/article-summary-card";
 import "./index.less";
-import { List, BackTop, Input } from "@douyinfe/semi-ui";
-import { IconSearch } from "@douyinfe/semi-icons";
+import { List, BackTop, Input, Card } from "@douyinfe/semi-ui";
+import { IconSearch, IconQuote } from "@douyinfe/semi-icons";
 import { useTranslation } from "react-i18next";
 
 interface ArticleTag {
@@ -63,6 +63,17 @@ const Article: React.FC = () => {
             <ArticleSummaryCard></ArticleSummaryCard>
           </div>
           <div className="article-content--list">
+            <Card shadows="always" className="article-plan-text">
+              <div className="article-plan-text--content">
+                {t("article.article_text")}
+                <IconQuote className="article-quote-top" />
+                <IconQuote className="article-quote-bottom" />
+              </div>
+              <img
+                className="article-plan-text--img"
+                src={require("@/assets/img/article_plan_text.svg")}
+              />
+            </Card>
             <div className="filter">
               <Input
                 className="filter-input"

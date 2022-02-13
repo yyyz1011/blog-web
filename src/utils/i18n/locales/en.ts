@@ -41,6 +41,8 @@ export default {
       author_name: "Ye Zhou",
       summary_text: "Categories",
     },
+    article_text:
+      "There are so many things we want to do, so we have to work hard, ndot just think about it",
     filter: {
       search_input_placeholder: "Please enter a title",
     },
