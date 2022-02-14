@@ -50,6 +50,9 @@ export default {
     },
     no_data: "The notes are on their way~",
     modify_time: "Modify Time",
+    page_view: "Pageviews",
+    like: "Like",
+    message: "Comment",
   },
   404: {
     no_page_text: "Page not found ~ whether to return home page",

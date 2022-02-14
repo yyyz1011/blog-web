@@ -48,6 +48,9 @@ export default {
     },
     no_data: "笔记正在赶来的路上~",
     modify_time: "更新时间",
+    page_view: "阅读量",
+    like: "点赞量",
+    message: "评论量",
   },
   404: {
     no_page_text: "页面找不到啦~是否返回首页",

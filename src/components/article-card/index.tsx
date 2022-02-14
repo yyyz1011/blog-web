@@ -1,9 +1,10 @@
 import React from "react";
-import { Card, Tag } from "@douyinfe/semi-ui";
+import { Card, Tag, Tooltip } from "@douyinfe/semi-ui";
 import "./index.less";
 import { TagColor } from "@douyinfe/semi-ui/lib/es/tag";
 import dayjs from "dayjs";
 import { useTranslation } from "react-i18next";
+import { IconLikeThumb, IconMail, IconVideo } from "@douyinfe/semi-icons";
 
 interface ArticleTag {
   type: string;
@@ -59,7 +60,29 @@ const ArticleCard: React.FC<IProps> = (props: IProps) => {
             </div>
           }
         >
-          {desc}
+          <div className="article-card-content">
+            <div className="article-card-content--desc">{desc}</div>
+            <div className="article-card-content--info">
+              <Tooltip content={t("article.page_view")}>
+                <div className="info-item">
+                  <IconVideo />
+                  <div>1234</div>
+                </div>
+              </Tooltip>
+              <Tooltip content={t("article.like")}>
+                <div className="info-item">
+                  <IconLikeThumb />
+                  <div>1</div>
+                </div>
+              </Tooltip>
+              <Tooltip content={t("article.message")}>
+                <div className="info-item">
+                  <IconMail />
+                  <div>123123</div>
+                </div>
+              </Tooltip>
+            </div>
+          </div>
         </Card>
       </div>
     </>
