@@ -44,7 +44,9 @@ export default {
     article_text:
       "There are so many things we want to do, so we have to work hard, ndot just think about it",
     filter: {
-      search_input_placeholder: "Please enter a title",
+      search_input_placeholder_title: "Please enter a title",
+      search_input_placeholder_content: "Please enter a content",
+      filter_operate: "Search",
     },
     no_data: "The notes are on their way~",
     modify_time: "Modify Time",

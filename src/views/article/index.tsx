@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import ArticleCard from "@/components/article-card";
 import ArticleSummaryCard from "@/components/article-summary-card";
 import "./index.less";
-import { List, BackTop, Input, Card } from "@douyinfe/semi-ui";
+import { List, BackTop, Input, Card, Button } from "@douyinfe/semi-ui";
 import { IconSearch, IconQuote } from "@douyinfe/semi-icons";
 import { useTranslation } from "react-i18next";
 
@@ -21,7 +21,8 @@ interface ArticleItem {
 const Article: React.FC = () => {
   const { t } = useTranslation();
   const [loading, setLoading] = useState<boolean>(true);
-  const [searchValue, setSearchValue] = useState<string>("");
+  const [searchByTitle, setSearchByTitle] = useState<string>("");
+  const [searchByContent, setSearchByContent] = useState<string>("");
   const [MOCK_articleList, setArticleList] = useState<Array<ArticleItem>>([]);
 
   const handleLoadMore = () => {
@@ -48,7 +49,7 @@ const Article: React.FC = () => {
   };
 
   const handleSearch = () => {
-    console.log(searchValue);
+    console.log(searchByTitle, searchByContent);
   };
 
   useEffect(() => {
@@ -75,19 +76,44 @@ const Article: React.FC = () => {
               />
             </Card>
             <div className="filter">
-              <Input
-                className="filter-input"
-                placeholder={
-                  t(
-                    "article.filter.search_input_placeholder"
-                  ) as React.ReactText
-                }
-                showClear
-                value={searchValue}
-                onChange={(val) => setSearchValue(val)}
-                addonAfter={<IconSearch onClick={handleSearch} />}
-                onEnterPress={handleSearch}
-              ></Input>
+              <div className="filter-content">
+                <Input
+                  className="filter-input"
+                  placeholder={
+                    t(
+                      "article.filter.search_input_placeholder_title"
+                    ) as React.ReactText
+                  }
+                  showClear
+                  value={searchByTitle}
+                  onChange={(val) => setSearchByTitle(val)}
+                  addonAfter={<IconSearch onClick={handleSearch} />}
+                  onEnterPress={handleSearch}
+                ></Input>
+                <Input
+                  className="filter-input"
+                  placeholder={
+                    t(
+                      "article.filter.search_input_placeholder_content"
+                    ) as React.ReactText
+                  }
+                  showClear
+                  value={searchByContent}
+                  onChange={(val) => setSearchByContent(val)}
+                  addonAfter={<IconSearch onClick={handleSearch} />}
+                  onEnterPress={handleSearch}
+                ></Input>
+              </div>
+              <div className="filter-operate">
+                <Button
+                  className="operate-button"
+                  theme="solid"
+                  type="primary"
+                  onClick={handleSearch}
+                >
+                  {t("article.filter.filter_operate")}
+                </Button>
+              </div>
             </div>
             <List
               emptyContent={

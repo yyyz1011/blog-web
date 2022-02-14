@@ -42,7 +42,9 @@ export default {
     },
     article_text: "想去做的事情很多，所以我们得去努力，不只是想想而已",
     filter: {
-      search_input_placeholder: "请输入标题",
+      search_input_placeholder_title: "请输入标题",
+      search_input_placeholder_content: "请输入内容",
+      filter_operate: "搜索",
     },
     no_data: "笔记正在赶来的路上~",
     modify_time: "更新时间",

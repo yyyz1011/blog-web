@@ -54,8 +54,15 @@
 
 .filter {
   margin-bottom: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   .filter-input {
     width: 200px;
+    margin-right: 8px;
+  }
+  .operate-button{
+    padding: 0 32px;
   }
 }
 
@@ -65,11 +72,11 @@
   align-items: center;
   flex-direction: column;
 
-  &--img{
+  &--img {
     width: 400px;
   }
 
-  &--text{
+  &--text {
     margin-top: 16px;
     letter-spacing: 3px;
   }
