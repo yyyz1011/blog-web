@@ -46,7 +46,7 @@ export default {
     filter: {
       search_input_placeholder: "Please enter a title",
     },
-    no_data: "No notes",
+    no_data: "The notes are on their way~",
     modify_time: "Modify Time",
   },
   404: {

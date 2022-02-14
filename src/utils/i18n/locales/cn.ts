@@ -44,7 +44,7 @@ export default {
     filter: {
       search_input_placeholder: "请输入标题",
     },
-    no_data: "暂无笔记",
+    no_data: "笔记正在赶来的路上~",
     modify_time: "更新时间",
   },
   404: {

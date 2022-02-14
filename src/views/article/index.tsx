@@ -90,7 +90,17 @@ const Article: React.FC = () => {
               ></Input>
             </div>
             <List
-              emptyContent={t("article.no_data")}
+              emptyContent={
+                <div className="no-article-content">
+                  <img
+                    className="no-article-content--img"
+                    src={require("@/assets/img/no_data.svg")}
+                  />
+                  <div className="no-article-content--text">
+                    {t("article.no_data")}
+                  </div>
+                </div>
+              }
               dataSource={MOCK_articleList}
               renderItem={(item) => (
                 <ArticleCard
