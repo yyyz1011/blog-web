@@ -26,3 +26,41 @@
 .semi-card-body {
   padding-top: 0 !important;
 }
+
+.article-card-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  opacity: 0.3;
+  transition: all ease 0.5s;
+
+  &--desc {
+    flex: 5;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+  }
+
+  &--info {
+    flex: 1;
+    margin-left: 16px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    .info-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      font-weight: bold;
+    }
+  }
+}
+
+.article-card:hover {
+  .article-card-content {
+    opacity: 0.8;
+  }
+}

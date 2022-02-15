@@ -44,10 +44,22 @@ export default {
     article_text:
       "There are so many things we want to do, so we have to work hard, ndot just think about it",
     filter: {
-      search_input_placeholder: "Please enter a title",
+      search_input_placeholder_title: "Please enter a title",
+      search_input_placeholder_content: "Please enter a content",
+      filter_operate: "Search",
     },
-    no_data: "No notes",
+    no_data: "The notes are on their way~",
     modify_time: "Modify Time",
+    page_view: "Pageviews",
+    like: "Like",
+    message: "Comment",
+  },
+  article_detail: {
+    breadcrumb_article: "Article",
+    breadcrumb_article_detail: "Article Detail",
+    catalogue: "Catalogue",
+    comments: "Comments",
+    recommend_article_title: "Other Article",
   },
   404: {
     no_page_text: "Page not found ~ whether to return home page",

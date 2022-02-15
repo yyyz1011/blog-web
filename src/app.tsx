@@ -1,7 +1,7 @@
 import React, { Suspense } from "react";
 import { HashRouter, Navigate, Route, Routes } from "react-router-dom";
 import type { RouterType } from "@/routers";
-import { Routers } from "@/routers";
+import { NavRouters, Routers } from "@/routers";
 import Nav from "@/components/nav";
 import { Layout } from "@douyinfe/semi-ui";
 import "@/assets/css/layout.less";
@@ -20,7 +20,7 @@ const App: React.FC = () => {
           <Suspense fallback={<div />}>
             <Routes>
               <Route path="*" element={<Navigate to="/404" />} />
-              {Routers.map((item: RouterType) => (
+              {[...NavRouters, ...Routers].map((item: RouterType) => (
                 <Route
                   key={item.key}
                   path={item.path}

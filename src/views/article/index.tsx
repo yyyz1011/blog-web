@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import ArticleCard from "@/components/article-card";
 import ArticleSummaryCard from "@/components/article-summary-card";
 import "./index.less";
-import { List, BackTop, Input, Card } from "@douyinfe/semi-ui";
+import { List, BackTop, Input, Card, Button } from "@douyinfe/semi-ui";
 import { IconSearch, IconQuote } from "@douyinfe/semi-icons";
 import { useTranslation } from "react-i18next";
+import NoArticleData from "@/components/no-article-data";
 
 interface ArticleTag {
   type: string;
@@ -21,7 +22,8 @@ interface ArticleItem {
 const Article: React.FC = () => {
   const { t } = useTranslation();
   const [loading, setLoading] = useState<boolean>(true);
-  const [searchValue, setSearchValue] = useState<string>("");
+  const [searchByTitle, setSearchByTitle] = useState<string>("");
+  const [searchByContent, setSearchByContent] = useState<string>("");
   const [MOCK_articleList, setArticleList] = useState<Array<ArticleItem>>([]);
 
   const handleLoadMore = () => {
@@ -33,7 +35,7 @@ const Article: React.FC = () => {
       new_list.push({
         id: i.toString(),
         title: "这是一个标题11",
-        desc: "阿巴巴爸爸",
+        desc: "习近平总书记强调，推动共青团事业不断开创新局面，关键在团干部。共青团的作风形象，首先体现为团干部的作风形象；共青团的建设质量，关键取决于团干部队伍的建设质量。建设一支作风过硬、形象阳光的团干部队伍，始终是全面从严治团的重点任务。习近平总书记强调，推动共青团事业不断开创新局面，关键在团干部。共青团的作风形象，首先体现为团干部的作风形象；共青团的建设质量，关键取决于团干部队伍的建设质量。建设一支作风过硬、形象阳光的团干部队伍，始终是全面从严治团的重点任务。",
         type: [
           { type: "vue", color: "purple" },
           { type: "react", color: "red" },
@@ -48,7 +50,7 @@ const Article: React.FC = () => {
   };
 
   const handleSearch = () => {
-    console.log(searchValue);
+    console.log(searchByTitle, searchByContent);
   };
 
   useEffect(() => {
@@ -75,22 +77,47 @@ const Article: React.FC = () => {
               />
             </Card>
             <div className="filter">
-              <Input
-                className="filter-input"
-                placeholder={
-                  t(
-                    "article.filter.search_input_placeholder"
-                  ) as React.ReactText
-                }
-                showClear
-                value={searchValue}
-                onChange={(val) => setSearchValue(val)}
-                addonAfter={<IconSearch onClick={handleSearch} />}
-                onEnterPress={handleSearch}
-              ></Input>
+              <div className="filter-content">
+                <Input
+                  className="filter-input"
+                  placeholder={
+                    t(
+                      "article.filter.search_input_placeholder_title"
+                    ) as React.ReactText
+                  }
+                  showClear
+                  value={searchByTitle}
+                  onChange={(val) => setSearchByTitle(val)}
+                  addonAfter={<IconSearch onClick={handleSearch} />}
+                  onEnterPress={handleSearch}
+                ></Input>
+                <Input
+                  className="filter-input"
+                  placeholder={
+                    t(
+                      "article.filter.search_input_placeholder_content"
+                    ) as React.ReactText
+                  }
+                  showClear
+                  value={searchByContent}
+                  onChange={(val) => setSearchByContent(val)}
+                  addonAfter={<IconSearch onClick={handleSearch} />}
+                  onEnterPress={handleSearch}
+                ></Input>
+              </div>
+              <div className="filter-operate">
+                <Button
+                  className="operate-button"
+                  theme="solid"
+                  type="primary"
+                  onClick={handleSearch}
+                >
+                  {t("article.filter.filter_operate")}
+                </Button>
+              </div>
             </div>
             <List
-              emptyContent={t("article.no_data")}
+              emptyContent={<NoArticleData />}
               dataSource={MOCK_articleList}
               renderItem={(item) => (
                 <ArticleCard
