@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Routers } from "@/routers";
+import { NavRouters } from "@/routers";
 import { useTranslation } from "react-i18next";
 import {
   Avatar,
@@ -115,7 +115,7 @@ const Nav: React.FC = () => {
           logo: <img src={require("../../assets/img/leaf.svg")} />,
           text: "leaf blog",
         }}
-        items={Routers.map((item) => ({
+        items={NavRouters.map((item) => ({
           itemKey: item.path,
           text: t("nav." + item.title),
           icon: <item.icon />,

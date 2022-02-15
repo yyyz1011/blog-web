@@ -54,6 +54,13 @@ export default {
     like: "Like",
     message: "Comment",
   },
+  article_detail: {
+    breadcrumb_article: "Article",
+    breadcrumb_article_detail: "Article Detail",
+    catalogue: "Catalogue",
+    comments: "Comments",
+    recommend_article_title: "Other Article",
+  },
   404: {
     no_page_text: "Page not found ~ whether to return home page",
     operate_text: "Back",

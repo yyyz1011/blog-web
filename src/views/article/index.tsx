@@ -5,6 +5,7 @@ import "./index.less";
 import { List, BackTop, Input, Card, Button } from "@douyinfe/semi-ui";
 import { IconSearch, IconQuote } from "@douyinfe/semi-icons";
 import { useTranslation } from "react-i18next";
+import NoArticleData from "@/components/no-article-data";
 
 interface ArticleTag {
   type: string;
@@ -116,17 +117,7 @@ const Article: React.FC = () => {
               </div>
             </div>
             <List
-              emptyContent={
-                <div className="no-article-content">
-                  <img
-                    className="no-article-content--img"
-                    src={require("@/assets/img/no_data.svg")}
-                  />
-                  <div className="no-article-content--text">
-                    {t("article.no_data")}
-                  </div>
-                </div>
-              }
+              emptyContent={<NoArticleData />}
               dataSource={MOCK_articleList}
               renderItem={(item) => (
                 <ArticleCard

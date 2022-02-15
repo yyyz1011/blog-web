@@ -52,6 +52,13 @@ export default {
     like: "点赞量",
     message: "评论量",
   },
+  article_detail: {
+    breadcrumb_article: "文章",
+    breadcrumb_article_detail: "文章详情",
+    catalogue: "目录",
+    comments: "评论",
+    recommend_article_title: "其他文章",
+  },
   404: {
     no_page_text: "页面找不到啦~是否返回首页",
     operate_text: "返回",

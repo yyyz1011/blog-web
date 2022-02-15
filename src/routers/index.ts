@@ -64,7 +64,7 @@ const AboutRouter: RouterType = {
   icon: IconMember,
 };
 
-const Routers: RouterType[] = [
+const NavRouters: RouterType[] = [
   HomeRouter,
   ArticleRouter,
   PictureRouter,
@@ -73,5 +73,14 @@ const Routers: RouterType[] = [
   AboutRouter,
 ];
 
-export { Routers };
+const ArticleDetailRouter: RouterType = {
+  key: "article-detail",
+  path: "/article-detail/:id",
+  component: lazy(() => import("@/views/article-detail")),
+  title: "article-detail",
+};
+
+const Routers: RouterType[] = [ArticleDetailRouter];
+
+export { NavRouters, Routers };
 export type { RouterType };
