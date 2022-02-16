@@ -6,6 +6,7 @@ import { List, BackTop, Input, Card, Button } from "@douyinfe/semi-ui";
 import { IconSearch, IconQuote } from "@douyinfe/semi-icons";
 import { useTranslation } from "react-i18next";
 import NoData from "@/components/no-data";
+import Carousel from "@/components/common/carousel";
 
 interface ArticleTag {
   type: string;
@@ -65,17 +66,32 @@ const Article: React.FC = () => {
             <ArticleSummaryCard></ArticleSummaryCard>
           </div>
           <div className="article-content--list">
-            <Card shadows="always" className="article-plan-text">
-              <div className="article-plan-text--content">
-                {t("article.article_text")}
-                <IconQuote className="article-quote-top" />
-                <IconQuote className="article-quote-bottom" />
-              </div>
-              <img
-                className="article-plan-text--img"
-                src={require("@/assets/img/article_plan_text.svg")}
-              />
-            </Card>
+            <Carousel
+              contentList={[
+                <Card className="article-plan-text">
+                  <div className="article-plan-text--content">
+                    {t("article.article_text")}
+                    <IconQuote className="article-quote-top" />
+                    <IconQuote className="article-quote-bottom" />
+                  </div>
+                  <img
+                    className="article-plan-text--img"
+                    src={require("@/assets/img/article_plan_text.svg")}
+                  />
+                </Card>,
+                <Card className="article-plan-text">
+                  <div className="article-plan-text--content">
+                    {t("article.article_text")}
+                    <IconQuote className="article-quote-top" />
+                    <IconQuote className="article-quote-bottom" />
+                  </div>
+                  <img
+                    className="article-plan-text--img"
+                    src={require("@/assets/img/article_plan_text.svg")}
+                  />
+                </Card>,
+              ]}
+            ></Carousel>
             <div className="filter">
               <div className="filter-content">
                 <Input
