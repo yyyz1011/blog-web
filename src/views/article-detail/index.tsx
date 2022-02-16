@@ -4,8 +4,6 @@ import { Breadcrumb, Notification } from "@douyinfe/semi-ui";
 import { IconLikeHeart } from "@douyinfe/semi-icons";
 import { useTranslation } from "react-i18next";
 import "./index.less";
-import ArticleCard from "@/components/article-card";
-import NoArticleData from "@/components/no-article-data";
 import { debounce } from "lodash-es";
 
 interface ArticleTag {
@@ -89,23 +87,6 @@ const ArticleDetail: React.FC = () => {
       </div>
       <div className="comment-info">
         <div className="comment-title">{t("article_detail.comments")}</div>
-      </div>
-      <div className="recommend-article-title">
-        {t("article_detail.recommend_article_title")}
-      </div>
-      <div className="recommend-article">
-        {loading ? (
-          <NoArticleData />
-        ) : (
-          MOCK_articleList.map((item) => (
-            <ArticleCard
-              key={item.id}
-              info={item}
-              isShowModifyTime={false}
-              isShowExtraSummary={false}
-            ></ArticleCard>
-          ))
-        )}
       </div>
     </div>
   );

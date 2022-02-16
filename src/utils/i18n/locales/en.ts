@@ -59,7 +59,6 @@ export default {
     breadcrumb_article_detail: "Article Detail",
     catalogue: "Catalogue",
     comments: "Comments",
-    recommend_article_title: "Other Article",
     like_success: "Liked Success~",
   },
   404: {
