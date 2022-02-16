@@ -58,6 +58,7 @@ export default {
     catalogue: "目录",
     comments: "评论",
     recommend_article_title: "其他文章",
+    like_success: "点赞成功~",
   },
   404: {
     no_page_text: "页面找不到啦~是否返回首页",

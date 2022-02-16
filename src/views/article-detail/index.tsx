@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { Breadcrumb } from "@douyinfe/semi-ui";
+import { Breadcrumb, Notification } from "@douyinfe/semi-ui";
 import { IconLikeHeart } from "@douyinfe/semi-icons";
 import { useTranslation } from "react-i18next";
 import "./index.less";
 import ArticleCard from "@/components/article-card";
 import NoArticleData from "@/components/no-article-data";
+import { debounce } from "lodash-es";
 
 interface ArticleTag {
   type: string;
@@ -51,6 +52,13 @@ const ArticleDetail: React.FC = () => {
     }, 1000);
   };
 
+  const handleLike = debounce(() => {
+    Notification.success({
+      position: "top",
+      content: t("article_detail.like_success"),
+    });
+  }, 1000);
+
   useEffect(() => {
     handleLoadMore();
   }, []);
@@ -76,10 +84,7 @@ const ArticleDetail: React.FC = () => {
         </div>
       </div>
       <div className="like-info">
-        <IconLikeHeart
-          className="like-icon"
-          onClick={() => console.log("TODO 点赞成功")}
-        />
+        <IconLikeHeart className="like-icon" onClick={handleLike} />
         <span className="like-num">123123</span>
       </div>
       <div className="comment-info">
