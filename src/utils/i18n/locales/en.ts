@@ -59,7 +59,7 @@ export default {
     breadcrumb_article_detail: "Article Detail",
     catalogue: "Catalogue",
     comments: "Comments",
-    recommend_article_title: "Other Article",
+    like_success: "Liked Success~",
   },
   404: {
     no_page_text: "Page not found ~ whether to return home page",
