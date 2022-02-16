@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import ArticleCard from "@/components/article-card";
-import ArticleSummaryCard from "@/components/article-summary-card";
+import ArticleCard from "@/components/article/article-card";
+import ArticleSummaryCard from "@/components/article/article-summary-card";
 import "./index.less";
 import { List, BackTop, Input, Card, Button } from "@douyinfe/semi-ui";
 import { IconSearch, IconQuote } from "@douyinfe/semi-icons";
