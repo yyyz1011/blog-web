@@ -60,6 +60,10 @@ export default {
     catalogue: "目录",
     comments: "评论",
     like_success: "点赞成功~",
+    editor_placeholder: "请留下你的足迹~",
+    editor_operate_text: "评论",
+    required_error_title: "校验失败",
+    required_error_text: "留言内容不能为空",
   },
   404: {
     no_page_text: "页面找不到啦~是否返回首页",
