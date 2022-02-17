@@ -43,6 +43,8 @@ export default {
     },
     article_text:
       "There are so many things we want to do, so we have to work hard, ndot just think about it",
+      article_text1:
+        "Went to different places, saw different scenery, know different things, feel different life",
     filter: {
       search_input_placeholder_title: "Please enter a title",
       search_input_placeholder_content: "Please enter a content",

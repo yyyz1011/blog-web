@@ -41,6 +41,8 @@ export default {
       summary_text: "文章分类",
     },
     article_text: "想去做的事情很多，所以我们得去努力，不只是想想而已",
+    article_text1:
+      "去了不同的地方，看了不同的风景，知道了不同的事，感悟了不同的人生",
     filter: {
       search_input_placeholder_title: "请输入标题",
       search_input_placeholder_content: "请输入内容",
