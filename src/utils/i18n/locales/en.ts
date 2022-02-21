@@ -62,6 +62,10 @@ export default {
     catalogue: "Catalogue",
     comments: "Comments",
     like_success: "Liked Success~",
+    editor_placeholder: "Please leave your footprints~",
+    editor_operate_text: "Comment",
+    required_error_title: "Check failure",
+    required_error_text: "The message cannot be empty",
   },
   404: {
     no_page_text: "Page not found ~ whether to return home page",
