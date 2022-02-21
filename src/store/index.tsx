@@ -1,5 +1,9 @@
-import userStore from "@/store/module/user";
+import UserStore from "./module/user";
 
-export default {
+const userStore = new UserStore()
+
+const store = {
   userStore,
 };
+
+export default store;
