@@ -47,7 +47,7 @@ export default {
         "Went to different places, saw different scenery, know different things, feel different life",
     filter: {
       search_input_placeholder_title: "Please enter a title",
-      search_input_placeholder_content: "Please enter a content",
+      search_input_placeholder_content: "Please enter content",
       filter_operate: "Search",
     },
     no_data: "The notes are on their way~",
