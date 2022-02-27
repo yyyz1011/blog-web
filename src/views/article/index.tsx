@@ -67,6 +67,7 @@ const Article: React.FC = () => {
           </div>
           <div className="article-content--list">
             <Carousel
+              duration={5000}
               contentList={[
                 <Card className="article-plan-text">
                   <div className="article-plan-text--content">
@@ -80,15 +81,15 @@ const Article: React.FC = () => {
                   />
                 </Card>,
                 <Card className="article-plan-text">
+                  <img
+                    className="article-plan-text--img"
+                    src={require("@/assets/img/article_plan_text1.svg")}
+                  />
                   <div className="article-plan-text--content">
-                    {t("article.article_text")}
+                    {t("article.article_text1")}
                     <IconQuote className="article-quote-top" />
                     <IconQuote className="article-quote-bottom" />
                   </div>
-                  <img
-                    className="article-plan-text--img"
-                    src={require("@/assets/img/article_plan_text.svg")}
-                  />
                 </Card>,
               ]}
             ></Carousel>

@@ -15,18 +15,17 @@ import {
 import { IconLanguage } from "@douyinfe/semi-icons";
 import { BaseFormApi } from "@douyinfe/semi-foundation/form/interface";
 import "./index.less";
-import store from "@/store";
-import { SET_USER_AVATAR } from "@/store/type/user";
 import useLocalStorageState from "@/utils/useLocalStorageState";
 import { LOCALSTORAGE_AUTHOR_INFO, LOCALSTORAGE_LANGUAGE } from "@/constant";
 import { getQQAvatar } from "@/network";
+import { observer, inject } from "mobx-react";
 
 const language_cn = "cn";
 const language_en = "en";
 
-const Nav: React.FC = () => {
+const Nav: React.FC<any> = (props) => {
   const navigate = useNavigate();
-  const [userStore, setUserStore] = useState(store.userStore.getState());
+  const userStore = props.store.userStore;
   const [formApi, setFormApi] = useState<BaseFormApi | null>(null);
   const [visibleLogin, setVisibleLogin] = useState<boolean>(false);
   const [visibleExit, setVisibleExit] = useState<boolean>(false);
@@ -42,11 +41,7 @@ const Nav: React.FC = () => {
 
   useEffect(() => {
     if (localstorageUserInfo) {
-      store.userStore.dispatch({
-        type: SET_USER_AVATAR,
-        value: localstorageUserInfo,
-      });
-      setUserStore(store.userStore.getState());
+      props.store.userStore.setUserInfo(localstorageUserInfo);
     }
     if (localstorageLanguage) {
       i18n.changeLanguage(localstorageLanguage).then();
@@ -71,19 +66,15 @@ const Nav: React.FC = () => {
       .then((values: { nickname: string; account: string }) => {
         const { nickname, account } = values;
         const userInfo = {
-          type: SET_USER_AVATAR,
-          value: {
-            avatar: getQQAvatar(account),
-            nickname: nickname || account,
-            account,
-          },
+          avatar: getQQAvatar(account),
+          nickname: nickname || account,
+          account,
         };
-        store.userStore.dispatch(userInfo);
-        setUserStore(store.userStore.getState());
-        setLocalstorageUserInfo(userInfo.value);
+        props.store.userStore.setUserInfo(userInfo);
+        setLocalstorageUserInfo(userInfo);
         setVisibleLogin(false);
         Notification.open({
-          title: `${t("nav.login_modal.hi")}${userInfo.value.nickname}`,
+          title: `${t("nav.login_modal.hi")}${userInfo.nickname}`,
           content: t("nav.login_modal.notify_content"),
           duration: 3,
         });
@@ -94,15 +85,11 @@ const Nav: React.FC = () => {
   };
 
   const exitUserInfo = () => {
-    store.userStore.dispatch({
-      type: SET_USER_AVATAR,
-      value: {
-        avatar: null,
-        nickname: null,
-        account: null,
-      },
+    props.store.userStore.setUserInfo({
+      avatar: null,
+      nickname: null,
+      account: null,
     });
-    setUserStore(store.userStore.getState());
     setLocalstorageUserInfo(null);
     setVisibleExit(false);
   };
@@ -217,4 +204,4 @@ const Nav: React.FC = () => {
   );
 };
 
-export default Nav;
+export default inject("store")(observer(Nav));

@@ -41,6 +41,8 @@ export default {
       summary_text: "文章分类",
     },
     article_text: "想去做的事情很多，所以我们得去努力，不只是想想而已",
+    article_text1:
+      "去了不同的地方，看了不同的风景，知道了不同的事，感悟了不同的人生",
     filter: {
       search_input_placeholder_title: "请输入标题",
       search_input_placeholder_content: "请输入内容",
@@ -58,6 +60,10 @@ export default {
     catalogue: "目录",
     comments: "评论",
     like_success: "点赞成功~",
+    editor_placeholder: "请留下你的足迹~",
+    editor_operate_text: "评论",
+    required_error_title: "校验失败",
+    required_error_text: "留言内容不能为空",
   },
   404: {
     no_page_text: "页面找不到啦~是否返回首页",
