@@ -6,7 +6,7 @@ import { List, BackTop, Input, Card, Button } from "@douyinfe/semi-ui";
 import { IconSearch, IconQuote } from "@douyinfe/semi-icons";
 import { useTranslation } from "react-i18next";
 import NoData from "@/components/no-data";
-import Carousel from "@/components/common/carousel";
+import LeafCarousel from "@/components/common/leaf-carousel";
 
 interface ArticleTag {
   type: string;
@@ -66,7 +66,7 @@ const Article: React.FC = () => {
             <ArticleSummaryCard></ArticleSummaryCard>
           </div>
           <div className="article-content--list">
-            <Carousel
+            <LeafCarousel
               duration={5000}
               contentList={[
                 <Card className="article-plan-text">
@@ -92,7 +92,7 @@ const Article: React.FC = () => {
                   </div>
                 </Card>,
               ]}
-            ></Carousel>
+            ></LeafCarousel>
             <div className="filter">
               <div className="filter-content">
                 <Input

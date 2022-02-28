@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { getFreeImg } from "@/network";
+import "./index.less";
 
 const Picture: React.FC = () => {
-  const [imgList, setImgList] = useState(null);
+  const [imgList, setImgList] = useState([]);
 
-  const getAllImg = async () => {
-    const mockLinkList = new Array(10).fill(getFreeImg);
-    const imgList = mockLinkList.map((item) => {
+  const getAllImg = () => {
+    const mockLinkList = new Array(9).fill(getFreeImg);
+    const data = mockLinkList.map((item) => {
       return item({
         width: 400,
-        height: Math.floor(Math.random() * 5 + 5) * 100,
+        height: Math.floor(Math.random() * 3 + 5) * 100,
       });
     });
-    setImgList(imgList);
+    setImgList([...imgList, ...data]);
   };
 
   useEffect(() => {
@@ -21,10 +22,12 @@ const Picture: React.FC = () => {
 
   return (
     <>
-      <div>
+      <div className="picture-wrapper">
         {imgList &&
           imgList.map((item: string, index: number) => (
-            <img src={item} key={index}></img>
+            <div className="picture-item" key={index}>
+              <img src={item} />
+            </div>
           ))}
       </div>
     </>
