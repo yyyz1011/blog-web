@@ -15,7 +15,7 @@ interface CarouselProps {
   isShowPoint?: boolean;
 }
 
-const Carousel: React.FC<CarouselProps> = (props: CarouselProps) => {
+const LeafCarousel: React.FC<CarouselProps> = (props: CarouselProps) => {
   const {
     contentList,
     defaultIndex = 0,
@@ -80,4 +80,4 @@ const Carousel: React.FC<CarouselProps> = (props: CarouselProps) => {
   );
 };
 
-export default Carousel;
+export default LeafCarousel;

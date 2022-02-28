@@ -23,7 +23,7 @@ import { observer, inject } from "mobx-react";
 const language_cn = "cn";
 const language_en = "en";
 
-const Nav: React.FC<any> = (props) => {
+const Nav: React.FC<any> = (props: any) => {
   const navigate = useNavigate();
   const userStore = props.store.userStore;
   const [formApi, setFormApi] = useState<BaseFormApi | null>(null);
