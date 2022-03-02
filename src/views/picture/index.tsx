@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getFreeImg } from "@/network";
 import "./index.less";
+import LeafWaterfall from "@/components/common/leaf-waterfall";
 
 const Picture: React.FC = () => {
   const [imgList, setImgList] = useState([]);
@@ -21,16 +22,17 @@ const Picture: React.FC = () => {
   }, []);
 
   return (
-    <>
-      <div className="picture-wrapper">
+    <div className="picture-wrapper">
+      <LeafWaterfall></LeafWaterfall>
+      {/* <div className="picture-wrapper">
         {imgList &&
           imgList.map((item: string, index: number) => (
             <div className="picture-item" key={index}>
               <img src={item} />
             </div>
           ))}
-      </div>
-    </>
+      </div> */}
+    </div>
   );
 };
 
