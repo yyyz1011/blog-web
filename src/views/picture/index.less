@@ -2,4 +2,48 @@
   width: 85%;
   min-width: 1200px;
   margin: 24px auto 0;
+  columns: 3;
+  column-gap: 20px;
+}
+
+.picture-item {
+  width: 100%;
+  break-inside: avoid;
+  margin-bottom: 30px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  .picture-item-img {
+    width: 100%;
+    border-radius: 8px;
+  }
+  .picture-extra-info {
+    position: absolute;
+    bottom: -100%;
+    width: calc(100% - 30px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgb(255, 255, 255);
+    transition: all 0.5s ease-in;
+    padding: 8px 16px;
+    .picture-item-title {
+      padding: 8px 0;
+      font-size: 16px;
+      font-weight: bold;
+    }
+    .picture-item-modify-time {
+      padding-bottom: 8px;
+      color: #555;
+      font-size: 14px;
+    }
+    .picture-item-content {
+      color: #555;
+      font-size: 10px;
+    }
+  }
+}
+.picture-item:hover {
+  .picture-extra-info {
+    bottom: 0;
+  }
 }

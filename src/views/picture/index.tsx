@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getFreeImg } from "@/network";
 import "./index.less";
-import LeafWaterfall from "@/components/common/leaf-waterfall";
 
 const Picture: React.FC = () => {
   const [imgList, setImgList] = useState([]);
@@ -22,17 +21,26 @@ const Picture: React.FC = () => {
   }, []);
 
   return (
-    <div className="picture-wrapper">
-      <LeafWaterfall></LeafWaterfall>
-      {/* <div className="picture-wrapper">
+    <>
+      <div className="picture-wrapper">
         {imgList &&
           imgList.map((item: string, index: number) => (
             <div className="picture-item" key={index}>
-              <img src={item} />
+              <img className="picture-item-img" src={item} />
+              <div className="picture-extra-info">
+                <div className="picture-item-title">Title Goes Here</div>
+                <div className="picture-item-modify-time">2022-3-3</div>
+                <div className="picture-item-content">
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quis
+                  quod et deleniti nobis quasi ad, adipisci perferendis totam,
+                  ducimus incidunt dolore aut, quae quaerat architecto quisquam
+                  repudiandae amet nostrum quidem?
+                </div>
+              </div>
             </div>
           ))}
-      </div> */}
-    </div>
+      </div>
+    </>
   );
 };
 
