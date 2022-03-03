@@ -9,7 +9,7 @@
 
 1. [page] [TODO]Home
 2. [page] [TODO]Article [The front-end part is completed, waiting for the back-end joint adjustment]
-3. [page] [TODO]Picture
+3. [page] [TODO]Picture [The front-end part is completed, waiting for the back-end joint adjustment]
 4. [page] [TODO]Message Board
 5. [page] [TODO]Link
 6. [page] [TODO]About
