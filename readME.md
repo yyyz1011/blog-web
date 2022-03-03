@@ -28,6 +28,11 @@
 ## 3 Picture
 
 > Blog Photo Sharing
+
+<p align="center">
+  <img src="https://github.com/yyyz1011/assets-info/blob/master/blog-web/readMe/picture.png" />
+</p>
+
 ## 4 Message Board
 
 > Blog message board, message statistics function
