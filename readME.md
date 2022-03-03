@@ -21,6 +21,10 @@
 
 > Blog note function, including blog list, blog note details page
 
+<p align="center">
+  <img src="https://github.com/yyyz1011/assets-info/blob/master/blog-web/readMe/article.png" />
+</p>
+
 ## 3 Picture
 
 > Blog Photo Sharing
