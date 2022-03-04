@@ -1,0 +1,96 @@
+.link-wrapper {
+  width: 85%;
+  min-width: 1200px;
+  margin: 24px auto 0;
+  .link-banner {
+    .semi-card-body {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      position: relative;
+      .link-icon {
+        position: absolute;
+        right: 0;
+        top: 24px;
+        font-size: 120px;
+        transform: scale(1.5);
+        opacity: 0.2;
+      }
+      .link-banner-img {
+        height: 250px;
+      }
+      .link-banner-content {
+        flex: 1;
+        margin-left: 16px;
+        .title {
+          font-size: 30px;
+          font-weight: bold;
+          padding-bottom: 8px;
+        }
+        .tip {
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          padding: 16px 0;
+          font-size: 16px;
+          line-height: 25px;
+          .tip-button {
+            font-size: 20px;
+            line-height: 25px;
+          }
+        }
+        .formatter {
+          font-size: 16px;
+          line-height: 25px;
+        }
+      }
+    }
+  }
+  .link-content {
+    margin-top: 16px;
+    padding-top: 16px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    .link-card {
+      width: 27%;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      padding: 16px;
+      margin-bottom: 32px;
+      border-radius: 16px;
+      box-shadow: 8px 8px 16px #d9d9d9, -8px -8px 16px #ffffff;
+      cursor: pointer;
+      position: relative;
+      transition: all 0.2s ease-in;
+      &:hover {
+        transform: translateY(-4px);
+        .link-card-content-icon {
+          opacity: 0.2;
+          right: 16px;
+        }
+      }
+      .link-card-content-icon {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 0;
+        font-size: 30px;
+        opacity: 0;
+        transition: all 0.2s ease-in;
+      }
+      .link-card-content {
+        margin-left: 16px;
+        .link-card-content-title {
+          font-size: 20px;
+        }
+        .link-card-content-desc {
+          font-size: 14px;
+          font-weight: lighter;
+          margin-top: 8px;
+        }
+      }
+    }
+  }
+}

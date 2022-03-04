@@ -1,4 +1,8 @@
 export default {
+  notice_status: {
+    copy_success: "复制成功",
+    copy_error: "复制失败，请手动复制内容",
+  },
   nav: {
     home: "首页",
     article: "文章",
@@ -64,6 +68,11 @@ export default {
     editor_operate_text: "评论",
     required_error_title: "校验失败",
     required_error_text: "留言内容不能为空",
+  },
+  link: {
+    banner_title: "友链",
+    banner_content: "如果想增加友链，请QQ邮箱发送至",
+    formatter: "格式 :",
   },
   404: {
     no_page_text: "页面找不到啦~是否返回首页",

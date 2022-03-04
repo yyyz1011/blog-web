@@ -1,4 +1,8 @@
 export default {
+  notice_status: {
+    copy_success: "Copy success",
+    copy_error: "Replication failed. Please manually copy the content",
+  },
   nav: {
     home: "Home",
     article: "Article",
@@ -43,8 +47,8 @@ export default {
     },
     article_text:
       "There are so many things we want to do, so we have to work hard, ndot just think about it",
-      article_text1:
-        "Went to different places, saw different scenery, know different things, feel different life",
+    article_text1:
+      "Went to different places, saw different scenery, know different things, feel different life",
     filter: {
       search_input_placeholder_title: "Please enter a title",
       search_input_placeholder_content: "Please enter content",
@@ -66,6 +70,11 @@ export default {
     editor_operate_text: "Comment",
     required_error_title: "Check failure",
     required_error_text: "The message cannot be empty",
+  },
+  link: {
+    banner_title: "Link",
+    banner_content: "If you want to add a Link, please send QQ email to ",
+    formatter: "format :",
   },
   404: {
     no_page_text: "Page not found ~ whether to return home page",
