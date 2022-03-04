@@ -74,6 +74,12 @@ export default {
     banner_content: "如果想增加友链，请QQ邮箱发送至",
     formatter: "格式 :",
   },
+  about: {
+    user_name: "叶周",
+    user_tip: "一个来自杭州的cv攻城狮，嗷呜~",
+    go_github: "前往Github",
+    go_mail: "发送邮件",
+  },
   404: {
     no_page_text: "页面找不到啦~是否返回首页",
     operate_text: "返回",

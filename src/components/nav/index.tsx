@@ -99,7 +99,7 @@ const Nav: React.FC<any> = (props: any) => {
       <SemiNav
         mode="horizontal"
         header={{
-          logo: <img src={require("../../assets/img/leaf.svg")} />,
+          logo: <img src={require("@/assets/img/leaf.svg")} />,
           text: "leaf blog",
         }}
         items={NavRouters.map((item) => ({

@@ -76,6 +76,12 @@ export default {
     banner_content: "If you want to add a Link, please send QQ email to ",
     formatter: "format :",
   },
+  about: {
+    user_name: "YeZhou",
+    user_tip: "A CV programmer from Hangzhou, Ao Wu ~",
+    go_github: "Go to the Github Homepage",
+    go_mail: "Sendmail",
+  },
   404: {
     no_page_text: "Page not found ~ whether to return home page",
     operate_text: "Back",

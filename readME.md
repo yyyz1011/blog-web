@@ -51,6 +51,10 @@
 
 > Personal information of the blogger
 
+<p align="center">
+  <img src="https://github.com/yyyz1011/assets-info/blob/master/blog-web/readMe/about.png" />
+</p>
+
 # Implementation of Blog Technology
 
 - Use React with Typescript to create web pages
