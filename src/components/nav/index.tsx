@@ -12,7 +12,7 @@ import {
   Tooltip,
   Notification,
 } from "@douyinfe/semi-ui";
-import { IconLanguage } from "@douyinfe/semi-icons";
+import { IconLanguage, IconWrench } from "@douyinfe/semi-icons";
 import { BaseFormApi } from "@douyinfe/semi-foundation/form/interface";
 import "./index.less";
 import useLocalStorageState from "@/utils/useLocalStorageState";
@@ -110,8 +110,20 @@ const Nav: React.FC<any> = (props: any) => {
         onSelect={(key) => navigate(key.itemKey as string)}
         footer={
           <div className="footer">
+            <Tooltip content="BUG">
+              <IconWrench
+                size="large"
+                onClick={() =>
+                  window.open("https://github.com/yyyz1011/blog-web/issues")
+                }
+              />
+            </Tooltip>
             <Tooltip content={t("nav.change_language")}>
-              <IconLanguage size="large" onClick={changeLanguage} />
+              <IconLanguage
+                className="change-language-icon"
+                size="large"
+                onClick={changeLanguage}
+              />
             </Tooltip>
             <Dropdown
               position="bottom"
