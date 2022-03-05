@@ -40,7 +40,9 @@ const BlogLink: React.FC = () => {
             </div>
             <div className="formatter">
               {t("link.formatter")}
-              {" {name:xxx,avatar:xxx,uri:xxx,desc:xxx} "}
+              {
+                " {name:'YeZhou',avatar:'https://avatars.githubusercontent.com/u/65165470?v=4',uri:xxx,desc:'leaf blog'} "
+              }
             </div>
           </div>
         </Card>
