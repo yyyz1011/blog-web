@@ -2,52 +2,39 @@
   width: 85%;
   min-width: 1200px;
   margin: 24px auto 0;
-  .user {
-    margin-top: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    .user-img {
-      user-select: none;
-      cursor: default;
-      width: 500px;
-    }
-    .user-info {
-      margin-left: 32px;
-      width: 400px;
-      .name {
-        user-select: none;
-        cursor: default;
-        display: flex;
-        align-items: center;
-        font-size: 40px;
-        font-weight: bold;
-        .name-img {
-          height: 40px;
-          margin-left: 8px;
-        }
-      }
-      .tip {
-        user-select: none;
-        cursor: default;
-        padding: 16px 0;
-        font-size: 20px;
-        font-weight: lighter;
-        letter-spacing: 3px;
-      }
-      .operate-icon {
-        margin-right: 4px;
-      }
-      .operate-github,
-      .operate-mail {
-        padding: 8px 16px;
-        margin-right: 4px;
-        .semi-button-content {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-      }
-    }
+}
+
+.show-user-info {
+  position: relative;
+  opacity: 0;
+  top: -100px;
+  animation: showUserInfo 1s ease forwards;
+}
+.hidden-user-info {
+  position: relative;
+  opacity: 1;
+  top: 0;
+  animation: hiddenUserInfo 1s ease forwards;
+}
+
+@keyframes showUserInfo {
+  form {
+    opacity: 0;
+    top: -100px;
+  }
+  to {
+    opacity: 1;
+    top: 0;
+  }
+}
+
+@keyframes hiddenUserInfo {
+  form {
+    opacity: 1;
+    top: 0;
+  }
+  to {
+    opacity: 0;
+    top: -100px;
   }
 }
