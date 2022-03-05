@@ -79,6 +79,11 @@ export default {
     user_tip: "一个来自杭州的cv攻城狮，嗷呜~",
     go_github: "前往Github",
     go_mail: "发送邮件",
+    travel_title: "在路上",
+    travel_summary_pre: "已经努力走过了",
+    travel_summary_append: "个省份",
+    travel_text:
+      "一程山、一程水一路行走、一路回忆千帆阅尽愿我们都能与更好的自己相遇~",
   },
   404: {
     no_page_text: "页面找不到啦~是否返回首页",

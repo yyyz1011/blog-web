@@ -81,6 +81,10 @@ export default {
     user_tip: "A CV programmer from Hangzhou, Ao Wu ~",
     go_github: "Go to the Github Homepage",
     go_mail: "Sendmail",
+    travel_title: "On the Road",
+    travel_summary_pre: "I have tried to travel through",
+    travel_summary_append: "provinces",
+    travel_text: "Walk all the way, in order to meet a better self ~",
   },
   404: {
     no_page_text: "Page not found ~ whether to return home page",

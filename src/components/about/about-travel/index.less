@@ -1,7 +1,49 @@
 .travel {
-  margin-top: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: red;
+
+  .travel-content {
+    width: 400px;
+    margin-right: 32px;
+    .travel-content-title {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      user-select: none;
+      cursor: default;
+      font-size: 40px;
+      font-weight: bold;
+      .title-icon {
+        font-size: 40px;
+        font-weight: bold;
+      }
+    }
+    .travel-content-text {
+      user-select: none;
+      cursor: default;
+      padding: 16px 0;
+      font-weight: lighter;
+      font-size: 20px;
+      letter-spacing: 3px;
+    }
+    .travel-content-summary {
+      user-select: none;
+      cursor: default;
+      font-size: 20px;
+      font-weight: lighter;
+      .summary-num {
+        margin: 0 10px;
+        font-size: 30px;
+        font-weight: bolder;
+      }
+    }
+  }
+
+  .travel-charts {
+    user-select: none;
+    cursor: default;
+    width: 500px;
+    height: 500px;
+  }
 }
