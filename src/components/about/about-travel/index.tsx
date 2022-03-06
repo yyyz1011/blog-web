@@ -4,7 +4,9 @@ import * as echarts from "echarts";
 import "./china";
 import { travelList } from "@/constant";
 import { useTranslation } from "react-i18next";
-import { IconHash } from "@douyinfe/semi-icons";
+import { IconHash, IconImage } from "@douyinfe/semi-icons";
+import { Button } from "@douyinfe/semi-ui";
+import { useNavigate } from "react-router-dom";
 
 interface AboutTravelProps {
   className?: string;
@@ -12,6 +14,7 @@ interface AboutTravelProps {
 const AboutTravel: React.FC<AboutTravelProps> = (props: AboutTravelProps) => {
   const { className = "" } = props;
   const { t } = useTranslation();
+  const navigate = useNavigate();
   const chartsRef: React.RefObject<HTMLDivElement> = React.createRef();
 
   useEffect(() => {
@@ -54,23 +57,6 @@ const AboutTravel: React.FC<AboutTravelProps> = (props: AboutTravelProps) => {
           },
         },
       },
-      //   series: [
-      //     {
-      //       name: "数据",
-      //       type: "map",
-      //       mapType: "china",
-      //       selectedMode: "single",
-      //       roam: false,
-      //       label: {
-      //         normal: {
-      //           show: false,
-      //         },
-      //         emphasis: {
-      //           show: true,
-      //         },
-      //       },
-      //     },
-      //   ],
     };
     myChart.setOption(option);
   }, [chartsRef]);
@@ -87,6 +73,17 @@ const AboutTravel: React.FC<AboutTravelProps> = (props: AboutTravelProps) => {
           {t("about.travel_summary_pre")}
           <span className="summary-num">{travelList.length}</span>
           {t("about.travel_summary_append")}
+        </div>
+        <div className="operate">
+          <Button
+            className="operate-button"
+            theme="solid"
+            type="primary"
+            onClick={() => navigate("/picture")}
+          >
+            <IconImage />
+            <span className="button-text">{t("about.travel_to_picture")}</span>
+          </Button>
         </div>
       </div>
       <div ref={chartsRef} className="travel-charts"></div>

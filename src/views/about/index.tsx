@@ -11,11 +11,8 @@ const About: React.FC = () => {
   const documentScroll = throttle(() => {
     const scrollTop = document.documentElement.scrollTop;
     console.log(scrollTop);
-    if (scrollTop >= 250) {
-      setShowUserInfo(false);
-    } else {
-      setShowUserInfo(true);
-    }
+    setShowUserInfo(scrollTop <= 250);
+    setShowUserTravel(scrollTop <= 620);
   }, 60);
 
   useEffect(() => {

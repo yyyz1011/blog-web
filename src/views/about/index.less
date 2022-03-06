@@ -38,3 +38,36 @@
     top: -100px;
   }
 }
+
+.show-user-travel {
+  position: relative;
+  opacity: 0;
+  left: -200px;
+  animation: showUserTravel 1s ease forwards;
+}
+.hidden-user-travel {
+  position: relative;
+  opacity: 1;
+  left: 0;
+  animation: hiddenUserTravel 1s ease forwards;
+}
+@keyframes showUserTravel {
+  form {
+    opacity: 0;
+    left: -200px;
+  }
+  to {
+    opacity: 1;
+    left: 0;
+  }
+}
+@keyframes hiddenUserTravel {
+  form {
+    opacity: 1;
+    left: 0;
+  }
+  to {
+    opacity: 0;
+    left: -200px;
+  }
+}

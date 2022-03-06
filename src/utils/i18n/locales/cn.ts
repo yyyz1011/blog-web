@@ -84,6 +84,7 @@ export default {
     travel_summary_append: "个省份",
     travel_text:
       "一程山、一程水一路行走、一路回忆千帆阅尽愿我们都能与更好的自己相遇~",
+    travel_to_picture: "跳转至图库",
   },
   404: {
     no_page_text: "页面找不到啦~是否返回首页",

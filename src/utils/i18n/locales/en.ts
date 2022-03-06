@@ -85,6 +85,7 @@ export default {
     travel_summary_pre: "I have tried to travel through",
     travel_summary_append: "provinces",
     travel_text: "Walk all the way, in order to meet a better self ~",
+    travel_to_picture: "Jump to the Picture",
   },
   404: {
     no_page_text: "Page not found ~ whether to return home page",
