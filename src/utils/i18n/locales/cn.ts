@@ -85,6 +85,8 @@ export default {
     travel_text:
       "一程山、一程水一路行走、一路回忆千帆阅尽愿我们都能与更好的自己相遇~",
     travel_to_picture: "跳转至图库",
+    blog_title: "关于博客",
+    blog_purpose: "分享·记录·提升",
   },
   404: {
     no_page_text: "页面找不到啦~是否返回首页",

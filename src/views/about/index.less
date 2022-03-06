@@ -71,3 +71,38 @@
     left: -200px;
   }
 }
+
+.show-user-blog {
+  position: relative;
+  opacity: 0;
+  left: -200px;
+  animation: showUserBlog 1s ease forwards;
+}
+.hidden-user-blog {
+  position: relative;
+  opacity: 1;
+  left: 0;
+  animation: hiddenUserBlog 1s ease forwards;
+}
+
+@keyframes showUserBlog {
+  form {
+    opacity: 0;
+    left: -200px;
+  }
+  to {
+    opacity: 1;
+    left: 0;
+  }
+}
+
+@keyframes hiddenUserBlog {
+  form {
+    opacity: 1;
+    left: 0;
+  }
+  to {
+    opacity: 0;
+    left: -200px;
+  }
+}

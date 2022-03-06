@@ -86,6 +86,8 @@ export default {
     travel_summary_append: "provinces",
     travel_text: "Walk all the way, in order to meet a better self ~",
     travel_to_picture: "Jump to the Picture",
+    blog_title: "About the blog",
+    blog_purpose: "Share·Record·Promote",
   },
   404: {
     no_page_text: "Page not found ~ whether to return home page",
