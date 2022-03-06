@@ -31,12 +31,8 @@ const About: React.FC = () => {
         <AboutUserInfo
           className={showUserInfo ? "show-user-info" : "hidden-user-info"}
         />
-        <AboutTravel
-          className={showUserTravel ? "show-user-travel" : "hidden-user-travel"}
-        />
-        <AboutBlog
-          className={showUserBlog ? "show-user-blog" : "hidden-user-blog"}
-        />
+        <AboutTravel className={showUserTravel ? "show-user" : "hidden-user"} />
+        <AboutBlog className={showUserBlog ? "show-user" : "hidden-user"} />
       </div>
       <div style={{ height: 3000 }}></div>
     </>
