@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./index.less";
 import AboutUserInfo from "@/components/about/about-user-info";
+import AboutArticle from "@/components/about/about-article";
 import AboutTravel from "@/components/about/about-travel";
 import AboutBlog from "@/components/about/about-blog";
 import { throttle } from "lodash-es";
@@ -32,6 +33,7 @@ const About: React.FC = () => {
           className={showUserInfo ? "show-user-info" : "hidden-user-info"}
         />
         <AboutTravel className={showUserTravel ? "show-user" : "hidden-user"} />
+        <AboutArticle />
         <AboutBlog className={showUserBlog ? "show-user" : "hidden-user"} />
       </div>
     </>
