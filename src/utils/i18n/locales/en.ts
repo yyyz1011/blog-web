@@ -93,6 +93,10 @@ export default {
     article_content_pre: "As of today, I have taken",
     article_content_append: "notes",
     article_to_article: "Jump to the Article",
+    hobby_title: "My Hobbies",
+    hobby_tip: "Keep your love and go to the next mountain sea",
+    hobby_type: "Photography · Journey",
+    hobby_to_link: "Jump to the Link",
   },
   404: {
     no_page_text: "Page not found ~ whether to return home page",

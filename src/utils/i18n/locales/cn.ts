@@ -91,7 +91,11 @@ export default {
     article_tip: "读万卷书，行万里路",
     article_content_pre: "截止今天，已经记录了",
     article_content_append: "份笔记",
-    article_to_article:'跳转至笔记'
+    article_to_article: "跳转至笔记",
+    hobby_title: "我热爱的",
+    hobby_tip: "保持热爱，奔赴下一场山海",
+    hobby_type: "摄影·旅行",
+    hobby_to_link: "跳转至友链",
   },
   404: {
     no_page_text: "页面找不到啦~是否返回首页",
