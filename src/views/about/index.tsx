@@ -9,6 +9,7 @@ import { throttle } from "lodash-es";
 const About: React.FC = () => {
   const [showUserInfo, setShowUserInfo] = useState<boolean>(true);
   const [showUserTravel, setShowUserTravel] = useState<boolean>(true);
+  const [showUserArticle, setShowUserArticle] = useState<boolean>(false);
   const [showUserBlog, setShowUserBlog] = useState<boolean>(false);
 
   const documentScroll = throttle(() => {
@@ -16,7 +17,8 @@ const About: React.FC = () => {
     console.log(scrollTop);
     setShowUserInfo(scrollTop <= 250);
     setShowUserTravel(scrollTop <= 620);
-    setShowUserBlog(scrollTop >= 250 && scrollTop <= 1054);
+    setShowUserArticle(scrollTop >= 200);
+    setShowUserBlog(scrollTop >= 550 && scrollTop <= 1054);
   }, 60);
 
   useEffect(() => {
@@ -33,7 +35,9 @@ const About: React.FC = () => {
           className={showUserInfo ? "show-user-info" : "hidden-user-info"}
         />
         <AboutTravel className={showUserTravel ? "show-user" : "hidden-user"} />
-        <AboutArticle />
+        <AboutArticle
+          className={showUserArticle ? "show-user" : "hidden-user"}
+        />
         <AboutBlog className={showUserBlog ? "show-user" : "hidden-user"} />
       </div>
     </>

@@ -87,6 +87,11 @@ export default {
     travel_to_picture: "跳转至图库",
     blog_title: "关于博客",
     blog_purpose: "分享·记录·提升",
+    article_title: "读万卷书",
+    article_tip: "读万卷书，行万里路",
+    article_content_pre: "截止今天，已经记录了",
+    article_content_append: "份笔记",
+    article_to_article:'跳转至笔记'
   },
   404: {
     no_page_text: "页面找不到啦~是否返回首页",

@@ -88,6 +88,11 @@ export default {
     travel_to_picture: "Jump to the Picture",
     blog_title: "About the blog",
     blog_purpose: "Share·Record·Promote",
+    article_title: "Called read a trip",
+    article_tip: "learn as much as you can and do all you can do",
+    article_content_pre: "As of today, I have taken",
+    article_content_append: "notes",
+    article_to_article: "Jump to the Article",
   },
   404: {
     no_page_text: "Page not found ~ whether to return home page",
