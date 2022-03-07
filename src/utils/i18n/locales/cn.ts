@@ -94,7 +94,7 @@ export default {
     article_to_article: "跳转至笔记",
     hobby_title: "我热爱的",
     hobby_tip: "保持热爱，奔赴下一场山海",
-    hobby_type: "摄影·旅行",
+    hobby_type: "摄影·旅行·视频剪辑",
     hobby_to_link: "跳转至友链",
   },
   404: {

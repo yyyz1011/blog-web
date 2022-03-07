@@ -95,7 +95,7 @@ export default {
     article_to_article: "Jump to the Article",
     hobby_title: "My Hobbies",
     hobby_tip: "Keep your love and go to the next mountain sea",
-    hobby_type: "Photography · Journey",
+    hobby_type: "Photography · Journey · Video Clip",
     hobby_to_link: "Jump to the Link",
   },
   404: {
