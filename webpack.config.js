@@ -51,6 +51,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: "./src/template/template.html",
+      inject: true,
     }),
   ],
   devServer: {
