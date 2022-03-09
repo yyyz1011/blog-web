@@ -26,7 +26,7 @@ const AboutHobby: React.FC<AboutHobbyProps> = (props: AboutHobbyProps) => {
           className="operate-button"
           theme="solid"
           type="primary"
-          onClick={() => navigate("/link")}
+          onClick={() => navigate("/blog-link")}
         >
           <IconUnlink />
           <span className="button-text">{t("about.hobby_to_link")}</span>
