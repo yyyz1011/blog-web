@@ -13,7 +13,7 @@
 3. [page] [TODO]Picture [The front-end part is completed, waiting for the back-end joint adjustment]
 4. [page] [TODO]Message Board
 5. [page] [Done]Link
-6. [page] [TODO]About
+6. [page] [TODO]About [The front-end part is completed, waiting for the back-end joint adjustment]
 
 ## 1 Home
 
