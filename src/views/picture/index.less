@@ -2,8 +2,6 @@
   width: 85%;
   min-width: 1200px;
   margin: 24px auto 0;
-  columns: 3;
-  column-gap: 20px;
 }
 
 .picture-item {
@@ -19,12 +17,13 @@
   }
   .picture-extra-info {
     position: absolute;
-    bottom: -100%;
+    bottom: -20%;
+    opacity: 0;
     width: calc(100% - 30px);
     left: 50%;
     transform: translateX(-50%);
     background: rgb(255, 255, 255);
-    transition: all 0.5s ease-in;
+    transition: all 0.3s ease-in-out;
     padding: 8px 16px;
     .picture-item-title {
       padding: 8px 0;
@@ -45,5 +44,6 @@
 .picture-item:hover {
   .picture-extra-info {
     bottom: 0;
+    opacity: 1;
   }
 }
