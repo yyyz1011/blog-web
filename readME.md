@@ -11,7 +11,7 @@
 1. [page] [TODO]Home
 2. [page] [TODO]Article [The front-end part is completed, waiting for the back-end joint adjustment]
 3. [page] [TODO]Picture [The front-end part is completed, waiting for the back-end joint adjustment]
-4. [page] [TODO]Message Board
+4. [page] [TODO]Message Board [The front-end part is completed, waiting for the back-end joint adjustment]
 5. [page] [Done]Link
 6. [page] [TODO]About [The front-end part is completed, waiting for the back-end joint adjustment]
 
@@ -38,6 +38,11 @@
 ## 4 Message Board
 
 > Blog message board, message statistics function
+
+
+<p align="center">
+  <img src="https://github.com/yyyz1011/assets-info/blob/master/blog-web/readMe/message.png" />
+</p>
 
 ## 5 Link
 
