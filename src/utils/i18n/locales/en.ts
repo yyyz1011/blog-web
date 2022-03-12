@@ -71,6 +71,12 @@ export default {
     required_error_title: "Check failure",
     required_error_text: "The message cannot be empty",
   },
+  message: {
+    editor_placeholder: "Please enter your message",
+    editor_operate_text: "Message",
+    editor_error_text: "Messages cannot be left blank",
+    history_message: "Historical message",
+  },
   link: {
     banner_title: "Link",
     banner_content: "If you want to add a Link, please send QQ email to ",

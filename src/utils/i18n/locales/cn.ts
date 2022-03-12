@@ -69,6 +69,12 @@ export default {
     required_error_title: "校验失败",
     required_error_text: "留言内容不能为空",
   },
+  message: {
+    editor_placeholder: "请输入留言",
+    editor_operate_text: "留言",
+    editor_error_text: "留言不能为空",
+    history_message: "历史留言",
+  },
   link: {
     banner_title: "友链",
     banner_content: "如果想增加友链，请QQ邮箱发送至",

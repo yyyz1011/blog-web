@@ -144,12 +144,14 @@ const LeafEditor: React.FC<LeafEditorProps> = (props: LeafEditorProps) => {
       editorState.getCurrentContent(),
       editorToHtmlOptions
     );
-    if (content === "<div><br></div>" && required)
+    if (content === "<div><br></div>" && required) {
       Notification.error({
         title: requiredErrorTitle,
         content: requiredErrorText,
-        position: 'top',
+        position: "top",
       });
+      return;
+    }
     submit && submit(content);
   };
 
@@ -174,7 +176,7 @@ const LeafEditor: React.FC<LeafEditorProps> = (props: LeafEditorProps) => {
         editorState={editorState}
         onChange={setEditorState}
       />
-      {isShowOperate && (
+      {isShowOperate && operateText && (
         <div className="operate">
           <Button
             className="operate-comment"

@@ -2286,6 +2286,11 @@ klona@^2.0.4:
   resolved "https://registry.yarnpkg.com/klona/-/klona-2.0.5.tgz#d166574d90076395d9963aa7a928fabb8d76afbc"
   integrity sha512-pJiBpiXMbt7dkzXe8Ghj/u4FfXOOa98fPW+bihOJ4SjnoijweJrNThJfd3ifXpXhREjpoF2mZVH1GfS9LV3kHQ==
 
+leaf-util@^1.0.12:
+  version "1.0.12"
+  resolved "https://registry.yarnpkg.com/leaf-util/-/leaf-util-1.0.12.tgz#36ffb70725b36405a260c3822f311f673b636a52"
+  integrity sha512-Q58C/6bdRdB8CD4jGgSGDVBHXj8sNfby6k8nACMNTu54sHs4/PuGrM6ZKVWF/SXoRK3uOYS5tpUZbW1P4JGmHQ==
+
 less-loader@^10.2.0:
   version "10.2.0"
   resolved "https://registry.yarnpkg.com/less-loader/-/less-loader-10.2.0.tgz#97286d8797dc3dc05b1d16b0ecec5f968bdd4e32"
