@@ -2,9 +2,12 @@ import React, { useState, useEffect } from "react";
 import { getFreeImg } from "@/network";
 import "./index.less";
 import AutoResponsive from "autoresponsive-react";
+import Carousel, { Modal, ModalGateway, CarouselState } from "react-images";
 
 const Picture: React.FC = () => {
   const [imgList, setImgList] = useState([]);
+  const [isOpenLightBox, setIsOpenLightBox] = useState<boolean>(false);
+  const [lightBoxImgIndex, setLightBoxImgIndex] = useState<number>(0);
 
   const getAllImg = () => {
     const mockLinkList = new Array(9).fill(getFreeImg);
@@ -50,7 +53,13 @@ const Picture: React.FC = () => {
                   height: item.height,
                 }}
               >
-                <div className="picture-item">
+                <div
+                  className="picture-item"
+                  onClick={() => {
+                    setIsOpenLightBox(true);
+                    setLightBoxImgIndex(index);
+                  }}
+                >
                   <img
                     className="picture-item-img"
                     src={item.uri}
@@ -74,6 +83,26 @@ const Picture: React.FC = () => {
             );
           })}
         </AutoResponsive>
+        <ModalGateway>
+          {isOpenLightBox ? (
+            <Modal onClose={() => setIsOpenLightBox(false)}>
+              <Carousel
+                views={imgList.map((item) => ({ source: item.uri }))}
+                currentIndex={lightBoxImgIndex}
+                styles={{
+                  headerFullscreen(
+                    base: React.CSSProperties,
+                    state: CarouselState
+                  ) {
+                    return {
+                      display: "none",
+                    };
+                  },
+                }}
+              />
+            </Modal>
+          ) : null}
+        </ModalGateway>
       </div>
     </>
   );
