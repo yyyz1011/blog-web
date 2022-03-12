@@ -5,6 +5,7 @@ import AutoResponsive from "autoresponsive-react";
 import Carousel, { Modal, ModalGateway, CarouselState } from "react-images";
 
 const Picture: React.FC = () => {
+  const [clientWidth, setClientWidth] = useState<number>(1200);
   const [imgList, setImgList] = useState([]);
   const [isOpenLightBox, setIsOpenLightBox] = useState<boolean>(false);
   const [lightBoxImgIndex, setLightBoxImgIndex] = useState<number>(0);
@@ -26,9 +27,14 @@ const Picture: React.FC = () => {
     setImgList([...imgList, ...data]);
   };
 
+  const resizeWindow = () => {
+    const width = document.body.clientWidth;
+    setClientWidth(width > 1200 ? width : 1200);
+  };
+
   const autoResponsiveOption = () => {
     return {
-      containerWidth: 1200,
+      containerWidth: clientWidth,
       itemClassName: "productListItem",
       gridWidth: 10,
       itemMargin: 20,
@@ -37,7 +43,12 @@ const Picture: React.FC = () => {
   };
 
   useEffect(() => {
+    resizeWindow();
     getAllImg();
+    window.addEventListener("resize", resizeWindow);
+    return () => {
+      window.removeEventListener("resize", resizeWindow);
+    };
   }, []);
 
   return (
