@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import ArticleCard from "@/components/article/article-card";
 import ArticleSummaryCard from "@/components/article/article-summary-card";
 import "./index.less";
-import { List, BackTop, Input, Card, Button } from "@douyinfe/semi-ui";
+import { List, Input, Card, Button } from "@douyinfe/semi-ui";
 import { IconSearch, IconQuote } from "@douyinfe/semi-icons";
 import { useTranslation } from "react-i18next";
 import NoData from "@/components/no-data";
@@ -146,7 +146,6 @@ const Article: React.FC = () => {
             ></List>
           </div>
         </div>
-        <BackTop className="article-back-top" />
       </div>
     </>
   );
