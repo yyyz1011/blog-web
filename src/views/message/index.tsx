@@ -1,6 +1,7 @@
 import React from "react";
 import "./index.less";
 import LeafEditor from "@/components/common/leaf-editor";
+import MessageList from "@/components/message/message-list";
 import { useTranslation } from "react-i18next";
 
 const Message: React.FC = () => {
@@ -22,6 +23,7 @@ const Message: React.FC = () => {
         />
       </div>
       <div className="message-title">{t("message.history_message")}</div>
+      <MessageList></MessageList>
     </div>
   );
 };

@@ -76,6 +76,11 @@ export default {
     editor_operate_text: "Message",
     editor_error_text: "Messages cannot be left blank",
     history_message: "Historical message",
+    message_no_data: "No Message",
+    // xxx 评论于 xxx
+    // Comment by xxx at xxx
+    message_item_title_name_pre: "Comment by ",
+    message_item_title_name_append: " at ",
   },
   link: {
     banner_title: "Link",

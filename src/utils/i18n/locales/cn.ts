@@ -74,6 +74,11 @@ export default {
     editor_operate_text: "留言",
     editor_error_text: "留言不能为空",
     history_message: "历史留言",
+    message_no_data: "暂无留言",
+    // xxx 评论于 xxx
+    // Comment by xxx at xxx
+    message_item_title_name_pre: "",
+    message_item_title_name_append: " 评论于 ",
   },
   link: {
     banner_title: "友链",

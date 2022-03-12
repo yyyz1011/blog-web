@@ -546,6 +546,13 @@
   dependencies:
     "@types/react" "*"
 
+"@types/react-infinite-scroller@^1.2.2":
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/@types/react-infinite-scroller/-/react-infinite-scroller-1.2.2.tgz#ee00ea8f5a03d3b6bf30842bd559283f8a7fdec9"
+  integrity sha512-3Tu/wspMKAOH/YkGmTrXgfYizL9DnMb4opksrl+m5jiESxGkRN4tiKf6lr7SN0FUgoFyQyK9o+yMKn1bWMTVmA==
+  dependencies:
+    "@types/react" "*"
+
 "@types/react-router-dom@^5.3.3":
   version "5.3.3"
   resolved "https://registry.yarnpkg.com/@types/react-router-dom/-/react-router-dom-5.3.3.tgz#e9d6b4a66fcdbd651a5f106c2656a30088cc1e83"
@@ -2845,7 +2852,7 @@ promise@^7.1.1:
   dependencies:
     asap "~2.0.3"
 
-prop-types@15.x, prop-types@^15.5.7, prop-types@^15.6.0:
+prop-types@15.x, prop-types@^15.5.7, prop-types@^15.5.8, prop-types@^15.6.0:
   version "15.8.1"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.8.1.tgz#67d87bf1a694f48435cf332c24af10214a3140b5"
   integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
@@ -2936,6 +2943,13 @@ react-i18next@^11.15.3:
     "@babel/runtime" "^7.14.5"
     html-escaper "^2.0.2"
     html-parse-stringify "^3.0.1"
+
+react-infinite-scroller@^1.2.5:
+  version "1.2.5"
+  resolved "https://registry.yarnpkg.com/react-infinite-scroller/-/react-infinite-scroller-1.2.5.tgz#9c3d4ed24ad42b0be4ed7567fe03fcf60d1dc86a"
+  integrity sha512-2A+SFUliZhVcxr4R2kFBrW/naGSluNMLqT6wfgmXKCggN1u/H4AW7flBLWHcY/5n/KviVLnpQfaMfBb/pG/m7g==
+  dependencies:
+    prop-types "^15.5.8"
 
 react-is@^16.13.1:
   version "16.13.1"
