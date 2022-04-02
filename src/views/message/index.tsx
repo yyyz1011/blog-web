@@ -17,8 +17,10 @@ const Message: React.FC = () => {
         <LeafEditor
           placeholder={t("message.editor_placeholder")}
           operateText={t("message.editor_operate_text")}
+          operateDisabledText={t("message.editor_operate_disable_text")}
           validateErrorText={t("message.editor_error_text")}
           success={handleCreateMessage}
+          isEdit={true}
         />
       </div>
       <div className="message-title">{t("message.history_message")}</div>

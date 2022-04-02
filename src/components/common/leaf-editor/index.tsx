@@ -9,15 +9,19 @@ import sanitizeHtml from "sanitize-html";
 interface LeafEditorProps {
   placeholder?: string;
   operateText?: string;
+  operateDisabledText?: string;
   validateErrorText?: string;
   success?: (text?: string) => void;
+  isEdit?: boolean;
 }
 const LeafEditor: React.FC<LeafEditorProps> = (props: LeafEditorProps) => {
   const {
     placeholder = "",
     operateText = "",
+    operateDisabledText = "",
     validateErrorText = "error",
     success = () => {},
+    isEdit = true,
   } = props;
   const [text, setText] = useState("");
   const [previewTheme] = useState("vuepress");
@@ -61,8 +65,9 @@ const LeafEditor: React.FC<LeafEditorProps> = (props: LeafEditorProps) => {
         block
         className="publish-button"
         onClick={handleSubmit}
+        disabled={!isEdit}
       >
-        {operateText}
+        {isEdit ? operateText : operateDisabledText}
       </Button>
     </>
   );
