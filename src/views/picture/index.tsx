@@ -29,7 +29,8 @@ const Picture: React.FC = () => {
 
   const resizeWindow = () => {
     const width = document.body.clientWidth;
-    setClientWidth(width > 1200 ? width : 1200);
+    const rate = 0.85;
+    setClientWidth(width > 1200 ? width * rate : 1200 * rate);
   };
 
   const autoResponsiveOption = () => {
