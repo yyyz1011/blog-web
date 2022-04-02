@@ -3,7 +3,7 @@ import "./index.less";
 import Editor from "md-editor-rt";
 import "md-editor-rt/lib/style.css";
 import Api from "@/network/api";
-import { Button } from "@douyinfe/semi-ui";
+import { Button, Notification } from "@douyinfe/semi-ui";
 import sanitizeHtml from "sanitize-html";
 
 interface LeafEditorProps {
@@ -44,6 +44,17 @@ const LeafEditor: React.FC<LeafEditorProps> = (props: LeafEditorProps) => {
   function handleSubmit() {
     if (!text) {
       window.$catch(validateErrorText);
+      return;
+    }
+    const filterHtml = sanitizeHtml(text);
+    if (filterHtml !== text) {
+      Notification.error({
+        position: "top",
+        title: "你个小可爱是不是在搞XSS~",
+        content: "少侠饶命，手下留情",
+        theme: "light",
+        duration: 0,
+      });
       return;
     }
     success(sanitizeHtml(text));
