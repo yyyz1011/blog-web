@@ -2,9 +2,9 @@ import { Request } from "./request";
 import { GetTokenResp, GetPictureListResp } from "./apiType";
 
 export default class Api {
-  // public static Common = {
-  //   upload: (params: any) => Request.post("/c/upload", params),
-  // };
+  public static Common = {
+    upload: (params: any) => Request.post("/c/upload", params),
+  };
 
   public static User = {
     getToken: (): Promise<GetTokenResp> => Request.get("/u/user/info") as any,
