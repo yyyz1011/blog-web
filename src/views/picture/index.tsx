@@ -22,6 +22,7 @@ const Picture: React.FC = () => {
   }, []);
 
   async function getAllImg() {
+    const errReloadKey = "reload";
     try {
       const imgWidth = 400;
       const data = await Api.Picture.getPictureList();
@@ -35,6 +36,8 @@ const Picture: React.FC = () => {
         } = item;
         const img = new Image();
         img.src = item.picture_url;
+        if (!Boolean(img.width) || !Boolean(img.height))
+          throw new Error(errReloadKey);
         return {
           width: imgWidth,
           height: (img.height * imgWidth) / img.width,
@@ -47,6 +50,10 @@ const Picture: React.FC = () => {
       });
       setImgList(resData);
     } catch (err: any) {
+      if (err.message === errReloadKey) {
+        getAllImg();
+        return;
+      }
       window.$catch(err.message);
     }
   }
