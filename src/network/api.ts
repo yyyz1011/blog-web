@@ -1,5 +1,5 @@
 import { Request } from "./request";
-import { GetTokenResp } from "./apiType";
+import { GetTokenResp, GetPictureListResp } from "./apiType";
 
 export default class Api {
   // public static Common = {
@@ -23,12 +23,13 @@ export default class Api {
   //     Request.post("/at/create", params),
   // };
 
-  // public static Picture = {
-  //   createPicture: (params: CreatePictureReq) =>
-  //     Request.post("/p/create", params),
-  //   updatePicture: (params: UpdatePictureReq) =>
-  //     Request.post("/p/update", params),
-  //   delPicture: (params: DelPictureReq) => Request.post("/p/del", params),
-  //   getPictureList: () => Request.get("/p/picture/list"),
-  // };
+  public static Picture = {
+    // createPicture: (params: CreatePictureReq) =>
+    //   Request.post("/p/create", params),
+    // updatePicture: (params: UpdatePictureReq) =>
+    //   Request.post("/p/update", params),
+    // delPicture: (params: DelPictureReq) => Request.post("/p/del", params),
+    getPictureList: (): Promise<GetPictureListResp> =>
+      Request.get("/p/picture/list") as any,
+  };
 }

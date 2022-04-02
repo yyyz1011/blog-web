@@ -2,45 +2,15 @@ import React, { useState, useEffect } from "react";
 import "./index.less";
 import AutoResponsive from "autoresponsive-react";
 import Carousel, { Modal, ModalGateway, CarouselState } from "react-images";
+import Api from "@/network/api";
+import { Tag } from "@douyinfe/semi-ui";
+import dayjs from "dayjs";
 
 const Picture: React.FC = () => {
   const [clientWidth, setClientWidth] = useState<number>(1200);
   const [imgList, setImgList] = useState([]);
   const [isOpenLightBox, setIsOpenLightBox] = useState<boolean>(false);
   const [lightBoxImgIndex, setLightBoxImgIndex] = useState<number>(0);
-
-  const getAllImg = () => {
-    // const mockLinkList = new Array(9).fill(getFreeImg);
-    // const data = mockLinkList.map((item) => {
-    //   const width = 380;
-    //   const height = Math.floor(Math.random() * 3 + 5) * 100;
-    //   return {
-    //     uri: item({
-    //       width,
-    //       height,
-    //     }),
-    //     width,
-    //     height,
-    //   };
-    // });
-    // setImgList([...imgList, ...data]);
-  };
-
-  const resizeWindow = () => {
-    const width = document.body.clientWidth;
-    const rate = 0.85;
-    setClientWidth(width > 1200 ? width * rate : 1200 * rate);
-  };
-
-  const autoResponsiveOption = () => {
-    return {
-      containerWidth: clientWidth,
-      itemClassName: "productListItem",
-      gridWidth: 10,
-      itemMargin: 20,
-      transitionDuration: 0.5,
-    };
-  };
 
   useEffect(() => {
     resizeWindow();
@@ -50,6 +20,52 @@ const Picture: React.FC = () => {
       window.removeEventListener("resize", resizeWindow);
     };
   }, []);
+
+  async function getAllImg() {
+    try {
+      const imgWidth = 400;
+      const data = await Api.Picture.getPictureList();
+      const resData = data.map((item) => {
+        const {
+          title,
+          region,
+          desc,
+          create_time: createTime,
+          picture_url: url,
+        } = item;
+        const img = new Image();
+        img.src = item.picture_url;
+        return {
+          width: imgWidth,
+          height: (img.height * imgWidth) / img.width,
+          title,
+          url,
+          region,
+          desc,
+          createTime,
+        };
+      });
+      setImgList(resData);
+    } catch (err: any) {
+      window.$catch(err.message);
+    }
+  }
+
+  function resizeWindow() {
+    const width = document.body.clientWidth;
+    const rate = 0.85;
+    setClientWidth(width > 1200 ? width * rate : 1200 * rate);
+  }
+
+  function autoResponsiveOption() {
+    return {
+      containerWidth: clientWidth,
+      itemClassName: "productListItem",
+      gridWidth: 10,
+      itemMargin: 20,
+      transitionDuration: 0.5,
+    };
+  }
 
   return (
     <>
@@ -73,21 +89,23 @@ const Picture: React.FC = () => {
                 >
                   <img
                     className="picture-item-img"
-                    src={item.uri}
+                    src={item.url}
                     style={{
                       width: item.width,
                       height: item.height,
                     }}
                   />
                   <div className="picture-extra-info">
-                    <div className="picture-item-title">Title Goes Here</div>
-                    <div className="picture-item-modify-time">2022-3-3</div>
-                    <div className="picture-item-content">
-                      Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                      Quis quod et deleniti nobis quasi ad, adipisci perferendis
-                      totam, ducimus incidunt dolore aut, quae quaerat
-                      architecto quisquam repudiandae amet nostrum quidem?
+                    <div className="picture-item-title">
+                      {item.title}
+                      <Tag className="tag" color="violet">
+                        {item.region}
+                      </Tag>
                     </div>
+                    <div className="picture-item-modify-time">
+                      {dayjs(Number(item.createTime)).format("YYYY-MM-DD")}
+                    </div>
+                    <div className="picture-item-content">{item.desc}</div>
                   </div>
                 </div>
               </ul>
@@ -98,7 +116,7 @@ const Picture: React.FC = () => {
           {isOpenLightBox ? (
             <Modal onClose={() => setIsOpenLightBox(false)}>
               <Carousel
-                views={imgList.map((item) => ({ source: item.uri }))}
+                views={imgList.map((item) => ({ source: item.url }))}
                 currentIndex={lightBoxImgIndex}
                 styles={{
                   headerFullscreen(

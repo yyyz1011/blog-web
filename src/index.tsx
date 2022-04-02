@@ -5,8 +5,15 @@ import "@/utils/i18n";
 import "@/assets/css/common.less";
 import { Provider } from "mobx-react";
 import store from "@/store";
+import { Notification } from "@douyinfe/semi-ui";
 import { configure } from "mobx"; // 开启严格模式
 configure({ enforceActions: "always" }); // 开启严格模式
+
+window.$catch = (content: string) =>
+  Notification.error({
+    position: "top",
+    content,
+  });
 
 const leafBlogInfo =
   "  __                  ___   __       __                 \n" +
