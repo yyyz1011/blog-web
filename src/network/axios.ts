@@ -1,60 +1,133 @@
-import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
-import qs from "qs";
-import { showMessage } from "./status";
+import axios, { AxiosRequestConfig, Method } from "axios";
 import { Notification } from "@douyinfe/semi-ui";
+import { baseUrl, Token } from "@/constant/common";
 
-export interface IResponse {
-  code: number | string;
+// 定义接口
+interface PendingType {
+  url?: string;
+  method?: Method;
+  params: any;
   data: any;
-  msg: string;
+  cancel: any;
 }
 
-export const axiosInstance: AxiosInstance = axios.create({
-  baseURL: "",
+// 取消重复请求
+const pending: Array<PendingType> = [];
+const CancelToken = axios.CancelToken;
+
+// 移除重复请求
+const removePending = (config: AxiosRequestConfig) => {
+  for (const key in pending) {
+    const item: number = +key;
+    if (pending.hasOwnProperty(key)) {
+      const list: PendingType = pending[key];
+      // 当前请求在数组中存在时执行函数体
+      if (
+        list.url === config.url &&
+        list.method === config.method &&
+        JSON.stringify(list.params) === JSON.stringify(config.params) &&
+        JSON.stringify(list.data) === JSON.stringify(config.data)
+      ) {
+        list.cancel("操作太频繁，请稍后再试");
+        pending.splice(item, 1);
+      }
+    }
+  }
+};
+
+// 实例化请求
+const instance = axios.create({
   headers: {
-    Accept: "application/json",
-    "Content-Type": "application/x-www-form-urlencoded",
+    "Content-Type": "application/json;charset=UTF-8",
+    "Access-Control-Allow-Origin-Type": "*",
   },
-  transformRequest: [
-    function (data) {
-      // 使用 form-data 需要数据格式化
-      data = qs.stringify(data);
-      return data;
-    },
-  ],
+  baseURL: baseUrl,
+  timeout: 5 * 1000,
+  withCredentials: false,
 });
 
-// axios 实例拦截响应
-axiosInstance.interceptors.response.use(
-  (response: AxiosResponse) => {
-    if (response.status === 200) {
-      return response;
-    } else {
-      showMessage(response.status);
-      return response;
+// 请求拦截器
+instance.interceptors.request.use(
+  (config) => {
+    removePending(config);
+    config.cancelToken = new CancelToken((c) => {
+      pending.push({
+        url: config.url,
+        method: config.method,
+        params: config.params,
+        data: config.data,
+        cancel: c,
+      });
+    });
+    // 登录流程控制中，根据本地是否存在token判断用户的登录情况
+    // 但是即使token存在，也有可能token是过期的，所以在每次的请求头中携带token
+    // 后台根据携带的token判断用户的登录情况，并返回给我们对应的状态码
+    const token = sessionStorage.getItem(Token);
+    if (token) {
+      config.headers = {
+        token,
+      };
     }
+
+    return config;
   },
-  (error: any) => {
-    const { response } = error;
-    if (response) {
-      // 发出请求，但是不在2xx的范围
-      showMessage(response.status);
-      return Promise.reject(response.data);
+  (err) => {
+    Notification.error({
+      duration: 3,
+      position: "top",
+      title: "network error",
+      content: err.data.error.message,
+    });
+    return Promise.reject(err.data.error.message);
+  }
+);
+
+// 相应拦截器
+instance.interceptors.response.use(
+  (config) => {
+    removePending(config.config);
+    const realConfig = config.data;
+    if (realConfig.code === 200) {
+      return Promise.resolve(realConfig.data);
     } else {
       Notification.error({
+        duration: 3,
         position: "top",
-        title: "网络连接异常，请稍后再试",
+        title: "network error",
+        content: `[${realConfig.code}] ${realConfig.message}`,
       });
+      return Promise.reject(realConfig);
+    }
+  },
+  (err) => {
+    const { response } = err;
+    if (response) {
+      const config = err.config;
+      const [RETRY_COUNT, RETRY_DELAY] = [3, 1000];
+
+      if (config && RETRY_COUNT) {
+        // 设置用于跟踪重试计数的变量
+        config.__retryCount = config.__retryCount || 0;
+        // 检查是否已经把重试的总数用完
+        if (config.__retryCount >= RETRY_COUNT) {
+          return Promise.reject(response || { message: err.message });
+        }
+        // 增加重试计数
+        config.__retryCount++;
+        // 创造新的Promise来处理指数后退
+        const backoff = new Promise<void>((resolve) => {
+          setTimeout(() => {
+            resolve();
+          }, RETRY_DELAY || 1);
+        });
+        // instance重试请求的Promise
+        return backoff.then(() => {
+          return instance(config);
+        });
+      }
+      return Promise.reject(response);
     }
   }
 );
 
-// axios 实例拦截请求
-axiosInstance.interceptors.request.use(
-  (config: AxiosRequestConfig) => {
-    return config;
-  },
-  (error: any) => {
-    return Promise.reject(error);
-  }
-);
+export default instance;

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { getFreeImg } from "@/network";
 import "./index.less";
 import AutoResponsive from "autoresponsive-react";
 import Carousel, { Modal, ModalGateway, CarouselState } from "react-images";
@@ -11,20 +10,20 @@ const Picture: React.FC = () => {
   const [lightBoxImgIndex, setLightBoxImgIndex] = useState<number>(0);
 
   const getAllImg = () => {
-    const mockLinkList = new Array(9).fill(getFreeImg);
-    const data = mockLinkList.map((item) => {
-      const width = 380;
-      const height = Math.floor(Math.random() * 3 + 5) * 100;
-      return {
-        uri: item({
-          width,
-          height,
-        }),
-        width,
-        height,
-      };
-    });
-    setImgList([...imgList, ...data]);
+    // const mockLinkList = new Array(9).fill(getFreeImg);
+    // const data = mockLinkList.map((item) => {
+    //   const width = 380;
+    //   const height = Math.floor(Math.random() * 3 + 5) * 100;
+    //   return {
+    //     uri: item({
+    //       width,
+    //       height,
+    //     }),
+    //     width,
+    //     height,
+    //   };
+    // });
+    // setImgList([...imgList, ...data]);
   };
 
   const resizeWindow = () => {
