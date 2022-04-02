@@ -60,6 +60,7 @@ const Picture: React.FC = () => {
 
   function resizeWindow() {
     const width = document.body.clientWidth;
+    // 页面layout宽度为 85%
     const rate = 0.85;
     setClientWidth(width > 1200 ? width * rate : 1200 * rate);
   }

@@ -24,11 +24,6 @@ export default class Api {
   // };
 
   public static Picture = {
-    // createPicture: (params: CreatePictureReq) =>
-    //   Request.post("/p/create", params),
-    // updatePicture: (params: UpdatePictureReq) =>
-    //   Request.post("/p/update", params),
-    // delPicture: (params: DelPictureReq) => Request.post("/p/del", params),
     getPictureList: (): Promise<GetPictureListResp> =>
       Request.get("/p/picture/list") as any,
   };
