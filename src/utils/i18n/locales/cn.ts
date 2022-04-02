@@ -112,4 +112,7 @@ export default {
     no_page_text: "页面找不到啦~是否返回首页",
     operate_text: "返回",
   },
+  status_tip: {
+    img_load_error: "图片加载失败，请刷新页面",
+  },
 };

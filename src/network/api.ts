@@ -10,18 +10,10 @@ export default class Api {
     getToken: (): Promise<GetTokenResp> => Request.get("/u/user/info") as any,
   };
 
-  // public static Article = {
-  //   getArticleTypeList: () => Request.get("/at/article/type/list"),
-  //   getArticleList: (params: GetArticleListReq) =>
-  //     Request.get("/a/article/list", params),
-  //   createArticle: (params: CreateArticleReq) =>
-  //     Request.post("/a/create", params),
-  //   updateArticle: (params: UpdateArticleReq) =>
-  //     Request.post("/a/update", params),
-  //   delArticle: (params: DelArticleReq) => Request.post("/a/del", params),
-  //   createArticleType: (params: CreateArticleTypeReq) =>
-  //     Request.post("/at/create", params),
-  // };
+  public static Article = {
+    getArticleTypeList: () => Request.get("/at/article/type/list"),
+    // getArticleList: (params) => Request.get("/a/article/list", params),
+  };
 
   public static Picture = {
     getPictureList: (): Promise<GetPictureListResp> =>

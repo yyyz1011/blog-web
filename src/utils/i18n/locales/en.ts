@@ -113,4 +113,7 @@ export default {
     no_page_text: "Page not found ~ whether to return home page",
     operate_text: "Back",
   },
+  status_tip: {
+    img_load_error: "Image load failed, please refresh the page",
+  },
 };

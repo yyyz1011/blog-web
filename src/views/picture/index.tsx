@@ -5,8 +5,10 @@ import Carousel, { Modal, ModalGateway, CarouselState } from "react-images";
 import Api from "@/network/api";
 import { Tag } from "@douyinfe/semi-ui";
 import dayjs from "dayjs";
+import { useTranslation } from "react-i18next";
 
 const Picture: React.FC = () => {
+  const { t } = useTranslation();
   const [clientWidth, setClientWidth] = useState<number>(1200);
   const [imgList, setImgList] = useState([]);
   const [isOpenLightBox, setIsOpenLightBox] = useState<boolean>(false);
@@ -22,27 +24,20 @@ const Picture: React.FC = () => {
   }, []);
 
   async function getAllImg() {
-    const errReloadKey = "reload";
     try {
       const imgWidth = 400;
       const data = await Api.Picture.getPictureList();
-      const resData = data.map((item) => {
+      let resData: any = [];
+      for (let i = 0; i < data.length; i++) {
         const {
           title,
           region,
           desc,
           create_time: createTime,
           picture_url: url,
-        } = item;
-        const img = new Image();
-        img.src = item.picture_url;
-        /**
-         * TODO 判断img的width和height参数是否拿到，假如没拿到报错并重新触发接口
-         * 这段逻辑有点问题，应该是onload之后push进imgList，有空了改改
-         */
-        if (!Boolean(img.width) || !Boolean(img.height))
-          throw new Error(errReloadKey);
-        return {
+        } = data[i];
+        const img: any = await getImgAttr(url);
+        resData.push({
           width: imgWidth,
           height: (img.height * imgWidth) / img.width,
           title,
@@ -50,16 +45,21 @@ const Picture: React.FC = () => {
           region,
           desc,
           createTime,
-        };
-      });
+        });
+      }
       setImgList(resData);
     } catch (err: any) {
-      if (err.message === errReloadKey) {
-        getAllImg();
-        return;
-      }
       window.$catch(err.message);
     }
+  }
+
+  function getImgAttr(src: string) {
+    return new Promise((resolve, reject) => {
+      let img = new Image();
+      img.onload = () => resolve(img);
+      img.onerror = () => reject(new Error(t("status_tip.img_load_error")));
+      img.src = src;
+    });
   }
 
   function resizeWindow() {
