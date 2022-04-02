@@ -36,6 +36,10 @@ const Picture: React.FC = () => {
         } = item;
         const img = new Image();
         img.src = item.picture_url;
+        /**
+         * TODO 判断img的width和height参数是否拿到，假如没拿到报错并重新触发接口
+         * 这段逻辑有点问题，应该是onload之后push进imgList，有空了改改
+         */
         if (!Boolean(img.width) || !Boolean(img.height))
           throw new Error(errReloadKey);
         return {
