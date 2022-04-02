@@ -1,6 +1,7 @@
 import axios, { AxiosRequestConfig, Method } from "axios";
 import { Notification } from "@douyinfe/semi-ui";
 import { baseUrl, Token } from "@/constant/common";
+import NProgress from "nprogress"; 
 
 // 定义接口
 interface PendingType {
@@ -49,6 +50,7 @@ const instance = axios.create({
 // 请求拦截器
 instance.interceptors.request.use(
   (config) => {
+    NProgress.start();
     removePending(config);
     config.cancelToken = new CancelToken((c) => {
       pending.push({
@@ -85,6 +87,7 @@ instance.interceptors.request.use(
 // 相应拦截器
 instance.interceptors.response.use(
   (config) => {
+    NProgress.done();
     removePending(config.config);
     const realConfig = config.data;
     if (realConfig.code === 200) {

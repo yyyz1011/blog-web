@@ -6,8 +6,16 @@ import "@/assets/css/common.less";
 import { Provider } from "mobx-react";
 import store from "@/store";
 import { Notification } from "@douyinfe/semi-ui";
+import NProgress from "nprogress";
+import "nprogress/nprogress.css";
 import { configure } from "mobx"; // 开启严格模式
 configure({ enforceActions: "always" }); // 开启严格模式
+
+NProgress.configure({
+  easing: "ease",
+  speed: 500,
+  showSpinner: false,
+});
 
 window.$catch = (content: string) =>
   Notification.error({
