@@ -11,6 +11,7 @@ interface LeafEditorProps {
   operateText?: string;
   operateDisabledText?: string;
   validateErrorText?: string;
+  submit?: (text?: string) => Promise<boolean>;
   success?: (text?: string) => void;
   isEdit?: boolean;
 }
@@ -20,6 +21,7 @@ const LeafEditor: React.FC<LeafEditorProps> = (props: LeafEditorProps) => {
     operateText = "",
     operateDisabledText = "",
     validateErrorText = "error",
+    submit = () => {},
     success = () => {},
     isEdit = true,
   } = props;
@@ -41,23 +43,15 @@ const LeafEditor: React.FC<LeafEditorProps> = (props: LeafEditorProps) => {
     }
   }
 
-  function handleSubmit() {
+  async function handleSubmit() {
     if (!text) {
       window.$catch(validateErrorText);
       return;
     }
-    const filterHtml = sanitizeHtml(text);
-    if (filterHtml !== text) {
-      Notification.error({
-        position: "top",
-        title: "你个小可爱是不是在搞XSS~",
-        content: "少侠饶命，手下留情",
-        theme: "light",
-        duration: 0,
-      });
-      return;
-    }
-    success(sanitizeHtml(text));
+    const isSubmit = await submit(text);
+    if (!isSubmit) return;
+    setText("");
+    success();
   }
 
   return (

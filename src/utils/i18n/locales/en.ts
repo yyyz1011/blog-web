@@ -75,6 +75,7 @@ export default {
     editor_placeholder: "Please enter your message",
     editor_operate_text: "Message",
     editor_operate_disable_text: "Please leave a message after login",
+    message_success: "Message successfully",
     editor_error_text: "Messages cannot be left blank",
     history_message: "Historical message",
     message_no_data: "No Message",

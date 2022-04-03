@@ -1,5 +1,11 @@
 import { Request } from "./request";
-import { GetTokenResp, GetPictureListResp } from "./apiType";
+import {
+  GetTokenResp,
+  GetPictureListResp,
+  CreateMessageReq,
+  CreateMessageResp,
+  GetMessageListResp,
+} from "./apiType";
 
 export default class Api {
   public static Common = {
@@ -18,5 +24,12 @@ export default class Api {
   public static Picture = {
     getPictureList: (): Promise<GetPictureListResp> =>
       Request.get("/p/picture/list") as any,
+  };
+
+  public static Message = {
+    createMessage: (params: CreateMessageReq): Promise<CreateMessageResp> =>
+      Request.post("/m/create", params) as any,
+    getMessageList: (): Promise<GetMessageListResp> =>
+      Request.get("/m/list") as any,
   };
 }

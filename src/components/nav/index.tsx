@@ -78,6 +78,7 @@ const Nav: React.FC<any> = (props: any) => {
           content: t("nav.login_modal.notify_content"),
           duration: 3,
         });
+        window.location.reload();
       })
       .catch(() => {
         Toast.error(t("nav.login_modal.error_info"));
@@ -92,6 +93,7 @@ const Nav: React.FC<any> = (props: any) => {
     });
     setLocalstorageUserInfo(null);
     setVisibleExit(false);
+    window.location.reload();
   };
 
   return (

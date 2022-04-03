@@ -73,6 +73,7 @@ export default {
     editor_placeholder: "请输入留言",
     editor_operate_text: "留言",
     editor_operate_disable_text: "请登录之后留言",
+    message_success: "留言成功",
     editor_error_text: "留言不能为空",
     history_message: "历史留言",
     message_no_data: "暂无留言",
