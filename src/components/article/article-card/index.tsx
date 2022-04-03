@@ -45,7 +45,9 @@ const ArticleCard: React.FC<IProps> = (props: IProps) => {
           title={
             <div className="article-title">
               <span className="article-title--title">{title}</span>
-              <Tag className="article-title--type">{atLabel}</Tag>
+              <Tag color="green" className="article-title--type">
+                {atLabel}
+              </Tag>
             </div>
           }
           headerExtraContent={

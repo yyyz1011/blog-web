@@ -21,7 +21,7 @@ const Article: React.FC = () => {
 
   const handleSearch = () => {
     // TODO
-    console.log(searchByTitle, searchByContent);
+    // console.log(searchByTitle, searchByContent);
   };
 
   useEffect(() => {

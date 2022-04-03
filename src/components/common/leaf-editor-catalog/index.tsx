@@ -58,7 +58,7 @@ const Catalog = ({
   }, [heads]);
 
   return (
-    <Anchor scrollMotion showTooltip targetOffset={60} className={className}>
+    <Anchor defaultAnchor={`${catalogs[0]?.level}-${catalogs[0]?.text}`} scrollMotion showTooltip targetOffset={60} className={className}>
       {catalogs.map((item) => (
         <CatalogLink key={`${item.level}-${item.text}`} tocItem={item} />
       ))}

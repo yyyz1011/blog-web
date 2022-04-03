@@ -26,7 +26,6 @@ const ArticleDetailHeader: React.FC<ArticleDetailHeaderProps> = (
   useEffect(() => {
     setLoading(articleInfo ? false : true);
     if (articleInfo) {
-      console.log(articleInfo);
       const description: DescriptionsType[] = [
         {
           key: t("article_detail.description_create_time"),
