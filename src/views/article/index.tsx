@@ -7,56 +7,38 @@ import { IconSearch, IconQuote } from "@douyinfe/semi-icons";
 import { useTranslation } from "react-i18next";
 import NoData from "@/components/no-data";
 import LeafCarousel from "@/components/common/leaf-carousel";
-
-interface ArticleTag {
-  type: string;
-  color: string;
-}
-interface ArticleItem {
-  id: string;
-  title: string;
-  desc: string;
-  type: Array<ArticleTag>;
-  modify_time: string;
-}
+import Api from "@/network/api";
+import { GetArticleListItem } from "@/network/apiType";
 
 const Article: React.FC = () => {
   const { t } = useTranslation();
   const [loading, setLoading] = useState<boolean>(true);
   const [searchByTitle, setSearchByTitle] = useState<string>("");
   const [searchByContent, setSearchByContent] = useState<string>("");
-  const [MOCK_articleList, setArticleList] = useState<Array<ArticleItem>>([]);
-
-  const handleLoadMore = () => {
-    setLoading(true);
-    const start_index = MOCK_articleList.length;
-    const MOCK_times = start_index + 15;
-    let new_list = MOCK_articleList;
-    for (let i = start_index; i < MOCK_times; i++) {
-      new_list.push({
-        id: i.toString(),
-        title: "这是一个标题11",
-        desc: "习近平总书记强调，推动共青团事业不断开创新局面，关键在团干部。共青团的作风形象，首先体现为团干部的作风形象；共青团的建设质量，关键取决于团干部队伍的建设质量。建设一支作风过硬、形象阳光的团干部队伍，始终是全面从严治团的重点任务。习近平总书记强调，推动共青团事业不断开创新局面，关键在团干部。共青团的作风形象，首先体现为团干部的作风形象；共青团的建设质量，关键取决于团干部队伍的建设质量。建设一支作风过硬、形象阳光的团干部队伍，始终是全面从严治团的重点任务。",
-        type: [
-          { type: "vue", color: "purple" },
-          { type: "react", color: "red" },
-        ],
-        modify_time: new Date().getTime().toString(),
-      });
-    }
-    setArticleList(new_list);
-    setTimeout(() => {
-      setLoading(false);
-    }, 1000);
-  };
+  const [MOCK_articleList, setArticleList] = useState<
+    Array<GetArticleListItem>
+  >([]);
 
   const handleSearch = () => {
     console.log(searchByTitle, searchByContent);
   };
 
   useEffect(() => {
-    handleLoadMore();
+    getArticleList();
   }, []);
+
+  async function getArticleList() {
+    setLoading(true);
+    try {
+      const data = await Api.Article.getArticleList();
+      setArticleList(data);
+      console.log(data);
+    } catch (err: any) {
+      window.$catch(err.message);
+    } finally {
+      setLoading(false);
+    }
+  }
 
   return (
     <>
@@ -139,7 +121,7 @@ const Article: React.FC = () => {
               renderItem={(item) => (
                 <ArticleCard
                   loading={loading}
-                  key={item.id}
+                  key={item.aid}
                   info={item}
                 ></ArticleCard>
               )}

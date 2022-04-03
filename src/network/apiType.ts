@@ -30,3 +30,17 @@ export interface GetMessageListItem {
   create_time: string;
 }
 export type GetMessageListResp = GetMessageListItem[];
+
+export interface GetArticleListItem {
+  aid: string;
+  article_like: string;
+  article_vv: string;
+  atLabel: string;
+  atid: string;
+  content: string;
+  create_time: string;
+  desc: string;
+  modify_time: string;
+  title: string;
+}
+export type GetArticleListResp = GetArticleListItem[];

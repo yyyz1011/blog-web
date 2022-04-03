@@ -5,6 +5,7 @@ import {
   CreateMessageReq,
   CreateMessageResp,
   GetMessageListResp,
+  GetArticleListResp,
 } from "./apiType";
 
 export default class Api {
@@ -17,8 +18,9 @@ export default class Api {
   };
 
   public static Article = {
-    getArticleTypeList: () => Request.get("/at/article/type/list"),
-    // getArticleList: (params) => Request.get("/a/article/list", params),
+    getArticleTypeList: () => Request.get("/at/article/type/list") as any,
+    getArticleList: (): Promise<GetArticleListResp> =>
+      Request.get("/a/article/list") as any,
   };
 
   public static Picture = {

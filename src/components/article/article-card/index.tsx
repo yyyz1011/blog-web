@@ -6,19 +6,9 @@ import dayjs from "dayjs";
 import { useTranslation } from "react-i18next";
 import { IconLikeThumb, IconMail, IconVideo } from "@douyinfe/semi-icons";
 import { useNavigate } from "react-router-dom";
-
-interface ArticleTag {
-  type: string;
-  color: string;
-}
+import { GetArticleListItem } from "@/network/apiType";
 interface IProps {
-  info: {
-    id: string;
-    title: string;
-    desc: string;
-    type: Array<ArticleTag>;
-    modify_time: string;
-  };
+  info: GetArticleListItem;
   isShowModifyTime?: boolean;
   isShowExtraSummary?: boolean;
   loading?: boolean;
@@ -26,7 +16,15 @@ interface IProps {
 
 const ArticleCard: React.FC<IProps> = (props: IProps) => {
   const navigate = useNavigate();
-  const { id, title, desc, type, modify_time: modifyTime } = props.info;
+  const {
+    aid,
+    title,
+    desc,
+    atLabel,
+    modify_time: modifyTime,
+    article_vv: articleVv,
+    article_like: articleLike,
+  } = props.info;
   const {
     loading = false,
     isShowModifyTime = true,
@@ -35,7 +33,7 @@ const ArticleCard: React.FC<IProps> = (props: IProps) => {
   const { t } = useTranslation();
   const updateTime = dayjs(Number(modifyTime)).format("YYYY-MM-DD HH:mm");
 
-  const handleGoArticle = () => navigate(`/article-detail/${id}`);
+  const handleGoArticle = () => navigate(`/article-detail/${aid}`);
 
   return (
     <>
@@ -48,16 +46,7 @@ const ArticleCard: React.FC<IProps> = (props: IProps) => {
           title={
             <div className="article-title">
               <span className="article-title--title">{title}</span>
-              {type.length &&
-                type.map((item, index) => (
-                  <Tag
-                    key={"article-type-" + index}
-                    className="article-title--type"
-                    color={item.color as TagColor}
-                  >
-                    {item.type}
-                  </Tag>
-                ))}
+              <Tag className="article-title--type">{atLabel}</Tag>
             </div>
           }
           headerExtraContent={
@@ -77,19 +66,13 @@ const ArticleCard: React.FC<IProps> = (props: IProps) => {
                 <Tooltip content={t("article.page_view")}>
                   <div className="info-item">
                     <IconVideo />
-                    <div>1234</div>
+                    <div>{articleVv}</div>
                   </div>
                 </Tooltip>
                 <Tooltip content={t("article.like")}>
                   <div className="info-item">
                     <IconLikeThumb />
-                    <div>1</div>
-                  </div>
-                </Tooltip>
-                <Tooltip content={t("article.message")}>
-                  <div className="info-item">
-                    <IconMail />
-                    <div>123123</div>
+                    <div>{articleLike}</div>
                   </div>
                 </Tooltip>
               </div>
