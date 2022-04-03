@@ -56,11 +56,6 @@ const ArticleDetail: React.FC = () => {
     }
   }, 1000);
 
-  function handleClickEditor(e:any) {
-    console.log(e);
-    event.preventDefault();
-  }
-
   return (
     <div className="article-detail">
       <Breadcrumb className="article-breadcrumb" compact={false}>
@@ -68,7 +63,7 @@ const ArticleDetail: React.FC = () => {
           {t("article_detail.breadcrumb_article")}
         </Breadcrumb.Item>
         <Breadcrumb.Item>
-          {t("article_detail.breadcrumb_article_detail")}
+          {t("article_detail.breadcrumb_article_detail")}-{articleInfo?.title}
         </Breadcrumb.Item>
       </Breadcrumb>
       <ArticleDetailHeader articleInfo={articleInfo} />
