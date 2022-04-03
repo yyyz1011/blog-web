@@ -1,7 +1,6 @@
 import React from "react";
 import { Card, Tag, Tooltip } from "@douyinfe/semi-ui";
 import "./index.less";
-import { TagColor } from "@douyinfe/semi-ui/lib/es/tag";
 import dayjs from "dayjs";
 import { useTranslation } from "react-i18next";
 import { IconLikeThumb, IconMail, IconVideo } from "@douyinfe/semi-icons";

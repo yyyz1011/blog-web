@@ -4,27 +4,43 @@
   margin: 24px auto 0;
 }
 
-.detail-wrapper {
-  margin-top: 16px;
+.article-breadcrumb {
+  margin-bottom: 16px;
 }
 
-.detail {
+.article-content {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-
-  .detail-catalogue {
-    width: 300px;
-    .catalogue-title {
-      font-size: 18px;
+  justify-content: flex-start;
+  height: 100%;
+  &--catalog {
+    height: 100%;
+    width: 200px;
+    position: sticky;
+    top: 80px;
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 16px;
+    margin-right: 16px;
+    &-title {
+      font-size: 20px;
       font-weight: bold;
+      margin-bottom: 16px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      .icon {
+        margin-right: 8px;
+      }
     }
   }
-
-  .detail-content {
+  &--content {
     flex: 1;
-    margin-left: 24px;
   }
+}
+
+#md-editor-rt {
+  border-radius: 16px;
+  padding: 0 16px;
 }
 
 .like-info {

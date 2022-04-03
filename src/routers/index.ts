@@ -75,7 +75,7 @@ const NavRouters: RouterType[] = [
 
 const ArticleDetailRouter: RouterType = {
   key: "article-detail",
-  path: "/article-detail/:id",
+  path: "/article-detail/:aid",
   component: lazy(() => import("@/views/article-detail")),
   title: "article-detail",
 };

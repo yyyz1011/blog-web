@@ -31,6 +31,11 @@ export interface GetMessageListItem {
 }
 export type GetMessageListResp = GetMessageListItem[];
 
+export interface GetArticleListReq {
+  aid?: string;
+  atid?: string;
+}
+
 export interface GetArticleListItem {
   aid: string;
   article_like: string;
@@ -44,3 +49,19 @@ export interface GetArticleListItem {
   title: string;
 }
 export type GetArticleListResp = GetArticleListItem[];
+
+export interface AddArticleLikeReq {
+  aid: string;
+}
+
+export interface AddArticleLikeResp {
+  aid: string;
+}
+
+export interface AddArticleVvReq {
+  aid: string;
+}
+
+export interface AddArticleVvResp {
+  aid: string;
+}

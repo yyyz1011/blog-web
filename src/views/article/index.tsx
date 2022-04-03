@@ -20,6 +20,7 @@ const Article: React.FC = () => {
   >([]);
 
   const handleSearch = () => {
+    // TODO
     console.log(searchByTitle, searchByContent);
   };
 
@@ -32,7 +33,6 @@ const Article: React.FC = () => {
     try {
       const data = await Api.Article.getArticleList();
       setArticleList(data);
-      console.log(data);
     } catch (err: any) {
       window.$catch(err.message);
     } finally {

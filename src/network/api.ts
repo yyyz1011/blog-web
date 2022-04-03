@@ -6,6 +6,11 @@ import {
   CreateMessageResp,
   GetMessageListResp,
   GetArticleListResp,
+  AddArticleLikeReq,
+  AddArticleLikeResp,
+  AddArticleVvReq,
+  AddArticleVvResp,
+  GetArticleListReq,
 } from "./apiType";
 
 export default class Api {
@@ -19,8 +24,12 @@ export default class Api {
 
   public static Article = {
     getArticleTypeList: () => Request.get("/at/article/type/list") as any,
-    getArticleList: (): Promise<GetArticleListResp> =>
-      Request.get("/a/article/list") as any,
+    getArticleList: (params?: GetArticleListReq): Promise<GetArticleListResp> =>
+      Request.get("/a/article/list", params) as any,
+    addArticleLike: (params: AddArticleLikeReq): Promise<AddArticleLikeResp> =>
+      Request.get("/a/article/like", params) as any,
+    addArticleVv: (params: AddArticleVvReq): Promise<AddArticleVvResp> =>
+      Request.get("/a/article/vv", params) as any,
   };
 
   public static Picture = {
