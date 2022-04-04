@@ -1,4 +1,6 @@
 export default {
+  chrome_tip:
+    "Check to the current browser is not Chrome Browser, recommended to use Chrome Browser ~",
   notice_status: {
     copy_success: "Copy success",
     copy_error: "Replication failed. Please manually copy the content",

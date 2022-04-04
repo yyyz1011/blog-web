@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Card, Avatar, Progress, List } from "@douyinfe/semi-ui";
+import { Card, Avatar, Tag, List } from "@douyinfe/semi-ui";
 import "./index.less";
 import { useTranslation } from "react-i18next";
 import { getQQAvatar } from "@/network";
+import Api from "@/network/api";
 
 const ArticleSummaryCard = () => {
   const [loading, setLoading] = useState(true);
@@ -10,23 +11,20 @@ const ArticleSummaryCard = () => {
   const { t } = useTranslation();
 
   useEffect(() => {
-    const newSummaryInfo = [
-      { id: "1", num: 1, label: "vue" },
-      { id: "11", num: 12, label: "react" },
-      { id: "11", num: 2, label: "default" },
-    ];
-    const allNum = newSummaryInfo.reduce((cur, pre) => {
-      return cur + pre.num;
-    }, 0);
-    const summaryInfo = newSummaryInfo.map((item) => ({
-      ...item,
-      percent: Number(((item.num / allNum) * 100).toFixed()),
-    }));
-    setSummaryInfo(summaryInfo);
-    setTimeout(() => {
-      setLoading(false);
-    }, 1000);
+    getArticleTypeList();
   }, []);
+
+  async function getArticleTypeList() {
+    setLoading(true);
+    try {
+      const data = await Api.Article.getArticleTypeList();
+      setSummaryInfo(data);
+    } catch (err: any) {
+      window.$catch(err.message);
+    } finally {
+      setLoading(false);
+    }
+  }
 
   return (
     <Card
@@ -52,15 +50,9 @@ const ArticleSummaryCard = () => {
       <List
         dataSource={summaryInfo}
         renderItem={(item) => (
-          <div className="progress-item">
-            <div className="progress-item--label">{item.label}</div>
-            <Progress
-              className="progress-item--progress"
-              percent={item.percent}
-              showInfo={true}
-              aria-label={item.label}
-            />
-          </div>
+          <Tag className="article-type-tag" color="green">
+            {item.label}
+          </Tag>
         )}
       ></List>
     </Card>

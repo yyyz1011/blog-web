@@ -3,15 +3,19 @@ import { HashRouter, Navigate, Route, Routes } from "react-router-dom";
 import type { RouterType } from "@/routers";
 import { NavRouters, Routers } from "@/routers";
 import Nav from "@/components/nav";
-import { Layout, BackTop, Notification } from "@douyinfe/semi-ui";
+import { Layout, BackTop, Notification, Banner } from "@douyinfe/semi-ui";
 import Api from "@/network/api";
 import { Token } from "@/constant/common";
 import "@/assets/css/layout.less";
 import NoPage from "@/views/NoPage";
+import { useTranslation } from "react-i18next";
 
 const { Header, Content } = Layout;
 
 const App: React.FC = () => {
+  const { t } = useTranslation();
+  const isChrome = navigator.userAgent.indexOf("Chrome") !== -1;
+
   useEffect(() => {
     getUserToken();
   }, []);
@@ -34,6 +38,7 @@ const App: React.FC = () => {
         <Header className="layout-header">
           <Nav />
         </Header>
+        {!isChrome && <Banner type="warning" description={t("chrome_tip")} />}
         <Content>
           <Suspense fallback={<div />}>
             <Routes>

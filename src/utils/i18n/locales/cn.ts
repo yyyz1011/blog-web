@@ -1,4 +1,5 @@
 export default {
+  chrome_tip: "检验到当前浏览器并不是谷歌浏览器，推荐使用谷歌浏览器哈~",
   notice_status: {
     copy_success: "复制成功",
     copy_error: "复制失败，请手动复制内容",
