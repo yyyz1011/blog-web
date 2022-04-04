@@ -9,12 +9,14 @@ import { Token } from "@/constant/common";
 import "@/assets/css/layout.less";
 import NoPage from "@/views/NoPage";
 import { useTranslation } from "react-i18next";
+// @ts-ignore
+import { currentBrowser } from "leaf-util";
 
 const { Header, Content } = Layout;
 
 const App: React.FC = () => {
   const { t } = useTranslation();
-  const isChrome = navigator.userAgent.indexOf("Chrome") !== -1;
+  const isChrome = currentBrowser() === "Chrome";
 
   useEffect(() => {
     getUserToken();
