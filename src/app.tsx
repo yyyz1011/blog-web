@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import { HashRouter, Navigate, Route, Routes } from "react-router-dom";
 import type { RouterType } from "@/routers";
 import { NavRouters, Routers } from "@/routers";
@@ -15,6 +15,7 @@ import { currentBrowser } from "leaf-util";
 const { Header, Content } = Layout;
 
 const App: React.FC = () => {
+  const [isLoad, setIsLoad] = useState<boolean>(false);
   const { t } = useTranslation();
   const isChrome = currentBrowser() === "Chrome";
 
@@ -26,6 +27,7 @@ const App: React.FC = () => {
     try {
       const { token } = await Api.User.getToken();
       sessionStorage.setItem(Token, token);
+      setIsLoad(true);
     } catch (err: any) {
       Notification.error({
         content: err.message,
@@ -41,21 +43,23 @@ const App: React.FC = () => {
           <Nav />
         </Header>
         {!isChrome && <Banner type="warning" description={t("chrome_tip")} />}
-        <Content>
-          <Suspense fallback={<div />}>
-            <Routes>
-              <Route path="*" element={<Navigate to="/404" />} />
-              {[...NavRouters, ...Routers].map((item: RouterType) => (
-                <Route
-                  key={item.key}
-                  path={item.path}
-                  element={<item.component />}
-                />
-              ))}
-              <Route path="/404" element={<NoPage />} />
-            </Routes>
-          </Suspense>
-        </Content>
+        {isLoad ? (
+          <Content>
+            <Suspense fallback={<div />}>
+              <Routes>
+                <Route path="*" element={<Navigate to="/404" />} />
+                {[...NavRouters, ...Routers].map((item: RouterType) => (
+                  <Route
+                    key={item.key}
+                    path={item.path}
+                    element={<item.component />}
+                  />
+                ))}
+                <Route path="/404" element={<NoPage />} />
+              </Routes>
+            </Suspense>
+          </Content>
+        ) : null}
       </HashRouter>
       <BackTop className="article-back-top" />
     </>
