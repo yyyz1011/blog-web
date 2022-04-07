@@ -18,7 +18,7 @@ type RouterType = {
 
 const HomeRouter: RouterType = {
   key: "home",
-  path: "/",
+  path: "/home",
   component: lazy(() => import("@/views/home")),
   title: "home",
   icon: IconHome,
@@ -26,7 +26,7 @@ const HomeRouter: RouterType = {
 
 const ArticleRouter: RouterType = {
   key: "article",
-  path: "/article",
+  path: "/",
   component: lazy(() => import("@/views/article")),
   title: "article",
   icon: IconArticle,
