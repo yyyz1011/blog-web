@@ -1,7 +1,3 @@
-FROM node:alpine
-
-RUN yarn install
-
 FROM nginx
 
 RUN rm /etc/nginx/conf.d/default.conf

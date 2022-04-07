@@ -59,7 +59,7 @@ const ArticleDetail: React.FC = () => {
   return (
     <div className="article-detail">
       <Breadcrumb className="article-breadcrumb" compact={false}>
-        <Breadcrumb.Item onClick={() => navigate("/article")}>
+        <Breadcrumb.Item onClick={() => navigate("/")}>
           {t("article_detail.breadcrumb_article")}
         </Breadcrumb.Item>
         <Breadcrumb.Item>
