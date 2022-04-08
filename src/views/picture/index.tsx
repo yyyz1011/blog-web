@@ -1,12 +1,14 @@
-import React, { useState, useEffect } from "react";
 import "./index.less";
-import AutoResponsive from "autoresponsive-react";
-import Carousel, { Modal, ModalGateway, CarouselState } from "react-images";
-import Api from "@/network/api";
+
 import { Tag } from "@douyinfe/semi-ui";
+import AutoResponsive from "autoresponsive-react";
 import dayjs from "dayjs";
+import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import Carousel, { CarouselState, Modal, ModalGateway } from "react-images";
 import { useQuery } from "react-query";
+
+import Api from "@/network/api";
 
 const Picture: React.FC = () => {
   const { t } = useTranslation();
@@ -21,7 +23,7 @@ const Picture: React.FC = () => {
   } = useQuery("picture-list", async () => {
     const imgWidth = 400;
     const data = await Api.Picture.getPictureList();
-    let resData: any = [];
+    const resData: any = [];
     for (let i = 0; i < data.length; i++) {
       const {
         title,
@@ -33,7 +35,7 @@ const Picture: React.FC = () => {
       const img: any = await getImgAttr(url);
       resData.push({
         width: imgWidth,
-        height: (img.height * imgWidth) / img.width,
+        height: img.height * imgWidth / img.width,
         title,
         url,
         region,
@@ -58,7 +60,7 @@ const Picture: React.FC = () => {
 
   function getImgAttr(src: string) {
     return new Promise((resolve, reject) => {
-      let img = new Image();
+      const img = new Image();
       img.onload = () => resolve(img);
       img.onerror = () => reject(new Error(t("status_tip.img_load_error")));
       img.src = src;
@@ -128,15 +130,15 @@ const Picture: React.FC = () => {
           })}
         </AutoResponsive>
         <ModalGateway>
-          {isOpenLightBox ? (
+          {isOpenLightBox ? 
             <Modal onClose={() => setIsOpenLightBox(false)}>
               <Carousel
                 views={imgList.map((item: any) => ({ source: item.url }))}
                 currentIndex={lightBoxImgIndex}
                 styles={{
                   headerFullscreen(
-                    base: React.CSSProperties,
-                    state: CarouselState
+                    base: React.CSSProperties, // eslint-disable-line
+                    state: CarouselState // eslint-disable-line
                   ) {
                     return {
                       display: "none",
@@ -145,7 +147,7 @@ const Picture: React.FC = () => {
                 }}
               />
             </Modal>
-          ) : null}
+           : null}
         </ModalGateway>
       </div>
     </>

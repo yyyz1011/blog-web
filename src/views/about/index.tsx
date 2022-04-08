@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from "react";
 import "./index.less";
-import AboutUserInfo from "@/components/about/about-user-info";
+
+import { throttle } from "lodash-es";
+import React, { useEffect, useState } from "react";
+
 import AboutArticle from "@/components/about/about-article";
-import AboutTravel from "@/components/about/about-travel";
 import AboutBlog from "@/components/about/about-blog";
 import AboutHobby from "@/components/about/about-hobby";
-import { throttle } from "lodash-es";
+import AboutTravel from "@/components/about/about-travel";
+import AboutUserInfo from "@/components/about/about-user-info";
 
 const About: React.FC = () => {
   const [showUserInfo, setShowUserInfo] = useState<boolean>(true);
@@ -15,7 +17,7 @@ const About: React.FC = () => {
   const [showUserBlog, setShowUserBlog] = useState<boolean>(false);
 
   const documentScroll = throttle(() => {
-    const scrollTop = document.documentElement.scrollTop;
+    const {scrollTop} = document.documentElement;
     setShowUserInfo(scrollTop <= 250);
     setShowUserTravel(scrollTop <= 620);
     setShowUserArticle(scrollTop >= 200 && scrollTop <= 1048);

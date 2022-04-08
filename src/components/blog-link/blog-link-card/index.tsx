@@ -1,7 +1,9 @@
-import React from "react";
 import "./index.less";
-import { Avatar } from "@douyinfe/semi-ui";
+
 import { IconArrowRight } from "@douyinfe/semi-icons";
+import { Avatar } from "@douyinfe/semi-ui";
+import React from "react";
+
 import { LinkListItem } from "@/constant";
 
 interface BlogLinkCardProps {

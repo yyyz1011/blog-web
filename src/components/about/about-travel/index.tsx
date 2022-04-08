@@ -1,12 +1,14 @@
-import React, { useEffect } from "react";
 import "./index.less";
-import * as echarts from "echarts";
 import "./china";
-import { travelList } from "@/constant";
-import { useTranslation } from "react-i18next";
+
 import { IconHash, IconImage } from "@douyinfe/semi-icons";
 import { Button } from "@douyinfe/semi-ui";
+import * as echarts from "echarts";
+import React, { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
+
+import { travelList } from "@/constant";
 
 interface AboutTravelProps {
   className?: string;
@@ -19,7 +21,7 @@ const AboutTravel: React.FC<AboutTravelProps> = (props: AboutTravelProps) => {
 
   useEffect(() => {
     const myChart = echarts.init(chartsRef.current);
-    let option = {
+    const option = {
       //配置属性
       geo: {
         map: "china",

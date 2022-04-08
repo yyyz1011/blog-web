@@ -1,12 +1,14 @@
-import React, { useState, useEffect } from "react";
-import { GetArticleListItem } from "@/network/apiType";
-import { Card, Descriptions } from "@douyinfe/semi-ui";
-import { IconPriceTag } from "@douyinfe/semi-icons";
 import "./index.less";
-import { useTranslation } from "react-i18next";
+
+import { IconPriceTag } from "@douyinfe/semi-icons";
+import { Card, Descriptions } from "@douyinfe/semi-ui";
 import dayjs from "dayjs";
 // @ts-ignore
 import { formatPrice } from "leaf-util";
+import React, { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+
+import { GetArticleListItem } from "@/network/apiType";
 
 interface ArticleDetailHeaderProps {
   articleInfo: GetArticleListItem | null;
@@ -19,7 +21,7 @@ const ArticleDetailHeader: React.FC<ArticleDetailHeaderProps> = (
   props: ArticleDetailHeaderProps
 ) => {
   const [t] = useTranslation();
-  const articleInfo = props.articleInfo;
+  const {articleInfo} = props;
   const [loading, setLoading] = useState(true);
   const [descriptions, setDescriptions] = useState<DescriptionsType[]>([]);
 

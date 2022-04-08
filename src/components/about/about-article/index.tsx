@@ -1,8 +1,9 @@
-import React from "react";
 import "./index.less";
-import { useTranslation } from "react-i18next";
-import { IconHash, IconArticle } from "@douyinfe/semi-icons";
+
+import { IconArticle, IconHash } from "@douyinfe/semi-icons";
 import { Button } from "@douyinfe/semi-ui";
+import React from "react";
+import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
 interface AboutArticleProps {

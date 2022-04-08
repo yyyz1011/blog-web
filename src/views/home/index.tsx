@@ -1,8 +1,9 @@
+import "./index.less";
+
+import { throttle } from "lodash-es";
 import React, { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
-import "./index.less";
 import { FBXLoader } from "three/examples/jsm/loaders/FBXLoader";
-import { throttle } from "lodash-es";
 
 type SceneType = THREE.Scene | null;
 type CameraType = THREE.PerspectiveCamera | null;
@@ -24,7 +25,7 @@ const Home: React.FC = () => {
   const [raycaster, setRaycaster] = useState<RaycasterType>(null);
   const [projectiveObj, setProjectiveObj] = useState<ProjectiveObjType>(null);
   const threeRef = useRef(null);
-  let mouse: MouseType = new THREE.Vector2();
+  const mouse: MouseType = new THREE.Vector2();
 
   const init = () => {
     setScene(new THREE.Scene());
@@ -85,7 +86,7 @@ const Home: React.FC = () => {
   };
 
   const initModel = () => {
-    let loader = new FBXLoader();
+    const loader = new FBXLoader();
     loader.load(require("@/assets/model/home-fbx/ZZ01.fbx"), (object: any) => {
       object.traverse(function (child: any) {
         if (child.isMesh) {
@@ -113,10 +114,10 @@ const Home: React.FC = () => {
   }: RenderRaycasterObjReq) {
     if (!raycaster || !scene || !camera || !mouse) return;
     raycaster.setFromCamera(mouse, camera);
-    let intersects = raycaster.intersectObjects(scene.children);
+    const intersects = raycaster.intersectObjects(scene.children);
     if (intersects.length > 0) {
-      let currentProjectiveObjT = intersects[0].object;
-      if (projectiveObj != currentProjectiveObjT) {
+      const currentProjectiveObjT = intersects[0].object;
+      if (projectiveObj !== currentProjectiveObjT) {
         if (
           currentProjectiveObjT instanceof THREE.AxesHelper ||
           currentProjectiveObjT instanceof THREE.GridHelper
@@ -164,31 +165,31 @@ const Home: React.FC = () => {
     animate();
   });
 
-  useEffect(() => {
-    switch (projectiveObj?.name) {
-      case "polySurface26":
-        console.log("台灯");
-        console.log(projectiveObj);
-        break;
-      case "pSphere1":
-        console.log("鼠标");
-        console.log(projectiveObj);
-        break;
-      case "polySurface12":
-        console.log("书本");
-        console.log(projectiveObj);
-        break;
-      case "polySurface9":
-        console.log("电脑");
-        console.log(projectiveObj);
-        break;
-      case "anjian1":
-        console.log("键盘");
-        console.log(projectiveObj);
-        break;
-      default:
-    }
-  }, [projectiveObj]);
+  // useEffect(() => {
+  //   switch (projectiveObj?.name) {
+  //     case "polySurface26":
+  //       console.log("台灯");
+  //       console.log(projectiveObj);
+  //       break;
+  //     case "pSphere1":
+  //       console.log("鼠标");
+  //       console.log(projectiveObj);
+  //       break;
+  //     case "polySurface12":
+  //       console.log("书本");
+  //       console.log(projectiveObj);
+  //       break;
+  //     case "polySurface9":
+  //       console.log("电脑");
+  //       console.log(projectiveObj);
+  //       break;
+  //     case "anjian1":
+  //       console.log("键盘");
+  //       console.log(projectiveObj);
+  //       break;
+  //     default:
+  //   }
+  // }, [projectiveObj]);
 
   return (
     <>

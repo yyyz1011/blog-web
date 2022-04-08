@@ -1,7 +1,7 @@
 import { Notification } from "@douyinfe/semi-ui";
 
 export default (copyText: string, successTip?: string, errorTip?: string) => {
-  let eInput = document.createElement("input");
+  const eInput = document.createElement("input");
   eInput.value = copyText;
   document.body.appendChild(eInput);
   eInput.select();

@@ -1,16 +1,18 @@
-import React, { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import { Breadcrumb, Notification } from "@douyinfe/semi-ui";
-import { IconLikeHeart, IconAscend } from "@douyinfe/semi-icons";
-import { useTranslation } from "react-i18next";
 import "./index.less";
+import "md-editor-rt/lib/style.css";
+
+import { IconAscend, IconLikeHeart } from "@douyinfe/semi-icons";
+import { Breadcrumb, Notification } from "@douyinfe/semi-ui";
 import { debounce } from "lodash-es";
+import Editor from "md-editor-rt";
+import React, { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { useNavigate, useParams } from "react-router-dom";
+
+import ArticleDetailHeader from "@/components/article-detail/article-detail-header";
+import LeafEditorCatalog from "@/components/common/leaf-editor-catalog";
 import Api from "@/network/api";
 import { GetArticleListItem } from "@/network/apiType";
-import Editor from "md-editor-rt";
-import "md-editor-rt/lib/style.css";
-import LeafEditorCatalog from "@/components/common/leaf-editor-catalog";
-import ArticleDetailHeader from "@/components/article-detail/article-detail-header";
 
 const ArticleDetail: React.FC = () => {
   const { aid } = useParams();

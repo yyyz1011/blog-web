@@ -1,9 +1,11 @@
-import React from "react";
-import { QQAccount } from "@/constant";
 import "./index.less";
-import { IconMail, IconGithubLogo } from "@douyinfe/semi-icons";
+
+import { IconGithubLogo, IconMail } from "@douyinfe/semi-icons";
 import { Button } from "@douyinfe/semi-ui";
+import React from "react";
 import { useTranslation } from "react-i18next";
+
+import { QQAccount } from "@/constant";
 
 interface AboutUserInfoProps {
   className?: string;

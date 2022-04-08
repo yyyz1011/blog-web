@@ -1,10 +1,12 @@
-import React from "react";
-import { Card, Tag, Tooltip } from "@douyinfe/semi-ui";
 import "./index.less";
+
+import { IconLikeThumb, IconVideo } from "@douyinfe/semi-icons";
+import { Card, Tag, Tooltip } from "@douyinfe/semi-ui";
 import dayjs from "dayjs";
+import React from "react";
 import { useTranslation } from "react-i18next";
-import { IconLikeThumb, IconMail, IconVideo } from "@douyinfe/semi-icons";
 import { useNavigate } from "react-router-dom";
+
 import { GetArticleListItem } from "@/network/apiType";
 interface IProps {
   info: GetArticleListItem;
@@ -51,18 +53,18 @@ const ArticleCard: React.FC<IProps> = (props: IProps) => {
             </div>
           }
           headerExtraContent={
-            isShowModifyTime ? (
+            isShowModifyTime ? 
               <div className="article-extra-title">
                 {t("article.modify_time")} : {updateTime}
               </div>
-            ) : (
+             : 
               <></>
-            )
+            
           }
         >
           <div className="article-card-content">
             <div className="article-card-content--desc">{desc}</div>
-            {isShowExtraSummary && (
+            {isShowExtraSummary && 
               <div className="article-card-content--info">
                 <Tooltip content={t("article.page_view")}>
                   <div className="info-item">
@@ -77,7 +79,7 @@ const ArticleCard: React.FC<IProps> = (props: IProps) => {
                   </div>
                 </Tooltip>
               </div>
-            )}
+            }
           </div>
         </Card>
       </div>
