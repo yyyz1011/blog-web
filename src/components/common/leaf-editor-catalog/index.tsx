@@ -1,6 +1,8 @@
-import React, { ReactElement, useMemo } from "react";
 import "./index.less";
+
 import { Anchor } from "@douyinfe/semi-ui";
+import React, { ReactElement, useMemo } from "react";
+
 import CatalogLink from "./CatalogLink";
 
 export interface TocItem {
@@ -59,9 +61,9 @@ const Catalog = ({
 
   return (
     <Anchor defaultAnchor={`${catalogs[0]?.level}-${catalogs[0]?.text}`} scrollMotion showTooltip targetOffset={60} className={className}>
-      {catalogs.map((item) => (
+      {catalogs.map((item) => 
         <CatalogLink key={`${item.level}-${item.text}`} tocItem={item} />
-      ))}
+      )}
     </Anchor>
   );
 };

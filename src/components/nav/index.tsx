@@ -1,31 +1,33 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { NavRouters } from "@/routers";
-import { useTranslation } from "react-i18next";
+import "./index.less";
+
+import { BaseFormApi } from "@douyinfe/semi-foundation/form/interface";
+import { IconLanguage, IconWrench } from "@douyinfe/semi-icons";
 import {
   Avatar,
   Dropdown,
   Form,
   Modal,
   Nav as SemiNav,
+  Notification,
   Toast,
   Tooltip,
-  Notification,
 } from "@douyinfe/semi-ui";
-import { IconLanguage, IconWrench } from "@douyinfe/semi-icons";
-import { BaseFormApi } from "@douyinfe/semi-foundation/form/interface";
-import "./index.less";
-import useLocalStorageState from "@/utils/useLocalStorageState";
+import { inject, observer } from "mobx-react";
+import React, { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
+
 import { LOCALSTORAGE_AUTHOR_INFO, LOCALSTORAGE_LANGUAGE } from "@/constant";
 import { getQQAvatar } from "@/network";
-import { observer, inject } from "mobx-react";
+import { NavRouters } from "@/routers";
+import useLocalStorageState from "@/utils/useLocalStorageState";
 
 const language_cn = "cn";
 const language_en = "en";
 
 const Nav: React.FC<any> = (props: any) => {
   const navigate = useNavigate();
-  const userStore = props.store.userStore;
+  const {userStore} = props.store;
   const [formApi, setFormApi] = useState<BaseFormApi | null>(null);
   const [visibleLogin, setVisibleLogin] = useState<boolean>(false);
   const [visibleExit, setVisibleExit] = useState<boolean>(false);
@@ -134,11 +136,11 @@ const Nav: React.FC<any> = (props: any) => {
                   <Dropdown.Item onClick={() => setVisibleLogin(true)}>
                     {userStore.account ? t("nav.update") : t("nav.login")}
                   </Dropdown.Item>
-                  {userStore.account && (
+                  {userStore.account && 
                     <Dropdown.Item onClick={() => setVisibleExit(true)}>
                       {t("nav.exit")}
                     </Dropdown.Item>
-                  )}
+                  }
                 </Dropdown.Menu>
               }
             >

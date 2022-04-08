@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { Card, Avatar, Tag, List } from "@douyinfe/semi-ui";
 import "./index.less";
+
+import { Avatar, Card, List, Tag } from "@douyinfe/semi-ui";
+import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+
 import { getQQAvatar } from "@/network";
 import Api from "@/network/api";
 
@@ -49,11 +51,11 @@ const ArticleSummaryCard = () => {
       </div>
       <List
         dataSource={summaryInfo}
-        renderItem={(item) => (
+        renderItem={(item) => 
           <Tag className="article-type-tag" color="green">
             {item.label}
           </Tag>
-        )}
+        }
       ></List>
     </Card>
   );

@@ -1,17 +1,17 @@
-import { Request } from "./request";
 import {
-  GetTokenResp,
-  GetPictureListResp,
-  CreateMessageReq,
-  CreateMessageResp,
-  GetMessageListResp,
-  GetArticleListResp,
   AddArticleLikeReq,
   AddArticleLikeResp,
   AddArticleVvReq,
   AddArticleVvResp,
+  CreateMessageReq,
+  CreateMessageResp,
   GetArticleListReq,
+  GetArticleListResp,
+  GetMessageListResp,
+  GetPictureListResp,
+  GetTokenResp,
 } from "./apiType";
+import { Request } from "./request";
 
 export default class Api {
   public static Common = {

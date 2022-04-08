@@ -1,18 +1,20 @@
-import React, { useState } from "react";
 import "./index.less";
-import Editor from "md-editor-rt";
 import "md-editor-rt/lib/style.css";
-import Api from "@/network/api";
-import { Button, Notification } from "@douyinfe/semi-ui";
+
+import { Button } from "@douyinfe/semi-ui";
+import Editor from "md-editor-rt";
+import React, { useState } from "react";
 import sanitizeHtml from "sanitize-html";
+
+import Api from "@/network/api";
 
 interface LeafEditorProps {
   placeholder?: string;
   operateText?: string;
   operateDisabledText?: string;
   validateErrorText?: string;
-  submit?: (text?: string) => Promise<boolean>;
-  success?: (text?: string) => void;
+  submit?: (text?: string) => Promise<boolean>; // eslint-disable-line
+  success?: (text?: string) => void; // eslint-disable-line
   isEdit?: boolean;
 }
 const LeafEditor: React.FC<LeafEditorProps> = (props: LeafEditorProps) => {
@@ -30,7 +32,7 @@ const LeafEditor: React.FC<LeafEditorProps> = (props: LeafEditorProps) => {
 
   async function onUploadImg(
     files: FileList,
-    callback: (urls: string[]) => void
+    callback: (urls: string[]) => void // eslint-disable-line
   ) {
     const file = files[0];
     const form = new FormData();

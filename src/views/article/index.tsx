@@ -1,14 +1,16 @@
+import "./index.less";
+
+import { IconQuote, IconSearch } from "@douyinfe/semi-icons";
+import { Button, Card, Input, List } from "@douyinfe/semi-ui";
 import React, { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { useQuery } from "react-query";
+
 import ArticleCard from "@/components/article/article-card";
 import ArticleSummaryCard from "@/components/article/article-summary-card";
-import "./index.less";
-import { List, Input, Card, Button } from "@douyinfe/semi-ui";
-import { IconSearch, IconQuote } from "@douyinfe/semi-icons";
-import { useTranslation } from "react-i18next";
-import NoData from "@/components/no-data";
 import LeafCarousel from "@/components/common/leaf-carousel";
+import NoData from "@/components/no-data";
 import Api from "@/network/api";
-import { useQuery } from "react-query";
 
 const Article: React.FC = () => {
   const { t } = useTranslation();
@@ -114,13 +116,13 @@ const Article: React.FC = () => {
             <List
               emptyContent={<NoData text={t("article.no_data")} />}
               dataSource={articleList}
-              renderItem={(item) => (
+              renderItem={(item) => 
                 <ArticleCard
                   loading={isLoading}
                   key={item.aid}
                   info={item}
                 ></ArticleCard>
-              )}
+              }
             ></List>
           </div>
         </div>

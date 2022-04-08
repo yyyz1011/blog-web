@@ -1,16 +1,17 @@
-import React, { Suspense, useEffect, useState } from "react";
-import { HashRouter, Navigate, Route, Routes } from "react-router-dom";
-import type { RouterType } from "@/routers";
-import { NavRouters, Routers } from "@/routers";
-import Nav from "@/components/nav";
-import { Layout, BackTop, Notification, Banner } from "@douyinfe/semi-ui";
-import Api from "@/network/api";
-import { Token } from "@/constant/common";
 import "@/assets/css/layout.less";
-import NoPage from "@/views/NoPage";
-import { useTranslation } from "react-i18next";
+
+import { BackTop, Banner, Layout, Notification } from "@douyinfe/semi-ui";
 // @ts-ignore
 import { currentBrowser } from "leaf-util";
+import React, { Suspense, useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { HashRouter, Navigate, Route, Routes } from "react-router-dom";
+
+import Nav from "@/components/nav";
+import { Token } from "@/constant/common";
+import Api from "@/network/api";
+import { NavRouters, Routers, RouterType } from "@/routers";
+import NoPage from "@/views/NoPage";
 
 const { Header, Content } = Layout;
 
@@ -43,23 +44,23 @@ const App: React.FC = () => {
           <Nav />
         </Header>
         {!isChrome && <Banner type="warning" description={t("chrome_tip")} />}
-        {isLoad ? (
+        {isLoad ? 
           <Content>
             <Suspense fallback={<div />}>
               <Routes>
                 <Route path="*" element={<Navigate to="/404" />} />
-                {[...NavRouters, ...Routers].map((item: RouterType) => (
+                {[...NavRouters, ...Routers].map((item: RouterType) => 
                   <Route
                     key={item.key}
                     path={item.path}
                     element={<item.component />}
                   />
-                ))}
+                )}
                 <Route path="/404" element={<NoPage />} />
               </Routes>
             </Suspense>
           </Content>
-        ) : null}
+         : null}
       </HashRouter>
       <BackTop className="article-back-top" />
     </>

@@ -1,5 +1,6 @@
-import React, { useEffect, useRef, useState } from "react";
 import "./index.less";
+
+import React, { useEffect, useRef, useState } from "react";
 
 /**
  * @params
@@ -23,7 +24,7 @@ const LeafCarousel: React.FC<CarouselProps> = (props: CarouselProps) => {
     isShowPoint = true,
   } = props;
   const [activeIndex, setActiveIndex] = useState<number>(defaultIndex);
-  let timer = useRef<NodeJS.Timeout | null>();
+  const timer = useRef<NodeJS.Timeout | null>();
 
   let i = activeIndex;
 
@@ -62,9 +63,9 @@ const LeafCarousel: React.FC<CarouselProps> = (props: CarouselProps) => {
         )
       )}
 
-      {isShowPoint && (
+      {isShowPoint && 
         <div className="control-wrapper">
-          {contentList.map((_: React.ReactNode, index: number) => (
+          {contentList.map((_: React.ReactNode, index: number) => 
             <input
               key={"carousel-input-control" + index}
               type="radio"
@@ -73,9 +74,9 @@ const LeafCarousel: React.FC<CarouselProps> = (props: CarouselProps) => {
               checked={index === activeIndex}
               onChange={() => setActiveIndex(index)}
             />
-          ))}
+          )}
         </div>
-      )}
+      }
     </div>
   );
 };

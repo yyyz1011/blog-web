@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from "react";
 import "./index.less";
-import MessageList from "@/components/message/message-list";
-import { useTranslation } from "react-i18next";
-import LeafEditor from "@/components/common/leaf-editor";
-import Api from "@/network/api";
-import { observer, inject } from "mobx-react";
+
 import { Notification } from "@douyinfe/semi-ui";
+import { inject, observer } from "mobx-react";
+import React, { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+
+import LeafEditor from "@/components/common/leaf-editor";
+import MessageList from "@/components/message/message-list";
+import Api from "@/network/api";
 import { GetMessageListItem } from "@/network/apiType";
 
 const Message: React.FC<any> = (props: any) => {

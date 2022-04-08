@@ -1,4 +1,3 @@
-import React, { lazy } from "react";
 import {
   IconAlignLeft,
   IconArticle,
@@ -7,6 +6,7 @@ import {
   IconMember,
   IconUnlink,
 } from "@douyinfe/semi-icons";
+import React, { lazy } from "react";
 
 type RouterType = {
   key: string;

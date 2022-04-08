@@ -1,4 +1,4 @@
-import { observable, computed, action } from "mobx";
+import { action, computed, observable } from "mobx";
 
 interface UserInfoReq {
   avatar: string | null;
