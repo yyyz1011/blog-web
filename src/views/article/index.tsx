@@ -8,36 +8,32 @@ import { useTranslation } from "react-i18next";
 import NoData from "@/components/no-data";
 import LeafCarousel from "@/components/common/leaf-carousel";
 import Api from "@/network/api";
-import { GetArticleListItem } from "@/network/apiType";
+import { useQuery } from "react-query";
 
 const Article: React.FC = () => {
   const { t } = useTranslation();
-  const [loading, setLoading] = useState<boolean>(true);
   const [searchByTitle, setSearchByTitle] = useState<string>("");
   const [searchByContent, setSearchByContent] = useState<string>("");
-  const [MOCK_articleList, setArticleList] = useState<
-    Array<GetArticleListItem>
-  >([]);
 
-  const handleSearch = () => {
-    // TODO
-    // console.log(searchByTitle, searchByContent);
-  };
+  const {
+    data: articleList,
+    isLoading,
+    isError,
+    error,
+  } = useQuery("article-list", async () => {
+    const data = await Api.Article.getArticleList();
+    return data;
+  });
 
   useEffect(() => {
-    getArticleList();
-  }, []);
-
-  async function getArticleList() {
-    setLoading(true);
-    try {
-      const data = await Api.Article.getArticleList();
-      setArticleList(data);
-    } catch (err: any) {
-      window.$catch(err.message);
-    } finally {
-      setLoading(false);
+    if (isError) {
+      window.$catch(error);
     }
+  }, [isError]);
+
+  function handleSearch() {
+    // TODO
+    // console.log(searchByTitle, searchByContent);
   }
 
   return (
@@ -117,10 +113,10 @@ const Article: React.FC = () => {
             </div>
             <List
               emptyContent={<NoData text={t("article.no_data")} />}
-              dataSource={MOCK_articleList}
+              dataSource={articleList}
               renderItem={(item) => (
                 <ArticleCard
-                  loading={loading}
+                  loading={isLoading}
                   key={item.aid}
                   info={item}
                 ></ArticleCard>

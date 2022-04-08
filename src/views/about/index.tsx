@@ -20,7 +20,7 @@ const About: React.FC = () => {
     setShowUserTravel(scrollTop <= 620);
     setShowUserArticle(scrollTop >= 200 && scrollTop <= 1048);
     setShowUserHobby(scrollTop >= 520);
-    setShowUserBlog(scrollTop >= 1060);
+    setShowUserBlog(scrollTop >= 680);
   }, 60);
 
   useEffect(() => {

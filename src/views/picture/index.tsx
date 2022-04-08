@@ -6,52 +6,55 @@ import Api from "@/network/api";
 import { Tag } from "@douyinfe/semi-ui";
 import dayjs from "dayjs";
 import { useTranslation } from "react-i18next";
+import { useQuery } from "react-query";
 
 const Picture: React.FC = () => {
   const { t } = useTranslation();
   const [clientWidth, setClientWidth] = useState<number>(1200);
-  const [imgList, setImgList] = useState([]);
   const [isOpenLightBox, setIsOpenLightBox] = useState<boolean>(false);
   const [lightBoxImgIndex, setLightBoxImgIndex] = useState<number>(0);
 
+  const {
+    data: imgList = [],
+    isError,
+    error,
+  } = useQuery("picture-list", async () => {
+    const imgWidth = 400;
+    const data = await Api.Picture.getPictureList();
+    let resData: any = [];
+    for (let i = 0; i < data.length; i++) {
+      const {
+        title,
+        region,
+        desc,
+        create_time: createTime,
+        picture_url: url,
+      } = data[i];
+      const img: any = await getImgAttr(url);
+      resData.push({
+        width: imgWidth,
+        height: (img.height * imgWidth) / img.width,
+        title,
+        url,
+        region,
+        desc,
+        createTime,
+      });
+    }
+    return resData;
+  });
+
+  if (isError) {
+    window.$catch(error);
+  }
+
   useEffect(() => {
     resizeWindow();
-    getAllImg();
     window.addEventListener("resize", resizeWindow);
     return () => {
       window.removeEventListener("resize", resizeWindow);
     };
   }, []);
-
-  async function getAllImg() {
-    try {
-      const imgWidth = 400;
-      const data = await Api.Picture.getPictureList();
-      let resData: any = [];
-      for (let i = 0; i < data.length; i++) {
-        const {
-          title,
-          region,
-          desc,
-          create_time: createTime,
-          picture_url: url,
-        } = data[i];
-        const img: any = await getImgAttr(url);
-        resData.push({
-          width: imgWidth,
-          height: (img.height * imgWidth) / img.width,
-          title,
-          url,
-          region,
-          desc,
-          createTime,
-        });
-      }
-      setImgList(resData);
-    } catch (err: any) {
-      window.$catch(err.message);
-    }
-  }
 
   function getImgAttr(src: string) {
     return new Promise((resolve, reject) => {
@@ -128,7 +131,7 @@ const Picture: React.FC = () => {
           {isOpenLightBox ? (
             <Modal onClose={() => setIsOpenLightBox(false)}>
               <Carousel
-                views={imgList.map((item) => ({ source: item.url }))}
+                views={imgList.map((item: any) => ({ source: item.url }))}
                 currentIndex={lightBoxImgIndex}
                 styles={{
                   headerFullscreen(
