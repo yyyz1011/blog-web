@@ -14,6 +14,7 @@ const NoData: React.FC<NoDataProps> = (props: NoDataProps) => {
       <img
         className="no-article-content--img"
         src={require("@/assets/img/no_data.svg")}
+        alt="leaf-blog"
       />
       <div className="no-article-content--text">{text}</div>
     </div>

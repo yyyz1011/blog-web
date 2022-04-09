@@ -36,6 +36,7 @@ const AboutHobby: React.FC<AboutHobbyProps> = (props: AboutHobbyProps) => {
       <img
         className="about-hobby-img"
         src={require("@/assets/img/about_hobby.svg")}
+        alt="leaf-blog"
       />
     </div>
   );

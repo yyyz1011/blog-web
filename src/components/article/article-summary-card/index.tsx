@@ -33,7 +33,7 @@ const ArticleSummaryCard = () => {
       loading={loading}
       className="article-summary-card"
       cover={
-        <img src={require("@/assets/img/article_summary_cover.svg")}></img>
+        <img src={require("@/assets/img/article_summary_cover.svg")} alt="leaf-blog" />
       }
       shadows="always"
     >
@@ -41,6 +41,7 @@ const ArticleSummaryCard = () => {
         <Avatar
           className="card-header--avatar"
           src={getQQAvatar("1540032876")}
+          alt="leaf-blog"
         ></Avatar>
         <div className="card-header--title">
           {t("article.summary_info.author_name")}

@@ -103,7 +103,7 @@ const Nav: React.FC<any> = (props: any) => {
       <SemiNav
         mode="horizontal"
         header={{
-          logo: <img src={require("@/assets/img/leaf.svg")} />,
+          logo: <img src={require("@/assets/img/leaf.svg")} alt="leaf-blog" />,
           text: "leaf blog",
         }}
         items={NavRouters.map((item) => ({
@@ -144,7 +144,7 @@ const Nav: React.FC<any> = (props: any) => {
                 </Dropdown.Menu>
               }
             >
-              <Avatar size="small" className="avatar" src={userStore.avatar}>
+              <Avatar size="small" className="avatar" src={userStore.avatar} alt="leaf-blog">
                 {t("nav.visitor")}
               </Avatar>
             </Dropdown>

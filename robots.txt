@@ -1,0 +1,4 @@
+# robots.txt generated at https://www.bmcx.com
+User-agent: *
+Disallow: 
+Disallow: /cgi-bin/

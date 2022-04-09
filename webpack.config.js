@@ -6,6 +6,7 @@ const ParallelUglifyPlugin = require("webpack-parallel-uglify-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 const CssMinimizerWebpackPlugin = require("css-minimizer-webpack-plugin");
 const CompressionWebpackPlugin = require("compression-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   entry: "./src/index.tsx",
@@ -37,7 +38,8 @@ module.exports = {
       },
       {
         test: /\.(less|css)$/,
-        use: ["style-loader", "css-loader", "less-loader"],
+        // use: ["style-loader", "css-loader", "less-loader"],
+        use: [MiniCssExtractPlugin.loader, "css-loader", "less-loader"],
       },
       {
         test: /\.(tsx|ts)$/,
@@ -116,9 +118,14 @@ module.exports = {
       collapseWhitespace: true,
       removeComments: true,
     }),
+    new MiniCssExtractPlugin({
+      filename: "css/[name].css",
+      chunkFilename: "css/[id].css",
+      experimentalUseImportModule: true,
+    }),
     new CompressionWebpackPlugin({
       threshold: 0,
-      test: /.(css|js|ts|tsx|less)$/i,
+      test: /.(css|js)$/i,
       minRatio: 0.8,
       algorithm: "gzip",
     }),
