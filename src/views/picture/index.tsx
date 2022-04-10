@@ -111,6 +111,7 @@ const Picture: React.FC = () => {
                       width: item.width,
                       height: item.height,
                     }}
+                    alt="leaf-blog"
                   />
                   <div className="picture-extra-info">
                     <div className="picture-item-title">

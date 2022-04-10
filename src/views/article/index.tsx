@@ -58,12 +58,14 @@ const Article: React.FC = () => {
                   <img
                     className="article-plan-text--img"
                     src={require("@/assets/img/article_plan_text.svg")}
+                    alt="leaf-blog"
                   />
                 </Card>,
                 <Card className="article-plan-text">
                   <img
                     className="article-plan-text--img"
                     src={require("@/assets/img/article_plan_text1.svg")}
+                    alt="leaf-blog"
                   />
                   <div className="article-plan-text--content">
                     {t("article.article_text1")}

@@ -20,6 +20,7 @@ const BlogLink: React.FC = () => {
           <img
             className="link-banner-img"
             src={require("@/assets/img/link_banner.svg")}
+            alt="leaf-blog"
           />
           <div className="link-banner-content">
             <div className="title">{t("link.banner_title")}</div>

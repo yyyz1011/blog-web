@@ -29,7 +29,7 @@ const MessageList: React.FC<MessageListProps> = (props: MessageListProps) => {
           renderItem={(item) => 
             <List.Item
               header={
-                <Avatar src={getQQAvatar(item.account)}>
+                <Avatar src={getQQAvatar(item.account)} alt="leaf-blog">
                   {item.nick_name}
                 </Avatar>
               }

@@ -19,11 +19,11 @@ const AboutUserInfo: React.FC<AboutUserInfoProps> = (
   return (
     <>
       <div className={`user ${className}`}>
-        <img className="user-img" src={require("@/assets/img/about.svg")} />
+        <img className="user-img" src={require("@/assets/img/about.svg")} alt="leaf-blog"/>
         <div className="user-info">
           <div className="name">
             {t("about.user_name")}
-            <img className="name-img" src={require("@/assets/img/leaf.svg")} />
+            <img className="name-img" src={require("@/assets/img/leaf.svg")} alt="leaf-blog" />
           </div>
           <div className="tip">{t("about.user_tip")}</div>
           <div className="operate">

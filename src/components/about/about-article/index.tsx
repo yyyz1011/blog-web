@@ -21,6 +21,7 @@ const AboutArticle: React.FC<AboutArticleProps> = (
       <img
         className="about-article-img"
         src={require("@/assets/img/about_article.svg")}
+        alt="leaf-blog"
       />
       <div className="about-article-content">
         <div className="title">
