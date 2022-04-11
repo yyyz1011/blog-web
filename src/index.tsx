@@ -3,6 +3,8 @@ import "@/assets/css/common.less";
 import "nprogress/nprogress.css";
 
 import { Notification } from "@douyinfe/semi-ui";
+// @ts-ignore
+import { isPC } from "leaf-util";
 import { configure } from "mobx"; // 开启严格模式
 import { Provider } from "mobx-react";
 import NProgress from "nprogress";
@@ -11,6 +13,7 @@ import { render } from "react-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
 
 import App from "@/app";
+import AppMobile from "@/appMobile";
 import store from "@/store";
 configure({ enforceActions: "always" }); // 开启严格模式
 
@@ -34,11 +37,12 @@ console.log(
 
 const queryClient = new QueryClient();
 
-render(
-  <QueryClientProvider client={queryClient}>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </QueryClientProvider>,
-  document.getElementById("app")
-);
+function currentDom() {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <Provider store={store}>{isPC() ? <App /> : <AppMobile />}</Provider>
+    </QueryClientProvider>
+  );
+}
+
+render(currentDom(), document.getElementById("app"));
