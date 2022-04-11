@@ -4,6 +4,7 @@ import { Avatar, Card, List, Tag } from "@douyinfe/semi-ui";
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
+import { QQAccount } from "@/constant";
 import { getQQAvatar } from "@/network";
 import Api from "@/network/api";
 
@@ -33,14 +34,17 @@ const ArticleSummaryCard = () => {
       loading={loading}
       className="article-summary-card"
       cover={
-        <img src={require("@/assets/img/article_summary_cover.svg")} alt="leaf-blog" />
+        <img
+          src={require("@/assets/img/article_summary_cover.svg")}
+          alt="leaf-blog"
+        />
       }
       shadows="always"
     >
       <div className="card-header">
         <Avatar
           className="card-header--avatar"
-          src={getQQAvatar("1540032876")}
+          src={getQQAvatar(QQAccount)}
           alt="leaf-blog"
         ></Avatar>
         <div className="card-header--title">
@@ -52,11 +56,11 @@ const ArticleSummaryCard = () => {
       </div>
       <List
         dataSource={summaryInfo}
-        renderItem={(item) => 
+        renderItem={(item) => (
           <Tag className="article-type-tag" color="green">
             {item.label}
           </Tag>
-        }
+        )}
       ></List>
     </Card>
   );
