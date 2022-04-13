@@ -1139,19 +1139,6 @@ async@^2.6.2:
   dependencies:
     lodash "^4.17.14"
 
-autoresponsive-core@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/autoresponsive-core/-/autoresponsive-core-1.0.1.tgz#cbb77dffb5ee625fe3dae867671050632ba04916"
-  integrity sha512-sNmRjQWslRJFOHRF7tEtqHU4MH4FDHN46vYdScfYRctSkCc4Ksqs5jKiDRXkFIdSJ4XWWcboq92567S74IKFSQ==
-
-autoresponsive-react@^1.1.37:
-  version "1.1.37"
-  resolved "https://registry.yarnpkg.com/autoresponsive-react/-/autoresponsive-react-1.1.37.tgz#b4f23d1cade516590183bb67e9899cf68f94e1e3"
-  integrity sha512-jFVnQMBPFVFgGFE1vIiEekNX9VfcWDWF0cgnwGBpnyK4P5/inARrIZcM4l2GSuevRgYzlxSNzk0IYuoOVo3zNw==
-  dependencies:
-    autoresponsive-core "^1.0.1"
-    exenv "^1.2.0"
-
 axios@^0.26.0:
   version "0.26.0"
   resolved "https://registry.yarnpkg.com/axios/-/axios-0.26.0.tgz#9a318f1c69ec108f8cd5f3c3d390366635e13928"
@@ -2321,11 +2308,6 @@ execa@^5.0.0:
     onetime "^5.1.2"
     signal-exit "^3.0.3"
     strip-final-newline "^2.0.0"
-
-exenv@^1.2.0:
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/exenv/-/exenv-1.2.2.tgz#2ae78e85d9894158670b03d47bec1f03bd91bb9d"
-  integrity sha1-KueOhdmJQVhnCwPUe+wfA72Ru50=
 
 express@^4.17.1:
   version "4.17.2"

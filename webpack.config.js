@@ -20,6 +20,7 @@ module.exports = {
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
+    modules: [path.resolve(__dirname, "./node_modules")],
   },
   module: {
     rules: [
@@ -38,7 +39,6 @@ module.exports = {
       },
       {
         test: /\.(less|css)$/,
-        // use: ["style-loader", "css-loader", "less-loader"],
         use: [MiniCssExtractPlugin.loader, "css-loader", "less-loader"],
       },
       {
@@ -77,6 +77,7 @@ module.exports = {
         },
       },
     },
+    concatenateModules: true,
     minimize: true,
     minimizer: [
       new TerserPlugin({
@@ -117,6 +118,7 @@ module.exports = {
       inject: true,
       collapseWhitespace: true,
       removeComments: true,
+      minifyCSS: true,
     }),
     new MiniCssExtractPlugin({
       filename: "css/[name].css",
