@@ -29,7 +29,7 @@ const AppContent: React.FC = () => {
   return (
     <>
       {isLoad && (
-        <Content>
+        <Content className="layout-content">
           <Suspense fallback={<div />}>
             <Routes>
               <Route path="*" element={<Navigate to="/404" />} />
