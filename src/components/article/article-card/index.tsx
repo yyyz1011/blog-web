@@ -1,18 +1,14 @@
 import "./index.less";
 
-import { IconLikeThumb, IconVideo } from "@douyinfe/semi-icons";
-import { Card, Tag, Tooltip } from "@douyinfe/semi-ui";
+import { IconArticle, IconLikeThumb } from "@douyinfe/semi-icons";
+import { Card, Tag } from "@douyinfe/semi-ui";
 import dayjs from "dayjs";
 import React from "react";
-import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
 import { GetArticleListItem } from "@/network/apiType";
 interface IProps {
   info: GetArticleListItem;
-  isShowModifyTime?: boolean;
-  isShowExtraSummary?: boolean;
-  loading?: boolean;
 }
 
 const ArticleCard: React.FC<IProps> = (props: IProps) => {
@@ -20,66 +16,34 @@ const ArticleCard: React.FC<IProps> = (props: IProps) => {
   const {
     aid,
     title,
-    desc,
     atLabel,
     modify_time: modifyTime,
-    article_vv: articleVv,
     article_like: articleLike,
   } = props.info;
-  const {
-    loading = false,
-    isShowModifyTime = true,
-    isShowExtraSummary = true,
-  } = props;
-  const { t } = useTranslation();
-  const updateTime = dayjs(Number(modifyTime)).format("YYYY-MM-DD HH:mm");
+  const updateTime = dayjs(Number(modifyTime)).format("YYYY-MM-DD");
 
   const handleGoArticle = () => navigate(`/article-detail/${aid}`);
 
   return (
     <>
       <div className="article-card" onClick={handleGoArticle}>
-        <Card
-          loading={loading}
-          bordered
-          headerLine={false}
-          shadows="hover"
-          title={
-            <div className="article-title">
-              <span className="article-title--title">{title}</span>
-              <Tag color="green" className="article-title--type">
+        <Card bordered headerLine={false} shadows="hover">
+          <div className="article-title">
+            <div className="article-title--title">{title}</div>
+            <div className="article-title--modify-time">
+              更新时间 : {updateTime}
+            </div>
+            <div className="article-title--type">
+              笔记标签：
+              <Tag color="white" size="large">
                 {atLabel}
               </Tag>
             </div>
-          }
-          headerExtraContent={
-            isShowModifyTime ? 
-              <div className="article-extra-title">
-                {t("article.modify_time")} : {updateTime}
-              </div>
-             : 
-              <></>
-            
-          }
-        >
-          <div className="article-card-content">
-            <div className="article-card-content--desc">{desc}</div>
-            {isShowExtraSummary && 
-              <div className="article-card-content--info">
-                <Tooltip content={t("article.page_view")}>
-                  <div className="info-item">
-                    <IconVideo />
-                    <div>{articleVv}</div>
-                  </div>
-                </Tooltip>
-                <Tooltip content={t("article.like")}>
-                  <div className="info-item">
-                    <IconLikeThumb />
-                    <div>{articleLike}</div>
-                  </div>
-                </Tooltip>
-              </div>
-            }
+            <IconArticle className="article-title--icon" />
+            <div className="article-title--icon-like">
+              <IconLikeThumb className="like-icon" />
+              <div className="like-num">{articleLike}</div>
+            </div>
           </div>
         </Card>
       </div>

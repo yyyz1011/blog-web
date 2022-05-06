@@ -1,8 +1,9 @@
 import { Notification } from "@douyinfe/semi-ui";
 import axios, { AxiosRequestConfig, Method } from "axios";
-import NProgress from "nprogress"; 
+import NProgress from "nprogress";
 
-import { baseUrl, Token } from "@/constant/common";
+import { baseUrl } from "@/config/axios.config";
+import { Token } from "@/constant/common";
 
 // 定义接口
 interface PendingType {
@@ -15,7 +16,7 @@ interface PendingType {
 
 // 取消重复请求
 const pending: Array<PendingType> = [];
-const {CancelToken} = axios;
+const { CancelToken } = axios;
 
 // 移除重复请求
 const removePending = (config: AxiosRequestConfig) => {
@@ -106,7 +107,7 @@ instance.interceptors.response.use(
   (err) => {
     const { response } = err;
     if (response) {
-      const {config} = err;
+      const { config } = err;
       const [RETRY_COUNT, RETRY_DELAY] = [3, 1000];
 
       if (config && RETRY_COUNT) {
