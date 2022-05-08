@@ -6,7 +6,6 @@ import { Breadcrumb, Notification } from "@douyinfe/semi-ui";
 import { debounce } from "lodash-es";
 import Editor from "md-editor-rt";
 import React, { useEffect, useState } from "react";
-import { useTranslation } from "react-i18next";
 import { useNavigate, useParams } from "react-router-dom";
 
 import ArticleDetailHeader from "@/components/article-detail/article-detail-header";
@@ -17,7 +16,6 @@ import { GetArticleListItem } from "@/network/apiType";
 const ArticleDetail: React.FC = () => {
   const { aid } = useParams();
   const navigate = useNavigate();
-  const { t } = useTranslation();
   const [articleInfo, setArticleInfo] = useState<GetArticleListItem | null>(
     null
   );
@@ -51,7 +49,7 @@ const ArticleDetail: React.FC = () => {
       await getArticleList();
       Notification.success({
         position: "top",
-        content: t("article_detail.like_success"),
+        content: "点赞成功~",
       });
     } catch (err: any) {
       window.$catch(err.message);
@@ -61,19 +59,15 @@ const ArticleDetail: React.FC = () => {
   return (
     <div className="article-detail">
       <Breadcrumb className="article-breadcrumb" compact={false}>
-        <Breadcrumb.Item onClick={() => navigate("/")}>
-          {t("article_detail.breadcrumb_article")}
-        </Breadcrumb.Item>
-        <Breadcrumb.Item>
-          {t("article_detail.breadcrumb_article_detail")}-{articleInfo?.title}
-        </Breadcrumb.Item>
+        <Breadcrumb.Item onClick={() => navigate("/")}>笔记</Breadcrumb.Item>
+        <Breadcrumb.Item>{articleInfo?.title}</Breadcrumb.Item>
       </Breadcrumb>
       <ArticleDetailHeader articleInfo={articleInfo} />
       <div className="article-content">
         <div className="article-content--catalog">
           <div className="article-content--catalog-title">
             <IconAscend className="icon" />
-            {t("article_detail.catalogue")}
+            目录
           </div>
           <LeafEditorCatalog
             className="article-content--catalog-content"
@@ -82,6 +76,7 @@ const ArticleDetail: React.FC = () => {
         </div>
         <div className="article-content--content">
           <Editor
+            theme="dark"
             onGetCatalog={setList}
             previewOnly
             modelValue={articleInfo?.content ?? ""}
