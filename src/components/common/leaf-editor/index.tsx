@@ -59,6 +59,7 @@ const LeafEditor: React.FC<LeafEditorProps> = (props: LeafEditorProps) => {
   return (
     <>
       <Editor
+        theme="dark"
         sanitize={(html) => sanitizeHtml(html)}
         placeholder={placeholder}
         modelValue={text}
