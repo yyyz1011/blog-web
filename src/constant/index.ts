@@ -65,7 +65,7 @@ export const travelList: Array<string> = [
   "重庆",
   // '内蒙古',
   '广西',
-  // '西藏',
+  '西藏',
   '宁夏',
   // '新疆',
   // "香港",

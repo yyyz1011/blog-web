@@ -72,7 +72,7 @@ const ArticleDetailRouter: RouterType = {
 
 const AdminHomeRouter: RouterType = {
   key: "admin-home",
-  path: "/admin",
+  path: "/adminyz",
   component: lazy(() => import("@/views/admin/admin-home")),
   title: "admin-home",
 };
