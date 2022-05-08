@@ -65,3 +65,11 @@ export interface AddArticleVvReq {
 export interface AddArticleVvResp {
   aid: string;
 }
+
+export interface DelPictureReq {
+  pid: string;
+}
+
+export interface DelArticleReq {
+  aid: string;
+}

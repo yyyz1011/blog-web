@@ -1,18 +1,20 @@
-import React, { useEffect } from "react";
-import Api from "@/network/api";
-import { useQuery } from "react-query";
-import NoData from "@/components/no-data";
+import "./index.less";
+
 import {
   Button,
   ButtonGroup,
   Descriptions,
   List,
   Modal,
-  Tag,
+  Toast,
 } from "@douyinfe/semi-ui";
 import dayjs from "dayjs";
+import React, { useEffect } from "react";
+import { useQuery } from "react-query";
+
+import NoData from "@/components/no-data";
+import Api from "@/network/api";
 import { GetPictureListItem } from "@/network/apiType";
-import "./index.less";
 
 const AdminPictureList: React.FC = () => {
   const {
@@ -20,6 +22,7 @@ const AdminPictureList: React.FC = () => {
     isLoading,
     isError,
     error,
+    refetch,
   } = useQuery("picture-list", async () => {
     const data = await Api.Picture.getPictureList();
     console.log(data);
@@ -65,8 +68,14 @@ const AdminPictureList: React.FC = () => {
       cancelText: "错了错了，不删",
       okText: "狠心删除",
       okType: "danger",
-      onOk: () => {
-        console.log("删除");
+      onOk: async () => {
+        try {
+          await Api.Picture.delPicture({ pid: pictureInfo.pid });
+          refetch();
+          Toast.success("删除笔记成功");
+        } catch (err: any) {
+          window.$catch(err.message);
+        }
       },
     });
   }

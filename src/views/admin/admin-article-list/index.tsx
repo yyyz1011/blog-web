@@ -7,6 +7,7 @@ import {
   List,
   Modal,
   Tag,
+  Toast,
 } from "@douyinfe/semi-ui";
 import dayjs from "dayjs";
 import React, { useEffect } from "react";
@@ -22,6 +23,7 @@ const AdminArticleList: React.FC = () => {
     isLoading,
     isError,
     error,
+    refetch,
   } = useQuery("article-list", async () => {
     const data = await Api.Article.getArticleList();
     return data;
@@ -61,8 +63,14 @@ const AdminArticleList: React.FC = () => {
       cancelText: "错了错了，不删",
       okText: "狠心删除",
       okType: "danger",
-      onOk: () => {
-        console.log("删除");
+      onOk: async () => {
+        try {
+          await Api.Article.delArticle({ aid: articleInfo.aid });
+          refetch();
+          Toast.success("删除笔记成功");
+        } catch (err: any) {
+          window.$catch(err.message);
+        }
       },
     });
   }

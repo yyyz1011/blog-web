@@ -5,6 +5,8 @@ import {
   AddArticleVvResp,
   CreateMessageReq,
   CreateMessageResp,
+  DelArticleReq,
+  DelPictureReq,
   GetArticleListReq,
   GetArticleListResp,
   GetMessageListResp,
@@ -30,11 +32,13 @@ export default class Api {
       Request.get("/a/article/like", params) as any,
     addArticleVv: (params: AddArticleVvReq): Promise<AddArticleVvResp> =>
       Request.get("/a/article/vv", params) as any,
+    delArticle: (params: DelArticleReq) => Request.post("/a/del", params),
   };
 
   public static Picture = {
     getPictureList: (): Promise<GetPictureListResp> =>
       Request.get("/p/picture/list") as any,
+    delPicture: (params: DelPictureReq) => Request.post("/p/del", params),
   };
 
   public static Message = {
