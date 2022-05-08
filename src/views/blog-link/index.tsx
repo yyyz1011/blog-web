@@ -3,15 +3,12 @@ import "./index.less";
 import { IconUnlink } from "@douyinfe/semi-icons";
 import { Button, Card } from "@douyinfe/semi-ui";
 import React from "react";
-import { useTranslation } from "react-i18next";
 
 import BlogLinkCard from "@/components/blog-link/blog-link-card";
 import { linkList, LinkListItem, QQAccount } from "@/constant";
 import copyText from "@/utils/copyText";
 
 const BlogLink: React.FC = () => {
-  const { t } = useTranslation();
-
   return (
     <>
       <div className="link-wrapper">
@@ -23,19 +20,15 @@ const BlogLink: React.FC = () => {
             alt="leaf-blog"
           />
           <div className="link-banner-content">
-            <div className="title">{t("link.banner_title")}</div>
+            <div className="title">友链</div>
             <div className="tip">
-              {t("link.banner_content")}
+              如果想增加友链，请QQ邮箱发送至
               <Button
                 theme="borderless"
                 type="primary"
                 className="tip-button"
                 onClick={() =>
-                  copyText(
-                    QQAccount,
-                    t("notice_status.copy_success"),
-                    t("notice_status.copy_error")
-                  )
+                  copyText(QQAccount, "复制成功", "复制失败，请手动复制内容")
                 }
               >
                 {QQAccount}
@@ -43,17 +36,17 @@ const BlogLink: React.FC = () => {
               ~
             </div>
             <div className="formatter">
-              {t("link.formatter")}
+              格式 :
               {
-                " {name:'YeZhou',avatar:'https://avatars.githubusercontent.com/u/65165470?v=4',uri:xxx,desc:'leaf blog'} "
+                " {name:'YeZhou',avatar:'https://avatars.githubusercontent.com/u/65165470?v=4',url:http://www.yeyezhou.com/,desc:'leaf blog'} "
               }
             </div>
           </div>
         </Card>
         <div className="link-content">
-          {linkList.map((item: LinkListItem, index) => 
+          {linkList.map((item: LinkListItem, index) => (
             <BlogLinkCard key={"link-card" + index} info={item} />
-          )}
+          ))}
         </div>
       </div>
     </>
