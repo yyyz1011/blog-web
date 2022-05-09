@@ -2,13 +2,11 @@ import "./index.less";
 
 import { IconHash } from "@douyinfe/semi-icons";
 import React from "react";
-import { useTranslation } from "react-i18next";
 
 interface AboutBlogProps {
   className?: string;
 }
 const AboutBlog: React.FC<AboutBlogProps> = (props: AboutBlogProps) => {
-  const { t } = useTranslation();
   const { className = "" } = props;
   return (
     <div className={`about-blog ${className}`}>
@@ -20,9 +18,9 @@ const AboutBlog: React.FC<AboutBlogProps> = (props: AboutBlogProps) => {
       <div className="about-blog-content">
         <div className="title">
           <IconHash className="title-icon" />
-          {t("about.blog_title")}
+          关于博客
         </div>
-        <div className="purpose">{t("about.blog_purpose")}</div>
+        <div className="purpose">分享·记录·提升</div>
       </div>
     </div>
   );

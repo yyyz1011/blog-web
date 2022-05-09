@@ -1,4 +1,3 @@
-import "@/utils/i18n";
 import "@/assets/css/common.less";
 import "nprogress/nprogress.css";
 
