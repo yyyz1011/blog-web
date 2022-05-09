@@ -57,7 +57,7 @@ const AdminPictureList: React.FC = () => {
   }
 
   function handleEditPicture(pictureInfo: GetPictureListItem) {
-    console.log("TODO 等创建图库搞完了回来弄这个");
+    Toast.warning("暂不支持，敬请期待");
   }
 
   function handleDeletePicture(pictureInfo: GetPictureListItem) {

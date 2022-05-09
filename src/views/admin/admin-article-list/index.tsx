@@ -52,7 +52,7 @@ const AdminArticleList: React.FC = () => {
   }
 
   function handleEditArticle(articleInfo: GetArticleListItem) {
-    console.log("TODO 等创建笔记搞完了回来弄这个");
+    Toast.warning("暂不支持，敬请期待");
   }
 
   function handleDeleteArticle(articleInfo: GetArticleListItem) {
