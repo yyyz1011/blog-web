@@ -24,7 +24,6 @@ const AdminArticleCreate: React.FC = () => {
     try {
       const data = await Api.Article.getArticleTypeList();
       setArticleTypeList(data);
-      console.log(data);
     } catch (err: any) {
       window.$catch(err.message);
     }

@@ -24,9 +24,7 @@ const AdminPictureList: React.FC = () => {
     error,
     refetch,
   } = useQuery("picture-list", async () => {
-    const data = await Api.Picture.getPictureList();
-    console.log(data);
-    return data;
+    return await Api.Picture.getPictureList();
   });
 
   useEffect(() => {
