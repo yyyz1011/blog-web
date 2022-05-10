@@ -62,20 +62,24 @@ module.exports = {
   },
   optimization: {
     splitChunks: {
-      chunks: "all",
+      chunks: "async",
       minSize: 20000,
-      maxSize: 20000,
-      minChunks: 2,
+      minRemainingSize: 0,
+      minChunks: 1,
+      maxAsyncRequests: 30,
+      maxInitialRequests: 30,
+      enforceSizeThreshold: 50000,
       cacheGroups: {
-        vendor: {
-          test: /[\/]node_modules[\/]/,
-          filename: "js/[id]_vendors.js",
+        defaultVendors: {
+          test: /[\\/]node_modules[\\/]/,
           priority: -10,
+          chunks: "initial",
+          reuseExistingChunk: true,
         },
         default: {
           minChunks: 2,
-          filename: "js/[id]_common.js", // 一般是多入口会打包common.js
           priority: -20,
+          reuseExistingChunk: true,
         },
       },
     },
