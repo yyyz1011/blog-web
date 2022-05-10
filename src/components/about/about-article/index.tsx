@@ -3,8 +3,9 @@ import "./index.less";
 import { IconArticle, IconHash } from "@douyinfe/semi-icons";
 import { Button } from "@douyinfe/semi-ui";
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import { useQuery } from "react-query";
+import { useNavigate } from "react-router-dom";
+
 import Api from "@/network/api";
 
 interface AboutArticleProps {

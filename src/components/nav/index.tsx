@@ -12,7 +12,6 @@ import {
   Toast,
   Tooltip,
 } from "@douyinfe/semi-ui";
-import { inject, observer } from "mobx-react";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -57,8 +56,8 @@ const Nav: React.FC<any> = () => {
       });
   };
 
-  const exitUserInfo = () => {
-    setLocalstorageUserInfo(null);
+  const exitUserInfo = async () => {
+    await setLocalstorageUserInfo(null);
     setVisibleExit(false);
     window.location.reload();
   };
@@ -94,9 +93,9 @@ const Nav: React.FC<any> = () => {
               render={
                 <Dropdown.Menu>
                   <Dropdown.Item onClick={() => setVisibleLogin(true)}>
-                    {localstorageUserInfo.account ? "修改" : "登录"}
+                    {localstorageUserInfo?.account ? "修改" : "登录"}
                   </Dropdown.Item>
-                  {localstorageUserInfo.account && (
+                  {localstorageUserInfo?.account && (
                     <Dropdown.Item onClick={() => setVisibleExit(true)}>
                       退出
                     </Dropdown.Item>
@@ -107,7 +106,7 @@ const Nav: React.FC<any> = () => {
               <Avatar
                 size="small"
                 className="avatar"
-                src={localstorageUserInfo.avatar}
+                src={localstorageUserInfo?.avatar}
                 alt="leaf-blog"
               >
                 游客
@@ -117,19 +116,19 @@ const Nav: React.FC<any> = () => {
         }
       />
       <Modal
-        title={localstorageUserInfo.account ? "游客更新" : "游客登录"}
+        title={localstorageUserInfo?.account ? "游客更新" : "游客登录"}
         visible={visibleLogin}
         getPopupContainer={() => document.body}
         onOk={getUserInfo}
         onCancel={() => setVisibleLogin(false)}
-        okText={localstorageUserInfo.account ? "更新" : "登录"}
+        okText={localstorageUserInfo?.account ? "更新" : "登录"}
         cancelText="取消"
       >
         <Form
           getFormApi={(formApi: BaseFormApi) => setFormApi(formApi)}
           initValues={{
-            account: localstorageUserInfo.account,
-            nickname: localstorageUserInfo.nickname,
+            account: localstorageUserInfo?.account,
+            nickname: localstorageUserInfo?.nickname,
           }}
         >
           <Form.Input
@@ -173,4 +172,4 @@ const Nav: React.FC<any> = () => {
   );
 };
 
-export default inject("store")(observer(Nav));
+export default Nav;

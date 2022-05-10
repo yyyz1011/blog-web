@@ -1,18 +1,23 @@
 import "./index.less";
 
 import { Notification } from "@douyinfe/semi-ui";
-import { inject, observer } from "mobx-react";
 import React, { useEffect, useState } from "react";
 
 import LeafEditor from "@/components/common/leaf-editor";
 import MessageList from "@/components/message/message-list";
+import { LOCALSTORAGE_AUTHOR_INFO } from "@/constant";
 import Api from "@/network/api";
 import { GetMessageListItem } from "@/network/apiType";
+import useLocalStorageState from "@/utils/useLocalStorageState";
 
-const Message: React.FC<any> = (props: any) => {
-  const userAccount = props.store.userStore.account;
-  const userNickName = props.store.userStore.nickname;
+const Message: React.FC<any> = () => {
   const [messageList, setMessageList] = useState<GetMessageListItem[]>([]);
+  const [localstorageUserInfo, setLocalstorageUserInfo] = useLocalStorageState(
+    null,
+    LOCALSTORAGE_AUTHOR_INFO
+  );
+  const userAccount = localstorageUserInfo?.account;
+  const userNickName = localstorageUserInfo?.nickname;
 
   useEffect(() => {
     getMessageAllList();
@@ -61,7 +66,7 @@ const Message: React.FC<any> = (props: any) => {
           validateErrorText="留言不能为空"
           submit={handleSubmit}
           success={submitSuccess}
-          isEdit={userAccount}
+          isEdit={Boolean(userAccount)}
         />
       </div>
       <div className="message-title">历史留言</div>
@@ -70,4 +75,4 @@ const Message: React.FC<any> = (props: any) => {
   );
 };
 
-export default inject("store")(observer(Message));
+export default Message;
