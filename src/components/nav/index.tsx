@@ -93,8 +93,13 @@ const Nav: React.FC<any> = () => {
               render={
                 <Dropdown.Menu>
                   <Dropdown.Item onClick={() => setVisibleLogin(true)}>
-                    {localstorageUserInfo?.account ? "修改" : "登录"}
+                    {localstorageUserInfo?.account ? "修改" : "QQ登录"}
                   </Dropdown.Item>
+                  {!localstorageUserInfo?.account && (
+                    <Dropdown.Item onClick={() => Toast.warning('正在接入了，请稍后o(╥﹏╥)o')}>
+                      github登录
+                    </Dropdown.Item>
+                  )}
                   {localstorageUserInfo?.account && (
                     <Dropdown.Item onClick={() => setVisibleExit(true)}>
                       退出
