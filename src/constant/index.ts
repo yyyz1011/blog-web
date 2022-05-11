@@ -1,7 +1,5 @@
 // 用户信息
 export const LOCALSTORAGE_AUTHOR_INFO: string = "LOCALSTORAGE_AUTHOR_INFO";
-// 语言信息
-export const LOCALSTORAGE_LANGUAGE: string = "LOCALSTORAGE_LANGUAGE";
 
 // 博主QQ账号
 export const QQAccount: string = "1540032876@qq.com";
