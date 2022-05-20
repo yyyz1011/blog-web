@@ -1,20 +1,23 @@
 import "./index.less";
 
 import { Notification } from "@douyinfe/semi-ui";
-import { inject, observer } from "mobx-react";
 import React, { useEffect, useState } from "react";
-import { useTranslation } from "react-i18next";
 
 import LeafEditor from "@/components/common/leaf-editor";
 import MessageList from "@/components/message/message-list";
+import { LOCALSTORAGE_AUTHOR_INFO } from "@/constant";
 import Api from "@/network/api";
 import { GetMessageListItem } from "@/network/apiType";
+import useLocalStorageState from "@/utils/useLocalStorageState";
 
-const Message: React.FC<any> = (props: any) => {
-  const { t } = useTranslation();
-  const userAccount = props.store.userStore.account;
-  const userNickName = props.store.userStore.nickname;
+const Message: React.FC<any> = () => {
   const [messageList, setMessageList] = useState<GetMessageListItem[]>([]);
+  const [localstorageUserInfo, setLocalstorageUserInfo] = useLocalStorageState(
+    null,
+    LOCALSTORAGE_AUTHOR_INFO
+  );
+  const userAccount = localstorageUserInfo?.account;
+  const userNickName = localstorageUserInfo?.nickname;
 
   useEffect(() => {
     getMessageAllList();
@@ -39,7 +42,7 @@ const Message: React.FC<any> = (props: any) => {
 
   function submitSuccess() {
     Notification.success({
-      content: t("message.message_success"),
+      content: "留言成功",
     });
     getMessageAllList();
   }
@@ -57,19 +60,19 @@ const Message: React.FC<any> = (props: any) => {
     <div className="message">
       <div>
         <LeafEditor
-          placeholder={t("message.editor_placeholder")}
-          operateText={t("message.editor_operate_text")}
-          operateDisabledText={t("message.editor_operate_disable_text")}
-          validateErrorText={t("message.editor_error_text")}
+          placeholder="请输入留言"
+          operateText="留言"
+          operateDisabledText="请登录之后留言"
+          validateErrorText="留言不能为空"
           submit={handleSubmit}
           success={submitSuccess}
-          isEdit={userAccount}
+          isEdit={Boolean(userAccount)}
         />
       </div>
-      <div className="message-title">{t("message.history_message")}</div>
+      <div className="message-title">历史留言</div>
       <MessageList messageList={messageList}></MessageList>
     </div>
   );
 };
 
-export default inject("store")(observer(Message));
+export default Message;

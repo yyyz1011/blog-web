@@ -4,6 +4,7 @@ node_modules
 /config
 /.cache
 blog-web.zip
+src/config/
 
 # local env files
 .env.local

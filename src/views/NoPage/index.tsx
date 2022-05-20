@@ -2,12 +2,10 @@ import "./index.less";
 
 import { Button } from "@douyinfe/semi-ui";
 import React from "react";
-import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
 const NoPage: React.FC = () => {
   const navigate = useNavigate();
-  const { t } = useTranslation();
 
   const handleBackHome = () => {
     navigate("/", { replace: true });
@@ -21,13 +19,13 @@ const NoPage: React.FC = () => {
           src={require("../../assets/img/page_no_found.svg")}
           alt="leaf-blog"
         />
-        <h1 className="no-page--tip">{t("404.no_page_text")}</h1>
+        <h1 className="no-page--tip">页面找不到啦~是否返回首页</h1>
         <Button
           className="no-page--back"
           type="tertiary"
           onClick={handleBackHome}
         >
-          {t("404.operate_text")}
+          返回
         </Button>
       </div>
     </>

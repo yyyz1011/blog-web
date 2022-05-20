@@ -1,67 +1,82 @@
 .article-card {
   margin-bottom: 16px;
-  width: 100%;
-}
-
-.article-title {
-  display: flex;
-  align-items: center;
-
-  &--title {
-    font-size: 16px;
-    font-weight: bold;
-    margin-right: 16px;
-  }
-
-  &--type {
-    margin: 0 4px;
-  }
-}
-
-.article-extra-title {
-  font-weight: lighter;
-  font-size: 12px;
-}
-
-.semi-card-body {
-  padding-top: 0 !important;
-}
-
-.article-card-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  opacity: 0.3;
-  transition: all ease 0.5s;
-
-  &--desc {
-    flex: 5;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-    overflow: hidden;
-  }
-
-  &--info {
-    flex: 1;
-    margin-left: 16px;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-
-    .info-item {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      font-weight: bold;
-      margin-left: 16px;
+  width: 350px;
+  user-select: none;
+  &:hover {
+    .article-title--icon {
+      left: 230px;
+    }
+    .article-title--icon-like {
+      opacity: 0.8;
     }
   }
 }
 
-.article-card:hover {
-  .article-card-content {
-    opacity: 0.8;
+.article-title {
+  position: relative;
+  display: flex;
+  align-items: center;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 350px;
+  height: 200px;
+  background: linear-gradient(-45deg, #313866, #50409a, #964ec2, #ff7bbf);
+  background-size: 600% 600%;
+  animation: gradientBG 10s ease infinite;
+
+  &--title {
+    font-size: 25px;
+    font-weight: bold;
+  }
+
+  &--modify-time {
+    margin-top: 16px;
+  }
+
+  &--type {
+    display: flex;
+    align-items: center;
+    margin-top: 8px;
+  }
+
+  &--icon {
+    font-size: 120px;
+    opacity: 0.4;
+    position: absolute;
+    bottom: -30px;
+    left: 0;
+    transition: all 1s ease;
+  }
+
+  &--icon-like {
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    opacity: 0.4;
+    transition: all 1s ease;
+    .like-icon {
+      font-size: 25px;
+      margin-right: 8px;
+    }
+  }
+}
+
+.semi-card-body {
+  padding: 0 !important;
+}
+
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
   }
 }

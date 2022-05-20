@@ -6,7 +6,6 @@ import dayjs from "dayjs";
 // @ts-ignore
 import { formatPrice } from "leaf-util";
 import React, { useEffect, useState } from "react";
-import { useTranslation } from "react-i18next";
 
 import { GetArticleListItem } from "@/network/apiType";
 
@@ -20,8 +19,7 @@ interface DescriptionsType {
 const ArticleDetailHeader: React.FC<ArticleDetailHeaderProps> = (
   props: ArticleDetailHeaderProps
 ) => {
-  const [t] = useTranslation();
-  const {articleInfo} = props;
+  const { articleInfo } = props;
   const [loading, setLoading] = useState(true);
   const [descriptions, setDescriptions] = useState<DescriptionsType[]>([]);
 
@@ -30,23 +28,23 @@ const ArticleDetailHeader: React.FC<ArticleDetailHeaderProps> = (
     if (articleInfo) {
       const description: DescriptionsType[] = [
         {
-          key: t("article_detail.description_create_time"),
+          key: "创建时间",
           value: dayjs(Number(articleInfo.create_time)).format("YYYY-MM-DD"),
         },
         {
-          key: t("article_detail.description_modify_time"),
+          key: "最近修改时间",
           value: dayjs(Number(articleInfo.modify_time)).format("YYYY-MM-DD"),
         },
         {
-          key: t("article_detail.description_article_type"),
+          key: "笔记分类",
           value: articleInfo.atLabel,
         },
         {
-          key: t("article_detail.description_article_vv"),
+          key: "阅读量",
           value: formatPrice(articleInfo.article_vv),
         },
         {
-          key: t("article_detail.description_article_like"),
+          key: "点赞量",
           value: formatPrice(articleInfo.article_like),
         },
       ];

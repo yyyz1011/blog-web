@@ -54,7 +54,7 @@ const PictureCard: React.FC<PictureCardProps> = (props: PictureCardProps) => {
     <div className="picture-extra-info">
       <div className="picture-item-title">
         {imgInfo.title}
-        <Tag className="tag" color="violet">
+        <Tag className="tag" color="white">
           {imgInfo.region}
         </Tag>
       </div>

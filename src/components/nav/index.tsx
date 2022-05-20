@@ -1,7 +1,7 @@
 import "./index.less";
 
 import { BaseFormApi } from "@douyinfe/semi-foundation/form/interface";
-import { IconLanguage, IconWrench } from "@douyinfe/semi-icons";
+import { IconWrench } from "@douyinfe/semi-icons";
 import {
   Avatar,
   Dropdown,
@@ -12,22 +12,16 @@ import {
   Toast,
   Tooltip,
 } from "@douyinfe/semi-ui";
-import { inject, observer } from "mobx-react";
-import React, { useEffect, useState } from "react";
-import { useTranslation } from "react-i18next";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { LOCALSTORAGE_AUTHOR_INFO, LOCALSTORAGE_LANGUAGE } from "@/constant";
+import { LOCALSTORAGE_AUTHOR_INFO } from "@/constant";
 import { getQQAvatar } from "@/network";
 import { NavRouters } from "@/routers";
 import useLocalStorageState from "@/utils/useLocalStorageState";
 
-const language_cn = "cn";
-const language_en = "en";
-
-const Nav: React.FC<any> = (props: any) => {
+const Nav: React.FC<any> = () => {
   const navigate = useNavigate();
-  const {userStore} = props.store;
   const [formApi, setFormApi] = useState<BaseFormApi | null>(null);
   const [visibleLogin, setVisibleLogin] = useState<boolean>(false);
   const [visibleExit, setVisibleExit] = useState<boolean>(false);
@@ -35,30 +29,6 @@ const Nav: React.FC<any> = (props: any) => {
     null,
     LOCALSTORAGE_AUTHOR_INFO
   );
-  const [localstorageLanguage, setLocalstorageLanguage] = useLocalStorageState(
-    language_cn,
-    LOCALSTORAGE_LANGUAGE
-  );
-  const { t, i18n } = useTranslation();
-
-  useEffect(() => {
-    if (localstorageUserInfo) {
-      props.store.userStore.setUserInfo(localstorageUserInfo);
-    }
-    if (localstorageLanguage) {
-      i18n.changeLanguage(localstorageLanguage).then();
-    }
-  }, []);
-
-  const changeLanguage = () => {
-    if (localstorageLanguage === language_cn) {
-      setLocalstorageLanguage(language_en);
-      i18n.changeLanguage(language_en).then();
-    } else {
-      setLocalstorageLanguage(language_cn);
-      i18n.changeLanguage(language_cn).then();
-    }
-  };
 
   const getUserInfo = () => {
     if (!formApi) return;
@@ -72,28 +42,22 @@ const Nav: React.FC<any> = (props: any) => {
           nickname: nickname || account,
           account,
         };
-        props.store.userStore.setUserInfo(userInfo);
         setLocalstorageUserInfo(userInfo);
         setVisibleLogin(false);
         Notification.open({
-          title: `${t("nav.login_modal.hi")}${userInfo.nickname}`,
-          content: t("nav.login_modal.notify_content"),
+          title: `哈罗，${userInfo.nickname}`,
+          content: "欢迎来到 leaf blog",
           duration: 3,
         });
         window.location.reload();
       })
       .catch(() => {
-        Toast.error(t("nav.login_modal.error_info"));
+        Toast.error("请输入正确的内容~");
       });
   };
 
-  const exitUserInfo = () => {
-    props.store.userStore.setUserInfo({
-      avatar: null,
-      nickname: null,
-      account: null,
-    });
-    setLocalstorageUserInfo(null);
+  const exitUserInfo = async () => {
+    await setLocalstorageUserInfo(null);
     setVisibleExit(false);
     window.location.reload();
   };
@@ -108,25 +72,20 @@ const Nav: React.FC<any> = (props: any) => {
         }}
         items={NavRouters.map((item) => ({
           itemKey: item.path,
-          text: t("nav." + item.title),
-          icon: <item.icon />,
+          text: item.title,
+          icon: <item.icon className="nav-item" />,
+          className: "nav-item",
         }))}
         onSelect={(key) => navigate(key.itemKey as string)}
         footer={
           <div className="footer">
-            <Tooltip content="BUG">
+            <Tooltip content="提交BUG">
               <IconWrench
+                className="nav-item"
                 size="large"
                 onClick={() =>
                   window.open("https://github.com/yyyz1011/blog-web/issues")
                 }
-              />
-            </Tooltip>
-            <Tooltip content={t("nav.change_language")}>
-              <IconLanguage
-                className="change-language-icon"
-                size="large"
-                onClick={changeLanguage}
               />
             </Tooltip>
             <Dropdown
@@ -134,90 +93,88 @@ const Nav: React.FC<any> = (props: any) => {
               render={
                 <Dropdown.Menu>
                   <Dropdown.Item onClick={() => setVisibleLogin(true)}>
-                    {userStore.account ? t("nav.update") : t("nav.login")}
+                    {localstorageUserInfo?.account ? "修改" : "QQ登录"}
                   </Dropdown.Item>
-                  {userStore.account && 
-                    <Dropdown.Item onClick={() => setVisibleExit(true)}>
-                      {t("nav.exit")}
+                  {!localstorageUserInfo?.account && (
+                    <Dropdown.Item onClick={() => Toast.warning('正在接入了，请稍后o(╥﹏╥)o')}>
+                      github登录
                     </Dropdown.Item>
-                  }
+                  )}
+                  {localstorageUserInfo?.account && (
+                    <Dropdown.Item onClick={() => setVisibleExit(true)}>
+                      退出
+                    </Dropdown.Item>
+                  )}
                 </Dropdown.Menu>
               }
             >
-              <Avatar size="small" className="avatar" src={userStore.avatar} alt="leaf-blog">
-                {t("nav.visitor")}
+              <Avatar
+                size="small"
+                className="avatar"
+                src={localstorageUserInfo?.avatar}
+                alt="leaf-blog"
+              >
+                游客
               </Avatar>
             </Dropdown>
           </div>
         }
       />
       <Modal
-        title={
-          userStore.account
-            ? t("nav.login_modal.modal_update_title")
-            : t("nav.login_modal.modal_login_title")
-        }
+        title={localstorageUserInfo?.account ? "游客更新" : "游客登录"}
         visible={visibleLogin}
         getPopupContainer={() => document.body}
         onOk={getUserInfo}
         onCancel={() => setVisibleLogin(false)}
-        okText={
-          userStore.account
-            ? t("nav.login_modal.ok_update_text")
-            : t("nav.login_modal.ok_login_text")
-        }
-        cancelText={t("nav.login_modal.cancel_text")}
+        okText={localstorageUserInfo?.account ? "更新" : "登录"}
+        cancelText="取消"
       >
         <Form
           getFormApi={(formApi: BaseFormApi) => setFormApi(formApi)}
           initValues={{
-            account: userStore.account,
-            nickname: userStore.nickname,
+            account: localstorageUserInfo?.account,
+            nickname: localstorageUserInfo?.nickname,
           }}
         >
           <Form.Input
             field="account"
-            label={t("nav.login_modal.account_label")}
+            label="QQ账号"
             style={{ width: "100%" }}
-            placeholder={
-              t("nav.login_modal.account_placeholder") as React.ReactText
-            }
+            placeholder={"请输入你的QQ账号" as React.ReactText}
             trigger="blur"
             rules={[
               {
                 required: true,
-                message: t("nav.login_modal.account_rules_require"),
+                message: "QQ账号不能为空",
               },
               {
                 validator: (rule, value) => /^[1-9][0-9]{4,9}$/gim.test(value),
-                message: t("nav.login_modal.account_rules_num"),
+                message: "QQ账号格式错误",
               },
             ]}
           />
           <Form.Input
             field="nickname"
-            label={t("nav.login_modal.nickname_label")}
+            label="昵称"
             style={{ width: "100%" }}
-            placeholder={
-              t("nav.login_modal.nickname_placeholder") as React.ReactText
-            }
-            extraText={t("nav.login_modal.nick_extra_text")}
+            placeholder={"请输入你的昵称" as React.ReactText}
+            extraText="假如昵称为空，默认选择QQ账号作为昵称"
           />
         </Form>
       </Modal>
       <Modal
-        title={t("nav.exit_modal.modal_title")}
+        title="退出账号"
         visible={visibleExit}
         getPopupContainer={() => document.body}
         onOk={exitUserInfo}
         onCancel={() => setVisibleExit(false)}
-        okText={t("nav.exit_modal.ok_exit_text")}
-        cancelText={t("nav.exit_modal.cancel_text")}
+        okText="退出"
+        cancelText="取消"
       >
-        {t("nav.exit_modal.exit_text")}
+        真的要退出么~
       </Modal>
     </>
   );
 };
 
-export default inject("store")(observer(Nav));
+export default Nav;

@@ -5,7 +5,6 @@ import { IconHash, IconImage } from "@douyinfe/semi-icons";
 import { Button } from "@douyinfe/semi-ui";
 import * as echarts from "echarts";
 import React, { useEffect } from "react";
-import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
 import { travelList } from "@/constant";
@@ -15,7 +14,6 @@ interface AboutTravelProps {
 }
 const AboutTravel: React.FC<AboutTravelProps> = (props: AboutTravelProps) => {
   const { className = "" } = props;
-  const { t } = useTranslation();
   const navigate = useNavigate();
   const chartsRef: React.RefObject<HTMLDivElement> = React.createRef();
 
@@ -68,13 +66,14 @@ const AboutTravel: React.FC<AboutTravelProps> = (props: AboutTravelProps) => {
       <div className="travel-content">
         <div className="travel-content-title">
           <IconHash className="title-icon" />
-          {t("about.travel_title")}
+          在路上
         </div>
-        <div className="travel-content-text">{t("about.travel_text")}</div>
+        <div className="travel-content-text">
+        一程山、一程水一路行走、一路回忆千帆阅尽愿我们都能与更好的自己相遇~</div>
         <div className="travel-content-summary">
-          {t("about.travel_summary_pre")}
+        已经努力走过了
           <span className="summary-num">{travelList.length}</span>
-          {t("about.travel_summary_append")}
+          个省份
         </div>
         <div className="operate">
           <Button
@@ -84,7 +83,7 @@ const AboutTravel: React.FC<AboutTravelProps> = (props: AboutTravelProps) => {
             onClick={() => navigate("/picture")}
           >
             <IconImage />
-            <span className="button-text">{t("about.travel_to_picture")}</span>
+            <span className="button-text">跳转至图库</span>
           </Button>
         </div>
       </div>

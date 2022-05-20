@@ -1,7 +1,6 @@
 import {
   IconAlignLeft,
   IconArticle,
-  IconHome,
   IconImage,
   IconMember,
   IconUnlink,
@@ -16,19 +15,11 @@ type RouterType = {
   icon?: any;
 };
 
-const HomeRouter: RouterType = {
-  key: "home",
-  path: "/home",
-  component: lazy(() => import("@/views/home")),
-  title: "home",
-  icon: IconHome,
-};
-
 const ArticleRouter: RouterType = {
   key: "article",
   path: "/",
   component: lazy(() => import("@/views/article")),
-  title: "article",
+  title: "笔记",
   icon: IconArticle,
 };
 
@@ -36,7 +27,7 @@ const PictureRouter: RouterType = {
   key: "picture",
   path: "/picture",
   component: lazy(() => import("@/views/picture")),
-  title: "picture",
+  title: "图库",
   icon: IconImage,
 };
 
@@ -44,7 +35,7 @@ const BlogLinkRouter: RouterType = {
   key: "blog-link",
   path: "/blog-link",
   component: lazy(() => import("@/views/blog-link")),
-  title: "blog_link",
+  title: "友链",
   icon: IconUnlink,
 };
 
@@ -52,7 +43,7 @@ const MessageRouter: RouterType = {
   key: "message",
   path: "/message",
   component: lazy(() => import("@/views/message")),
-  title: "message",
+  title: "留言",
   icon: IconAlignLeft,
 };
 
@@ -60,12 +51,11 @@ const AboutRouter: RouterType = {
   key: "about",
   path: "/about",
   component: lazy(() => import("@/views/about")),
-  title: "about",
+  title: "我的",
   icon: IconMember,
 };
 
 const NavRouters: RouterType[] = [
-  HomeRouter,
   ArticleRouter,
   PictureRouter,
   MessageRouter,
@@ -80,7 +70,14 @@ const ArticleDetailRouter: RouterType = {
   title: "article-detail",
 };
 
-const Routers: RouterType[] = [ArticleDetailRouter];
+const AdminHomeRouter: RouterType = {
+  key: "admin-home",
+  path: "/adminyz",
+  component: lazy(() => import("@/views/admin/admin-home")),
+  title: "admin-home",
+};
+
+const Routers: RouterType[] = [ArticleDetailRouter, AdminHomeRouter];
 
 export { NavRouters, Routers };
 export type { RouterType };
