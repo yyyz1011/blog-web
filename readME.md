@@ -1,5 +1,7 @@
 # leaf blog
 
+# 项目重构ing
+
 # Blog visitor's manual
 
 - Blog 1.0 uses QQ account as login account, users can define their own nickname (if the nickname is not set, use QQ account as a nickname), after login can cooperate with the blog for comments, messages, likes and other interactions
