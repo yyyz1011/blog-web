@@ -1,6 +1,7 @@
 import {
   IconAlignLeft,
   IconArticle,
+  IconHome,
   IconImage,
   IconMember,
   IconUnlink,
@@ -13,11 +14,20 @@ type RouterType = {
   component: React.LazyExoticComponent<any>;
   title: string;
   icon?: any;
+  fullPage?: boolean;
+};
+
+const HomeRouter: RouterType = {
+  key: "home",
+  path: "/",
+  component: lazy(() => import("@/views/home")),
+  title: "首页",
+  icon: IconHome,
 };
 
 const ArticleRouter: RouterType = {
   key: "article",
-  path: "/",
+  path: "/article",
   component: lazy(() => import("@/views/article")),
   title: "笔记",
   icon: IconArticle,
@@ -56,6 +66,7 @@ const AboutRouter: RouterType = {
 };
 
 const NavRouters: RouterType[] = [
+  HomeRouter,
   ArticleRouter,
   PictureRouter,
   MessageRouter,
