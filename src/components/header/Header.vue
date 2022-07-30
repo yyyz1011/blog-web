@@ -6,6 +6,7 @@
         :key="item.name"
         @click="handleClickNav(item)"
     >
+      <component :is="item.icon" class="icon"/>
       {{ item.title }}
     </div>
   </div>
@@ -13,15 +14,15 @@
 
 <script setup lang="ts">
 import {ref, Ref, watch} from "vue";
-import {useRouter, useRoute} from "vue-router";
-import {navRoutes, NavRouteItem} from "@/routers";
+import {useRoute, useRouter} from "vue-router";
+import {NavRouteItem} from "@/routers";
 
 const router = useRouter();
 const route = useRoute();
 
 const isHomePage: Ref<boolean> = ref(true);
 
-watch(() => route.path, (newVal, val) => {
+watch(() => route.path, (newVal) => {
   isHomePage.value = newVal === "/";
 }, {
   immediate: true
@@ -51,11 +52,20 @@ function handleClickNav(item: NavRouteItem) {
     user-select: none;
     margin-left: 24px;
     padding: 8px 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 100px;
     transition: all 0.5s ease;
     border-bottom: 1px solid black;
 
     &:hover {
       border-bottom: 1px solid white;
+    }
+
+    .icon {
+      width: 20px;
+      margin-right: 4px;
     }
   }
 }
