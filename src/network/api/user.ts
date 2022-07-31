@@ -1,4 +1,4 @@
-import {Request} from "@/network/request";
+import { Request } from "@/network/request";
 
 export interface GetTokenResp {
   token: string;

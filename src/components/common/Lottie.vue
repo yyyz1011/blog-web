@@ -4,7 +4,7 @@
 
 <script setup lang="ts">
 import lottie from "lottie-web";
-import {defineProps, computed, onMounted, defineEmits, ref} from "vue";
+import { defineProps, computed, onMounted, defineEmits, ref } from "vue";
 
 const props = defineProps({
   options: {

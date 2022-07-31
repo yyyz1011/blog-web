@@ -1,5 +1,5 @@
-import {createRouter, createWebHistory} from "vue-router";
-import {IconCamera, IconHome, IconLink, IconNav} from "@arco-design/web-vue/es/icon";
+import { createRouter, createWebHistory } from "vue-router";
+import { IconCamera, IconHome, IconLink, IconNav } from "@arco-design/web-vue/es/icon";
 
 export interface NavRouteItem {
   path: string;
@@ -16,7 +16,7 @@ export const navRoutes: Array<NavRouteItem> = [
     name: "home",
     title: "首页",
     component: () => import("@/views/home/Home.vue"),
-    meta: {index: 1},
+    meta: { index: 1 },
     icon: IconHome
   },
   {
@@ -24,7 +24,7 @@ export const navRoutes: Array<NavRouteItem> = [
     name: "article",
     title: "笔记",
     component: () => import("@/views/article/Article.vue"),
-    meta: {index: 2},
+    meta: { index: 2 },
     icon: IconNav
   },
   {
@@ -32,7 +32,7 @@ export const navRoutes: Array<NavRouteItem> = [
     name: "picture",
     title: "图库",
     component: () => import("@/views/picture/Picture.vue"),
-    meta: {index: 3},
+    meta: { index: 3 },
     icon: IconCamera
   },
   {
@@ -40,7 +40,7 @@ export const navRoutes: Array<NavRouteItem> = [
     name: "link",
     title: "友链",
     component: () => import("@/views/link/Link.vue"),
-    meta: {index: 4},
+    meta: { index: 4 },
     icon: IconLink
   }
 ];

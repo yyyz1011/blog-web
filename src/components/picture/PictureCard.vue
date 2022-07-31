@@ -2,12 +2,12 @@
   <a-card v-show="!isLoading" :bordered="false" class="picture-card" hoverable @click="handleClickCard">
     <template #actions>
       <span class="icon-hover" @click.stop="handleCopyUrl">
-        <IconShareInternal/>
+        <IconShareInternal />
       </span>
     </template>
     <template #cover>
       <div class="picture-card-cover">
-        <img :src="info.picture_url" alt="leaf_blog" class="picture-card-cover--img" @load="handleImgLoaded"/>
+        <img :src="info.picture_url" alt="leaf_blog" class="picture-card-cover--img" @load="handleImgLoaded" />
         <a-tag class="picture-card-cover--tag" size="large">
           {{ dayjs(Number(info.create_time)).format("YYYY-MM-DD") }}
           {{ info.region }}
@@ -21,21 +21,21 @@
     </a-card-meta>
   </a-card>
   <a-skeleton v-if="isLoading" animation class="skeleton-card">
-    <a-skeleton-shape class="skeleton-cover"/>
+    <a-skeleton-shape class="skeleton-cover" />
     <div class="skeleton-content">
-      <a-skeleton-shape class="skeleton-content--title"/>
-      <a-skeleton-shape class="skeleton-content--desc"/>
-      <a-skeleton-shape class="skeleton-content--action"/>
+      <a-skeleton-shape class="skeleton-content--title" />
+      <a-skeleton-shape class="skeleton-content--desc" />
+      <a-skeleton-shape class="skeleton-content--action" />
     </div>
   </a-skeleton>
 </template>
 
 <script lang="ts" setup>
-import {computed, getCurrentInstance, Ref, ref} from "vue";
-import {IconShareInternal} from "@arco-design/web-vue/es/icon";
+import { computed, getCurrentInstance, Ref, ref } from "vue";
+import { IconShareInternal } from "@arco-design/web-vue/es/icon";
 import dayjs from "dayjs";
 
-const {proxy} = getCurrentInstance();
+const { proxy } = getCurrentInstance();
 const props = defineProps({
   pictureInfo: {
     type: Object,

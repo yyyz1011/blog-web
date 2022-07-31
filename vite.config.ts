@@ -1,9 +1,9 @@
-import {defineConfig} from "vite";
+import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import path from "path";
 import AutoImport from "unplugin-auto-import/vite";
 import Components from "unplugin-vue-components/vite";
-import {ArcoResolver} from "unplugin-vue-components/resolvers";
+import { ArcoResolver } from "unplugin-vue-components/resolvers";
 
 export default defineConfig({
   resolve: {
@@ -27,7 +27,7 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        additionalData: "@import \"@/assets/css/variable.scss\";"
+        additionalData: '@import "@/assets/css/variable.scss";'
       }
     }
   }

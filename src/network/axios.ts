@@ -1,7 +1,7 @@
-import {Message} from "@arco-design/web-vue";
-import axios, {AxiosRequestConfig, Method} from "axios";
+import { Message } from "@arco-design/web-vue";
+import axios, { AxiosRequestConfig, Method } from "axios";
 import NProgress from "nprogress";
-import {Token} from "@/constants/common";
+import { Token } from "@/constants/common";
 
 export const baseUrl = "http://www.yeyezhou.com/api";
 
@@ -16,7 +16,7 @@ interface PendingType {
 
 // 取消重复请求
 const pending: Array<PendingType> = [];
-const {CancelToken} = axios;
+const { CancelToken } = axios;
 
 // 移除重复请求
 const removePending = (config: AxiosRequestConfig) => {
@@ -103,9 +103,9 @@ instance.interceptors.response.use(
     }
   },
   (err) => {
-    const {response} = err;
+    const { response } = err;
     if (response) {
-      const {config} = err;
+      const { config } = err;
       const [RETRY_COUNT, RETRY_DELAY] = [3, 1000];
 
       if (config && RETRY_COUNT) {
@@ -113,7 +113,7 @@ instance.interceptors.response.use(
         config.__retryCount = config.__retryCount || 0;
         // 检查是否已经把重试的总数用完
         if (config.__retryCount >= RETRY_COUNT) {
-          return Promise.reject(response || {message: err.message});
+          return Promise.reject(response || { message: err.message });
         }
         // 增加重试计数
         config.__retryCount++;

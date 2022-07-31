@@ -9,7 +9,7 @@ export class Request {
   static get = (url: string, params?: any) => {
     return new Promise((resolve, reject) => {
       axios
-        .get(url, {params: params})
+        .get(url, { params: params })
         .then((res) => {
           resolve(res);
         })

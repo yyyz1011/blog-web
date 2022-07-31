@@ -7,7 +7,7 @@ import { useRouter } from "vue-router";
 const router = useRouter();
 
 function handleBack() {
-  router.replace({name: "home"});
+  router.replace({ name: "home" });
 }
 </script>
 

@@ -1,16 +1,16 @@
 <template>
   <div :class="['header', isHomePage ? 'header-home' : '']">
     <div v-for="item in navRoutes" :key="item.name" class="header-nav-item" @click="handleClickNav(item)">
-      <component :is="item.icon" class="icon"/>
+      <component :is="item.icon" class="icon" />
       {{ item.title }}
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import {ref, Ref, watch} from "vue";
-import {useRoute, useRouter} from "vue-router";
-import {NavRouteItem, navRoutes} from "@/routers";
+import { ref, Ref, watch } from "vue";
+import { useRoute, useRouter } from "vue-router";
+import { NavRouteItem, navRoutes } from "@/routers";
 
 const router = useRouter();
 const route = useRoute();
@@ -18,13 +18,13 @@ const route = useRoute();
 const isHomePage: Ref<boolean> = ref(true);
 
 watch(
-    () => route.path,
-    (newVal) => {
-      isHomePage.value = newVal === "/";
-    },
-    {
-      immediate: true
-    }
+  () => route.path,
+  (newVal) => {
+    isHomePage.value = newVal === "/";
+  },
+  {
+    immediate: true
+  }
 );
 
 function handleClickNav(item: NavRouteItem) {
