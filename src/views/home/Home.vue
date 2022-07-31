@@ -1,14 +1,15 @@
 <template>
   <div class="home-wrapper">
-    <video
-        v-show="!isLoading"
-        ref="homeVideoRef"
-        class="home-bg"
-        src="../../assets/img/night.mp4"
-        muted
-        loop
-        autoplay
-    />
+    <div v-show="!isLoading" class="home-content">
+      <video
+          ref="homeVideoRef"
+          autoplay
+          class="home-bg"
+          loop
+          muted
+          src="../../assets/img/night.mp4"
+      />
+    </div>
     <div v-if="isLoading" class="home-loading">
       hello world
     </div>
@@ -22,9 +23,7 @@ const homeVideoRef: Ref<any> = ref(null);
 const isLoading: Ref<boolean> = ref(true);
 
 watch(() => homeVideoRef.value, (val) => {
-  console.log(val);
   val?.addEventListener("loadeddata", () => {
-    console.log(123);
     isLoading.value = false;
   });
 }, {
@@ -38,12 +37,16 @@ watch(() => homeVideoRef.value, (val) => {
 .home-wrapper {
   background: $background-black;
   min-height: 100vh;
+
+  .home-content {
+    .home-bg {
+      width: 100vw;
+      min-width: 1200px;
+      object-fit: fill;
+    }
+  }
 }
 
-.home-bg {
-  width: 100vw;
-  object-fit: fill;
-}
 
 .home-loading {
   color: white;
