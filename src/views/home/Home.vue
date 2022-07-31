@@ -8,7 +8,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, Ref, watch } from "vue";
+import { Ref, ref, watch } from "vue";
 
 const homeVideoRef: Ref<any> = ref(null);
 const isLoading: Ref<boolean> = ref(true);

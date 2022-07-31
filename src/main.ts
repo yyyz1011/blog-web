@@ -1,11 +1,13 @@
-import { createApp } from "vue";
-import App from "./App.vue";
-import router from "./routers";
 import "@/assets/css/common.scss";
 import "@arco-design/web-vue/es/message/style/css.js";
-import NProgress from "nprogress";
 import "nprogress/nprogress.css";
+
 import { Message } from "@arco-design/web-vue";
+import NProgress from "nprogress";
+import { createApp } from "vue";
+
+import App from "./App.vue";
+import router from "./routers";
 
 NProgress.configure({
   easing: "ease",

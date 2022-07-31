@@ -18,7 +18,11 @@ module.exports = {
   },
   "plugins": [
     "vue",
-    "@typescript-eslint"
+    "@typescript-eslint",
+    "simple-import-sort"
   ],
-  "rules": {}
+  "rules": {
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error"
+  }
 };

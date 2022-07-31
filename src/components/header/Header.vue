@@ -8,8 +8,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref, Ref, watch } from "vue";
+import { Ref, ref, watch } from "vue";
 import { useRoute, useRouter } from "vue-router";
+
 import { NavRouteItem, navRoutes } from "@/routers";
 
 const router = useRouter();

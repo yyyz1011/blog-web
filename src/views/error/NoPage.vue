@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import Lottie from "@/components/common/Lottie.vue";
-import LOTTIE_404 from "@/assets/lotties/404.json";
-import TextButton from "@/components/common/TextButton.vue";
 import { useRouter } from "vue-router";
+
+import LOTTIE_404 from "@/assets/lotties/404.json";
+import Lottie from "@/components/common/Lottie.vue";
+import TextButton from "@/components/common/TextButton.vue";
 
 const router = useRouter();
 

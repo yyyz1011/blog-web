@@ -31,9 +31,9 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, getCurrentInstance, Ref, ref } from "vue";
 import { IconShareInternal } from "@arco-design/web-vue/es/icon";
 import dayjs from "dayjs";
+import { computed, getCurrentInstance, Ref, ref } from "vue";
 
 const { proxy } = getCurrentInstance();
 const props = defineProps({

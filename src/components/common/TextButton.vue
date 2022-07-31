@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, defineEmits, computed } from "vue";
+import { computed, defineEmits, defineProps } from "vue";
 
 const props = defineProps({
   text: {

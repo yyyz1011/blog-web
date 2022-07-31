@@ -12,9 +12,10 @@
 
 <script lang="ts" setup>
 import { getCurrentInstance, Ref, ref } from "vue";
+
+import PictureCard from "@/components/picture/PictureCard.vue";
 import { ApiPicture } from "@/network/api";
 import { GetPictureListItem } from "@/network/api/picture";
-import PictureCard from "@/components/picture/PictureCard.vue";
 
 const { proxy } = getCurrentInstance();
 const pictureList: Ref<Array<GetPictureListItem>> = ref([]);

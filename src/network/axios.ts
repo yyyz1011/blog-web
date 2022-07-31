@@ -1,6 +1,7 @@
 import { Message } from "@arco-design/web-vue";
 import axios, { AxiosRequestConfig, Method } from "axios";
 import NProgress from "nprogress";
+
 import { Token } from "@/constants/common";
 
 export const baseUrl = "http://www.yeyezhou.com/api";

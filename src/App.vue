@@ -8,10 +8,11 @@
 </template>
 
 <script lang="ts" setup>
-import { getCurrentInstance, ref, Ref } from "vue";
+import { getCurrentInstance, Ref, ref } from "vue";
+
 import Header from "@/components/header/Header.vue";
-import { ApiUser } from "@/network/api";
 import { Token } from "@/constants/common";
+import { ApiUser } from "@/network/api";
 
 const { proxy } = getCurrentInstance();
 const isLoading: Ref<boolean> = ref(true);

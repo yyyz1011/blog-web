@@ -1,5 +1,5 @@
-import { createRouter, createWebHistory } from "vue-router";
 import { IconCamera, IconHome, IconLink, IconNav } from "@arco-design/web-vue/es/icon";
+import { createRouter, createWebHistory } from "vue-router";
 
 export interface NavRouteItem {
   path: string;
