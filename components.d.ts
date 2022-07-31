@@ -7,17 +7,17 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    AAvatar: typeof import('@arco-design/web-vue')['Avatar']
+    AAvatar: typeof import("@arco-design/web-vue")["Avatar"]
     AButton: typeof import("@arco-design/web-vue")["Button"]
     ACard: typeof import('@arco-design/web-vue')['Card']
     ACardMeta: typeof import('@arco-design/web-vue')['CardMeta']
     AModal: typeof import('@arco-design/web-vue')['Modal']
     ASkeleton: typeof import('@arco-design/web-vue')['Skeleton']
-    ASkeletonLine: typeof import('@arco-design/web-vue')['SkeletonLine']
+    ASkeletonLine: typeof import("@arco-design/web-vue")["SkeletonLine"]
     ASkeletonShape: typeof import('@arco-design/web-vue')['SkeletonShape']
-    ASpace: typeof import('@arco-design/web-vue')['Space']
+    ASpace: typeof import("@arco-design/web-vue")["Space"]
     ATag: typeof import('@arco-design/web-vue')['Tag']
-    ATypographyText: typeof import('@arco-design/web-vue')['TypographyText']
+    ATypographyText: typeof import("@arco-design/web-vue")["TypographyText"]
     Header: typeof import('./src/components/header/Header.vue')['default']
     HomeBaseLayout: typeof import("./src/components/home/HomeBaseLayout.vue")["default"]
     HomeTravel: typeof import("./src/components/home/HomeTravel.vue")["default"]

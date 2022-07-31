@@ -1,11 +1,10 @@
 <template>
   <div :style="lottieStyle" ref="lottieRef"></div>
 </template>
- 
+
 <script setup lang="ts">
 import lottie from "lottie-web";
-import { emit } from "process";
-import { defineProps, computed, onMounted, defineEmits, ref, Ref } from "vue";
+import {defineProps, computed, onMounted, defineEmits, ref} from "vue";
 
 const props = defineProps({
   options: {
@@ -19,7 +18,7 @@ const emits = defineEmits<{
   (event: "animCreated"): void;
 }>();
 
-const lottieRef: Ref<any> = ref(null);
+const lottieRef = ref(null);
 
 const lottieStyle = computed(() => ({
   width: props.width ? `${props.width}px` : "100%",
@@ -29,7 +28,7 @@ const lottieStyle = computed(() => ({
 }));
 
 onMounted(() => {
-  if (!lottieRef) return;
+  if (!lottieRef.value) return;
   let anim = lottie.loadAnimation({
     container: lottieRef.value,
     renderer: "svg",

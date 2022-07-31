@@ -1,1 +1,1 @@
-export const Token: string = "LEAF_BLOG_TOKEN";
+export const Token = "LEAF_BLOG_TOKEN";
