@@ -116,7 +116,7 @@ async function handleCopyUrl() {
 
   .skeleton-content {
     width: 400px;
-    height: 106px;
+    height: 107.5px;
     background: rgb(35, 35, 36);
     padding: 16px;
 
@@ -137,5 +137,9 @@ async function handleCopyUrl() {
       margin-top: 20px;
     }
   }
+}
+
+::v-deep .arco-card-body{
+  height: 106px;
 }
 </style>
