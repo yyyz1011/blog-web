@@ -2,6 +2,11 @@ body {
   min-width: 1200px;
   background: #000000;
   color: #ffffff;
+  -ms-overflow-style: none; /* IE 10+ */
+}
+
+body::-webkit-scrollbar {
+  display: none; /* Chrome Safari */
 }
 
 html,

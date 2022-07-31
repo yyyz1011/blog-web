@@ -1,6 +1,10 @@
 <template>
   <Header/>
-  <router-view v-if="!isLoading"/>
+  <router-view v-if="!isLoading" v-slot="{ Component }">
+    <transition mode="out-in" name="fade">
+      <component :is="Component"/>
+    </transition>
+  </router-view>
 </template>
 
 <script lang="ts" setup>
@@ -24,3 +28,15 @@ async function getUserToken() {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+</style>
