@@ -29,6 +29,7 @@ watch(
 );
 
 function handleClickNav(item: NavRouteItem) {
+  if (route.path === item.path) return;
   router.push({
     name: item.name
   });

@@ -139,7 +139,7 @@ async function handleCopyUrl() {
   }
 }
 
-::v-deep .arco-card-body{
+::v-deep .arco-card-body {
   height: 106px;
 }
 </style>
