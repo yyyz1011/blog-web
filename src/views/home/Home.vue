@@ -1,18 +1,9 @@
 <template>
   <div class="home-wrapper">
     <div v-show="!isLoading" class="home-content">
-      <video
-          ref="homeVideoRef"
-          autoplay
-          class="home-bg"
-          loop
-          muted
-          src="../../assets/img/night.mp4"
-      />
+      <video ref="homeVideoRef" autoplay class="home-bg" loop muted src="../../assets/img/night.mp4"/>
     </div>
-    <div v-if="isLoading" class="home-loading">
-      hello world
-    </div>
+    <div v-if="isLoading" class="home-loading">hello world</div>
   </div>
 </template>
 
@@ -22,15 +13,18 @@ import {ref, Ref, watch} from "vue";
 const homeVideoRef: Ref<any> = ref(null);
 const isLoading: Ref<boolean> = ref(true);
 
-watch(() => homeVideoRef.value, (val) => {
-  val?.addEventListener("loadeddata", () => {
-    isLoading.value = false;
-  });
-}, {
-  immediate: true,
-  deep: true
-});
-
+watch(
+    () => homeVideoRef.value,
+    (val) => {
+      val?.addEventListener("loadeddata", () => {
+        isLoading.value = false;
+      });
+    },
+    {
+      immediate: true,
+      deep: true
+    }
+);
 </script>
 
 <style scoped lang="scss">
@@ -46,7 +40,6 @@ watch(() => homeVideoRef.value, (val) => {
     }
   }
 }
-
 
 .home-loading {
   color: white;

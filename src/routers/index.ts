@@ -17,7 +17,7 @@ export const navRoutes: Array<NavRouteItem> = [
     title: "首页",
     component: () => import("@/views/home/Home.vue"),
     meta: {index: 1},
-    icon: IconHome,
+    icon: IconHome
   },
   {
     path: "/article",
@@ -25,7 +25,7 @@ export const navRoutes: Array<NavRouteItem> = [
     title: "笔记",
     component: () => import("@/views/article/Article.vue"),
     meta: {index: 2},
-    icon: IconNav,
+    icon: IconNav
   },
   {
     path: "/picture",
@@ -33,7 +33,7 @@ export const navRoutes: Array<NavRouteItem> = [
     title: "图库",
     component: () => import("@/views/picture/Picture.vue"),
     meta: {index: 3},
-    icon: IconCamera,
+    icon: IconCamera
   },
   {
     path: "/link",
@@ -41,7 +41,7 @@ export const navRoutes: Array<NavRouteItem> = [
     title: "友链",
     component: () => import("@/views/link/Link.vue"),
     meta: {index: 4},
-    icon: IconLink,
+    icon: IconLink
   }
 ];
 
@@ -49,13 +49,13 @@ export const otherRoutes: Array<NavRouteItem> = [
   {
     path: "/:catchAll(.*)",
     name: "no_page",
-    component: () => import("@/views/error/NoPage.vue"),
-  },
+    component: () => import("@/views/error/NoPage.vue")
+  }
 ];
 
 const router = createRouter({
   history: createWebHistory(),
-  routes: [...navRoutes, ...otherRoutes],
+  routes: [...navRoutes, ...otherRoutes]
 });
 
 export default router;

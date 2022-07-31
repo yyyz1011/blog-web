@@ -10,8 +10,8 @@ import { defineProps, defineEmits, computed } from "vue";
 const props = defineProps({
   text: {
     type: String,
-    required: true,
-  },
+    required: true
+  }
 });
 const emits = defineEmits(["click"]);
 

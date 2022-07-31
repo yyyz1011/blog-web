@@ -10,7 +10,7 @@ import {Message} from "@arco-design/web-vue";
 NProgress.configure({
 	easing: "ease",
 	speed: 500,
-	showSpinner: false,
+	showSpinner: false
 });
 
 document.body.setAttribute("arco-theme", "dark");

@@ -14,11 +14,7 @@ function handleBack() {
 <template>
   <div class="no-page-wrapper">
     <Lottie :options="{ animationData: LOTTIE_404 }" />
-    <TextButton
-      class="no-page-wrapper--operate"
-      text="点击返回首页"
-      @click="handleBack"
-    ></TextButton>
+    <TextButton class="no-page-wrapper--operate" text="点击返回首页" @click="handleBack"></TextButton>
   </div>
 </template>
 

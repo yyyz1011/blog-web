@@ -8,21 +8,27 @@ export class Request {
    */
   static get = (url: string, params?: any) => {
     return new Promise((resolve, reject) => {
-      axios.get(url, {params: params}).then(res => {
-        resolve(res);
-      }).catch(err => {
-        reject(err);
-      });
+      axios
+        .get(url, {params: params})
+        .then((res) => {
+          resolve(res);
+        })
+        .catch((err) => {
+          reject(err);
+        });
     });
   };
 
   static post = (url: string, params?: any) => {
     return new Promise((resolve, reject) => {
-      axios.post(url, params).then(res => {
-        resolve(res);
-      }).catch(err => {
-        reject(err);
-      });
+      axios
+        .post(url, params)
+        .then((res) => {
+          resolve(res);
+        })
+        .catch((err) => {
+          reject(err);
+        });
     });
   };
 }

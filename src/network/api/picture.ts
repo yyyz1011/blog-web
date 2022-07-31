@@ -13,7 +13,6 @@ export type GetPictureListResp = GetPictureListItem[];
 
 export default class ApiPicture {
   public static Picture = {
-    getPictureList: (): Promise<GetPictureListResp> =>
-      Request.get("/p/picture/list") as any,
+    getPictureList: (): Promise<GetPictureListResp> => Request.get("/p/picture/list") as any
   };
 }

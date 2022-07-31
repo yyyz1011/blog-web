@@ -9,10 +9,10 @@ import {defineProps, computed, onMounted, defineEmits, ref} from "vue";
 const props = defineProps({
   options: {
     type: Object,
-    required: true,
+    required: true
   },
   height: Number,
-  width: Number,
+  width: Number
 });
 const emits = defineEmits<{
   (event: "animCreated"): void;
@@ -24,7 +24,7 @@ const lottieStyle = computed(() => ({
   width: props.width ? `${props.width}px` : "100%",
   height: props.height ? `${props.height}px` : "100%",
   overflow: "hidden",
-  margin: "0 auto",
+  margin: "0 auto"
 }));
 
 onMounted(() => {
@@ -35,7 +35,7 @@ onMounted(() => {
     loop: props.options.loop !== false,
     autoplay: props.options.autoplay !== false,
     animationData: props.options.animationData,
-    rendererSettings: props.options.rendererSettings,
+    rendererSettings: props.options.rendererSettings
   });
   emits("animCreated", anim);
 });

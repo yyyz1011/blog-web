@@ -8,13 +8,13 @@ import {ArcoResolver} from "unplugin-vue-components/resolvers";
 export default defineConfig({
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "./src"), // 设置别名
-    },
+      "@": path.resolve(__dirname, "./src") // 设置别名
+    }
   },
   plugins: [
     vue(),
     AutoImport({
-      resolvers: [ArcoResolver()],
+      resolvers: [ArcoResolver()]
     }),
     Components({
       resolvers: [
@@ -27,8 +27,8 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        additionalData: "@import \"@/assets/css/variable.scss\";",
-      },
-    },
-  },
+        additionalData: "@import \"@/assets/css/variable.scss\";"
+      }
+    }
+  }
 });

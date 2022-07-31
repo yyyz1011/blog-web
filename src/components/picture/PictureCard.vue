@@ -1,20 +1,14 @@
 <template>
   <a-card v-show="!isLoading" :bordered="false" class="picture-card" hoverable @click="handleClickCard">
     <template #actions>
-      <span class="icon-hover" @click.stop="handleCopyUrl"> <IconShareInternal/> </span>
+      <span class="icon-hover" @click.stop="handleCopyUrl">
+        <IconShareInternal/>
+      </span>
     </template>
     <template #cover>
       <div class="picture-card-cover">
-        <img
-            :src="info.picture_url"
-            alt="leaf_blog"
-            class="picture-card-cover--img"
-            @load='handleImgLoaded'
-        />
-        <a-tag
-            class="picture-card-cover--tag"
-            size="large"
-        >
+        <img :src="info.picture_url" alt="leaf_blog" class="picture-card-cover--img" @load="handleImgLoaded"/>
+        <a-tag class="picture-card-cover--tag" size="large">
           {{ dayjs(Number(info.create_time)).format("YYYY-MM-DD") }}
           {{ info.region }}
         </a-tag>
